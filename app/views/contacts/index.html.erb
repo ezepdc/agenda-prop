@@ -1,0 +1,10 @@
+<h1>Contacts#index</h1>
+<% @contacts.each do |contact| %>
+  First name: <%= contact.first_name %>
+  Last name: <%= contact.last_name %>
+  Email: <%= contact.email %>
+  Phone: <%= contact.phone %>
+  Type: <%= contact.contact_type %>
+  <%= link_to "Ver contacto", contact_path(contact) %>
+<% end %>
+<%= link_to "Crear contacto", new_contact_path %>
