@@ -1,0 +1,25 @@
+<h1>Propiedad</h1>
+<p><%= link_to "Ver todos las propiedades", properties_path %></p>
+<p>Propiedad ref.: <%= @property.property_reference %></p>
+<p>
+  Propietario: <%= @property.contact.first_name %> <%= @property.contact.last_name %>
+  <%= link_to "Ver contacto", contact_path(@property.contact), target: :_blank %>
+</p>
+<p>Ref. catastral: <%= @property.cadastral_reference %></p>
+<p>Tipo: <%= @property.kind %></p>
+<p>Dirección: <%= @property.address %></p>
+<p>Piso / depto / lote: <%= @property.apartment %></p>
+<p>Ciudad: <%= @property.city %></p>
+<p>Provincia: <%= @property.state %></p>
+<p>País: <%= @property.country %></p>
+<p>Código postal: <%= @property.postal_code %></p>
+<p>Superficie total: <%= @property.total_area %></p>
+<p>Superficie cubierta: <%= @property.covered_area %></p>
+<p>Habitaciones: <%= @property.rooms %></p>
+<p>Baños: <%= @property.bathrooms %></p>
+<p>Características: <%= @property.amenities %></p>
+<p>Precio: <%= @property.price %></p>
+<p>Moneda: <%= @property.price_currency %></p>
+<p>Notas: <%= @property.notes %></p>
+<p><%= link_to "Editar propiedad", edit_property_path(@property) %></p>
+<p><%= link_to "Eliminar propiedad", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>

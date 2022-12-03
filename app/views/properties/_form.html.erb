@@ -1,0 +1,27 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6 col-lg-4">
+    <%= simple_form_for(@property) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <%= f.input :property_reference, required: true %>
+      <%= f.input :contact_id %>
+      <%= f.input :cadastral_reference %>
+      <%= f.input :kind %>
+      <%= f.input :address %>
+      <%= f.input :apartment %>
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%# <%= f.input :country %>
+      <%= f.input :postal_code %>
+      <%= f.input :total_area %>
+      <%= f.input :covered_area %>
+      <%= f.input :rooms %>
+      <%= f.input :bathrooms %>
+      <%= f.input :amenities %>
+      <%= f.input :price %>
+      <%= f.input :price_currency %>
+      <%= f.input :notes %>
+      <%= f.button :submit, class: "btn btn-flat" %>
+    <% end %>
+  </div>
+</div>

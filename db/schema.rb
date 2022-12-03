@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_03_092652) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_03_101156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_092652) do
 
   create_table "properties", force: :cascade do |t|
     t.string "property_reference"
-    t.bigint "owner_id", null: false
+    t.bigint "contact_id", null: false
     t.string "cadastral_reference"
     t.string "kind"
     t.string "address"
@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_092652) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_properties_on_owner_id"
+    t.index ["contact_id"], name: "index_properties_on_contact_id"
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
@@ -71,6 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_092652) do
   end
 
   add_foreign_key "contacts", "users"
-  add_foreign_key "properties", "contacts", column: "owner_id"
+  add_foreign_key "properties", "contacts"
   add_foreign_key "properties", "users"
 end
