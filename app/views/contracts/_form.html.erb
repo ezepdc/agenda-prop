@@ -1,0 +1,25 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6 col-lg-4">
+    <%= simple_form_for(@contract) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <%= f.input :kind, required: true %>
+      <%= f.association :property, label_method: :property_reference, value_method: :id, prompt: true , required: true %>
+      <p><%= link_to "Crear propiedad", new_property_path, target: :_blank %></p>
+      <%= f.association :contact, label_method: :first_name, value_method: :id, prompt: true , required: true %>
+      <p><%= link_to "Crear contacto", new_contact_path, target: :_blank %></p>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :base_price %>
+      <%= f.input :base_price_currency %>
+      <%= f.input :comision %>
+      <%= f.input :guarantor_identity_kind %>
+      <%= f.input :guarantor_identity_number %>
+      <%= f.input :guarantee_address %>
+      <%= f.input :security_deposit_amount %>
+      <%= f.input :security_deposit_amount_currency %>
+      <%= f.input :notes %>
+      <%= f.button :submit, class: "btn btn-flat" %>
+    <% end %>
+  </div>
+</div>

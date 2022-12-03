@@ -1,0 +1,17 @@
+<h1>Contrato</h1>
+<p><%= link_to "Ver todos los contratos", contracts_path %></p>
+<p>Tipo de contrato: <%= @contract.kind %></p>
+<p>Propiedad ref.: <%= @contract.property.property_reference %></p>
+<p>Inquilino: <%= @contract.contact.first_name %> <%= @contract.contact.last_name %></p>
+<p>Desde: <%= @contract.start_date %> hasta: <%= @contract.end_date %></p>
+<p>Precio base: <%= @contract.base_price %></p>
+<p>Moneda: <%= @contract.base_price_currency %></p>
+<p>Comision: <%= @contract.comision %></p>
+<p>Tipo documento garante: <%= @contract.guarantor_identity_kind %></p>
+<p>Número de documento garante: <%= @contract.guarantor_identity_number %></p>
+<p>Dirección de garantía: <%= @contract.guarantee_address %></p>
+<p>Monto depósito / fianza: <%= @contract.security_deposit_amount %></p>
+<p>Moneda depósito / fianza: <%= @contract.security_deposit_amount_currency %></p>
+<p>Notas: <%= @contract.notes %></p>
+<p><%= link_to "Editar contrato", edit_contract_path(@contract) %></p>
+<p><%= link_to "Eliminar contrato", contract_path(@contract), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>
