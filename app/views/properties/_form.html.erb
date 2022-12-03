@@ -4,14 +4,15 @@
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <%= f.input :property_reference, required: true %>
-      <%= f.association :contact, label_method: :last_name, value_method: :id, prompt: true , required: true %>
+      <%= f.association :contact, label_method: :first_name, value_method: :id, prompt: true , required: true %>
+      <p><%= link_to "Crear contacto", new_contact_path %></p>
       <%= f.input :cadastral_reference %>
       <%= f.input :kind %>
       <%= f.input :address %>
       <%= f.input :apartment %>
       <%= f.input :city %>
       <%= f.input :state %>
-      <%# <%= f.input :country %>
+      <%= f.input :country %>
       <%= f.input :postal_code %>
       <%= f.input :total_area %>
       <%= f.input :covered_area %>
