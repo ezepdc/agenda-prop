@@ -15,7 +15,6 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     @property.user = current_user
-    @property.owner_id = 4
     if @property.save
       redirect_to property_path(@property)
     else
@@ -43,6 +42,6 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:property_reference, :owner_id, :cadastral_reference, :kind, :address, :apartment, :city, :state, :country, :postal_code, :total_area, :covered_area, :rooms, :bathrooms, :amenities, :price, :price_currency, :notes)
+    params.require(:property).permit(:property_reference, :contact_id, :cadastral_reference, :kind, :address, :apartment, :city, :state, :country, :postal_code, :total_area, :covered_area, :rooms, :bathrooms, :amenities, :price, :price_currency, :notes)
   end
 end
