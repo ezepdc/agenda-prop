@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :phone, numericality: true
   validates :first_name, presence: true
   validates :agency_name, presence: true
+  has_many :properties
 end

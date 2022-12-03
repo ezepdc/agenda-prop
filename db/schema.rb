@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_02_183817) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_03_092652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_183817) do
     t.datetime "updated_at", null: false
     t.text "notes"
     t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "property_reference"
+    t.bigint "owner_id", null: false
+    t.string "cadastral_reference"
+    t.string "kind"
+    t.string "address"
+    t.string "apartment"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "postal_code"
+    t.string "total_area"
+    t.string "covered_area"
+    t.integer "rooms"
+    t.integer "bathrooms"
+    t.string "amenities"
+    t.string "price"
+    t.string "price_currency"
+    t.text "notes"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_properties_on_owner_id"
+    t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_183817) do
   end
 
   add_foreign_key "contacts", "users"
+  add_foreign_key "properties", "contacts", column: "owner_id"
+  add_foreign_key "properties", "users"
 end
