@@ -6,6 +6,7 @@ class ContractsController < ApplicationController
   end
 
   def show
+    @contract_prices = ContractPrice.where(contract_id: params[:id])
   end
 
   def new

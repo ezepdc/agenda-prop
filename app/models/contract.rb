@@ -3,4 +3,5 @@ class Contract < ApplicationRecord
   belongs_to :contact
   belongs_to :user
   validates :kind, presence: true
+  has_many :contract_prices, dependent: :destroy
 end

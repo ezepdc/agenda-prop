@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates :agency_name, presence: true
   has_many :properties
   has_many :contracts
+  has_many :contract_prices
 end
