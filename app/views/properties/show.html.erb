@@ -21,5 +21,12 @@
 <p>Precio: <%= @property.price %></p>
 <p>Moneda: <%= @property.price_currency %></p>
 <p>Notas: <%= @property.notes %></p>
+<h4>Contratos</h4>
+<% @contracts.each do |contract| %>
+  <p>Tipo de contrato: <%= contract.kind %></p>
+  <p>Inquilino: <%= contract.contact.first_name %> <%= contract.contact.last_name %></p>
+  <p>Desde: <%= contract.start_date %> hasta: <%= contract.end_date %></p>
+  <p><%= link_to "Ver contrato", contract_path(contract), target: :_blank %></p>
+<% end %>
 <p><%= link_to "Editar propiedad", edit_property_path(@property) %></p>
 <p><%= link_to "Eliminar propiedad", property_path(@property), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>

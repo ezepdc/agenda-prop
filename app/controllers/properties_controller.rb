@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    @contracts = Contract.where(property_id: params[:id])
   end
 
   def new

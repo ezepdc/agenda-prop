@@ -8,5 +8,5 @@
   <p>Precio base: <%= contract.base_price %></p>
   <p>Moneda: <%= contract.base_price_currency %></p>
   <p>Comision: <%= contract.comision %></p>
-  <p><%= link_to "Ver contrato", contract_path(contract) %></p>
+  <p><%= link_to "Ver contrato", contract_path(contract), target: :_blank %></p>
 <% end %>
