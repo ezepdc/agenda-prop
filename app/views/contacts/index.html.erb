@@ -1,11 +1,11 @@
 <h1>Todos los contactos</h1>
 <p><%= link_to "Crear contacto", new_contact_path %></p>
 <% @contacts.each do |contact| %>
-  <p>First name: <%= contact.first_name %></p>
-  <p>Last name: <%= contact.last_name %></p>
+  <p>Nombre: <%= contact.first_name %></p>
+  <p>Apellido: <%= contact.last_name %></p>
   <p>Email: <%= contact.email %></p>
-  <p>Phone: <%= contact.phone %></p>
-  <p>Type: <%= contact.kind %></p>
-  <p>Notes: <%= contact.notes %></p>
+  <p>Teléfono: <%= contact.phone %></p>
+  <p>Tipo de contacto: <%= contact.kind %></p>
+  <p>Notas: <%= contact.notes %></p>
   <p><%= link_to "Ver contacto", contact_path(contact) %></p>
 <% end %>

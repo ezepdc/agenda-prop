@@ -1,10 +1,10 @@
 <h1>Contacto</h1>
 <p><%= link_to "Ver todos los contactos", contacts_path %></p>
-<p>First name: <%= @contact.first_name %></p>
-<p>Last name: <%= @contact.last_name %></p>
+<p>Nombre: <%= @contact.first_name %></p>
+<p>Apellido: <%= @contact.last_name %></p>
 <p>Email: <%= @contact.email %></p>
-<p>Phone: <%= @contact.phone %></p>
-<p>Type: <%= @contact.kind %></p>
-<p>Notes: <%= @contact.notes %></p>
+<p>Teléfono: <%= @contact.phone %></p>
+<p>Tipo de contacto: <%= @contact.kind %></p>
+<p>Notas: <%= @contact.notes %></p>
 <p><%= link_to "Editar contacto", edit_contact_path(@contact) %></p>
 <p><%= link_to "Eliminar contacto", contact_path(@contact), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>
