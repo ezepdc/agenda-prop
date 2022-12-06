@@ -22,6 +22,7 @@
 <p>Moneda: <%= @property.price_currency %></p>
 <p>Notas: <%= @property.notes %></p>
 <h4>Contratos</h4>
+<p><%= link_to "Crear contrato", new_contract_path %></p>
 <% @contracts.each do |contract| %>
   <p>Tipo de contrato: <%= contract.kind %></p>
   <p>Inquilino: <%= contract.contact.first_name %> <%= contract.contact.last_name %></p>
