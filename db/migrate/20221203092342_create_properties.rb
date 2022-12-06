@@ -2,7 +2,6 @@ class CreateProperties < ActiveRecord::Migration[7.0]
   def change
     create_table :properties do |t|
       t.string :property_reference
-      t.references :contact, null: false, foreign_key: true
       t.string :cadastral_reference
       t.string :kind
       t.string :address
