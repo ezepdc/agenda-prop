@@ -6,4 +6,8 @@ class Contact < ApplicationRecord
   validates :phone, numericality: true, allow_blank: true
   has_many :properties, foreign_key: 'owner_id'
   has_many :contracts
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

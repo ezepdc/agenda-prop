@@ -3,7 +3,6 @@ class CreateContracts < ActiveRecord::Migration[7.0]
     create_table :contracts do |t|
       t.string :kind
       t.references :property, null: false, foreign_key: true
-      t.references :contact, null: false, foreign_key: true
       t.date :start_date
       t.date :end_date
       t.string :base_price
