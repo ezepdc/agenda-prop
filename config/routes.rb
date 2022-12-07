@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :contracts do
     resources :contract_prices
   end
-  resources :incidents
+  resources :incidents do
+    resources :incident_updates
+  end
 end

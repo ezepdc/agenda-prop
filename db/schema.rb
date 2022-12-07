@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_131426) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_134906) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_131426) do
     t.index ["property_id"], name: "index_contracts_on_property_id"
     t.index ["tenant_id"], name: "index_contracts_on_tenant_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
+  end
+
+  create_table "incident_updates", force: :cascade do |t|
+    t.bigint "incident_id", null: false
+    t.text "notes"
+    t.string "incident_status"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["incident_id"], name: "index_incident_updates_on_incident_id"
+    t.index ["user_id"], name: "index_incident_updates_on_user_id"
   end
 
   create_table "incidents", force: :cascade do |t|
@@ -128,6 +139,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_131426) do
   add_foreign_key "contracts", "contacts", column: "tenant_id"
   add_foreign_key "contracts", "properties"
   add_foreign_key "contracts", "users"
+  add_foreign_key "incident_updates", "incidents"
+  add_foreign_key "incident_updates", "users"
   add_foreign_key "incidents", "contacts"
   add_foreign_key "incidents", "properties"
   add_foreign_key "incidents", "users"

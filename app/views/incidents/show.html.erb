@@ -1,8 +1,9 @@
 <h1>Incidencia</h1>
 <p>Número: <%= @incident.id %></p>
+<p>Creada: <%= @incident.created_at %></p>
 <p>Propiedad ref.: <%= @incident.property.property_reference %></p>
 <p>Contacto: <%= @incident.contact.full_name %></p>
-<p>A cargo de: <%= @incident.user.first_name %></p>
+<p>Creada por: <%= @incident.user.first_name %></p>
 <p>Tipo de incidencia: <%= @incident.kind %></p>
 <p>Descripción: <%= @incident.description %></p>
 <p><%= link_to "Editar incidencia", edit_incident_path(@incident) %></p>

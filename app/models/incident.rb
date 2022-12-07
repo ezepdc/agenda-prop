@@ -4,4 +4,5 @@ class Incident < ApplicationRecord
   belongs_to :user
   validates :kind, presence: true
   validates :description, presence: true
+  has_many :incident_updates
 end

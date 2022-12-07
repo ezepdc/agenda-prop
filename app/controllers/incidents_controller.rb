@@ -42,6 +42,6 @@ class IncidentsController < ApplicationController
   end
 
   def incident_params
-    params.require(:incident).permit(:property_id, :contact_id, :kind, :description, :user)
+    params.require(:incident).permit(:created_at, :property_id, :contact_id, :kind, :description, :user)
   end
 end

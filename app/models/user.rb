@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :contracts
   has_many :contract_prices
   has_many :incidents
+  has_many :incident_updates
 end
