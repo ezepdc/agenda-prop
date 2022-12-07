@@ -6,6 +6,8 @@ class IncidentsController < ApplicationController
   end
 
   def show
+    @incident_last = IncidentUpdate.where(incident_id: params[:id]).last
+    @incident_updates = IncidentUpdate.where(incident_id: params[:id]).order(created_at: :desc)
   end
 
   def new
