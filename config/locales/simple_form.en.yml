@@ -49,18 +49,22 @@ en:
         guarantee_address: 'Dirección de la propiedad en garantía'
         security_deposit_amount: 'Monto de depósito en garantía'
         security_deposit_amount_currency: 'Moneda de depósito en garantía'
+        contact: 'Contacto'
+        description: 'Descripción'
 
 
 
       contact:
-          kind: 'Tipo de contacto'
+        kind: 'Tipo de contacto'
       property:
-          kind: 'Tipo de propiedad'
-          contact: 'Propietario'
+        kind: 'Tipo de propiedad'
+        owner: 'Propietario'
       contract:
-          kind: 'Tipo de contrato'
-          tenant: 'Inquilino'
-          guarantor: 'Garante'
+        kind: 'Tipo de contrato'
+        tenant: 'Inquilino'
+        guarantor: 'Garante'
+      incident:
+        kind: 'Tipo de incidencia'
 
 
 
