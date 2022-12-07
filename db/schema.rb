@@ -25,11 +25,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
     t.string "payment_method"
     t.text "notes"
     t.bigint "settlement_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_bills_on_contact_id"
     t.index ["property_id"], name: "index_bills_on_property_id"
     t.index ["settlement_id"], name: "index_bills_on_settlement_id"
+    t.index ["user_id"], name: "index_bills_on_user_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -172,6 +174,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
   add_foreign_key "bills", "contacts"
   add_foreign_key "bills", "properties"
   add_foreign_key "bills", "settlements"
+  add_foreign_key "bills", "users"
   add_foreign_key "contacts", "users"
   add_foreign_key "contract_prices", "contracts"
   add_foreign_key "contract_prices", "users"

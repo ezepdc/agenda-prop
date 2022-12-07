@@ -8,6 +8,7 @@ class Contact < ApplicationRecord
   has_many :contracts, foreign_key: 'tenant_id'
   has_many :contracts, foreign_key: 'guarantor_id'
   has_many :incidents
+  has_many :bills
 
   def full_name
     "#{first_name} #{last_name}"

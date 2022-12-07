@@ -59,7 +59,10 @@ en:
         others_expense_amount_currency: 'Moneda de otros gastos'
         others_expense_concept: 'Concepto de otros gastos'
         payment_method: 'Método de pago'
-
+        bill_date: 'Fecha'
+        amount: 'Monto'
+        amount_currency: 'Moneda'
+        concept: 'Concepto'
 
 
       contact:
@@ -74,8 +77,9 @@ en:
       incident:
         kind: 'Tipo de incidencia'
       settlement:
-        amount: 'Monto'
         amount_currency: 'Moneda de liquidación'
+      bill:
+        kind: 'Pago o cobro'
 
 
 

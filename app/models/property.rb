@@ -5,4 +5,5 @@ class Property < ApplicationRecord
   has_many :contracts, dependent: :destroy
   has_many :incidents
   has_many :settlements
+  has_many :bills
 end

@@ -3,6 +3,14 @@
 <p>Fecha: <%= @settlement.created_at %></p>
 <p>Propiedad ref.:: <%= @settlement.property.property_reference %></p>
 <p>Propietario: <%= @settlement.property.owner.full_name %></p>
+
+<%# <% @bills.each do |bill| %>
+  <%# <p>Tipo: <%= bill.kind %></p>
+  <%# <p>Concepto: <%= bill.concept %></p>
+  <%# <p>Monto: <%= bill.amount %></p>
+  <%# <p><%= link_to "Ver pago / cobro", bill_path(bill), target: :_blank %></p>
+<%# <% end %>
+
 <p>Monto de otros ingresos: <%= @settlement.others_income_amount %></p>
 <p>Moneda de otros ingresos: <%= @settlement.others_income_amount_curreny %></p>
 <p>Concepto de otros ingresos: <%= @settlement.others_income_concept %></p>

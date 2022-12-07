@@ -13,4 +13,5 @@ class User < ApplicationRecord
   has_many :incidents
   has_many :incident_updates
   has_many :settlements
+  has_many :bills
 end

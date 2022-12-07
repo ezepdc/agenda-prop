@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     resources :incident_updates
   end
   resources :settlements
+  resources :bills
 end
