@@ -1,0 +1,11 @@
+<h1>Todos las liquidaciones</h1>
+<p><%= link_to "Crear liquidación", new_settlement_path %></p>
+<% @settlements.each do |settlement| %>
+  <p>Fecha: <%= settlement.created_at %></p>
+  <p>Propiedad ref.:: <%= settlement.property.property_reference %></p>
+  <p>Propietario: <%= settlement.property.owner.full_name %></p>
+  <p>Monto de liquidación: <%= settlement.amount %></p>
+  <p>Método de pago: <%= settlement.payment_method %></p>
+  <p>Liquidado por: <%= settlement.user.first_name %></p>
+  <p><%= link_to "Ver liquidación", settlement_path(settlement) %></p>
+<% end %>

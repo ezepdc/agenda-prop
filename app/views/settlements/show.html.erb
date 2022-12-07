@@ -1,0 +1,18 @@
+<h1>Liquidación</h1>
+<p><%= link_to "Ver todos las liquidaciones", settlements_path %></p>
+<p>Fecha: <%= @settlement.created_at %></p>
+<p>Propiedad ref.:: <%= @settlement.property.property_reference %></p>
+<p>Propietario: <%= @settlement.property.owner.full_name %></p>
+<p>Monto de otros ingresos: <%= @settlement.others_income_amount %></p>
+<p>Moneda de otros ingresos: <%= @settlement.others_income_amount_curreny %></p>
+<p>Concepto de otros ingresos: <%= @settlement.others_income_concept %></p>
+<p>Monto de otros gastos: <%= @settlement.others_expense_amount %></p>
+<p>Moneda de otros gastos: <%= @settlement.others_expense_amount_currency %></p>
+<p>Concepto de otros gastos: <%= @settlement.others_expense_concept %></p>
+<p>Monto de liquidación: <%= @settlement.amount %></p>
+<p>Moneda de liquidación: <%= @settlement.amount_currency %></p>
+<p>Método de pago: <%= @settlement.payment_method %></p>
+<p>Liquidado por: <%= @settlement.user.first_name %></p>
+<p>Notas: <%= @settlement.notes %></p>
+<p><%= link_to "Editar liquidación", edit_settlement_path(@settlement) %></p>
+<p><%= link_to "Eliminar liquidación", settlement_path(@settlement), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>

@@ -13,7 +13,7 @@ en:
     # Examples
     labels:
       defaults:
-        remember_me: 'Recordame'
+        remember_me: 'Recordarme'
         password: 'Contraseña'
         password_confirmation: 'Repetir contraseña'
         current_password: 'Contraseña actual'
@@ -51,6 +51,14 @@ en:
         security_deposit_amount_currency: 'Moneda de depósito en garantía'
         contact: 'Contacto'
         description: 'Descripción'
+        incident_status: 'Estado de incidencia'
+        others_income_amount: 'Monto de otros ingresos'
+        others_income_amount_curreny: 'Moneda de otros ingresos'
+        others_income_concept: 'Concepto de otros ingresos'
+        others_expense_amount: 'Monto de otros gastos'
+        others_expense_amount_currency: 'Moneda de otros gastos'
+        others_expense_concept: 'Concepto de otros gastos'
+        payment_method: 'Método de pago'
 
 
 
@@ -65,6 +73,9 @@ en:
         guarantor: 'Garante'
       incident:
         kind: 'Tipo de incidencia'
+      settlement:
+        amount: 'Monto'
+        amount_currency: 'Moneda de liquidación'
 
 
 

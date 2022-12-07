@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :incidents do
     resources :incident_updates
   end
+  resources :settlements
 end

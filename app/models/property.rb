@@ -4,4 +4,5 @@ class Property < ApplicationRecord
   validates :property_reference, presence: true
   has_many :contracts, dependent: :destroy
   has_many :incidents
+  has_many :settlements
 end

@@ -135,7 +135,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
 
   create_table "settlements", force: :cascade do |t|
     t.bigint "property_id", null: false
-    t.date "settlement_date"
     t.string "others_income_amount"
     t.string "others_income_amount_curreny"
     t.string "others_income_concept"

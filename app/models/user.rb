@@ -12,4 +12,5 @@ class User < ApplicationRecord
   has_many :contract_prices
   has_many :incidents
   has_many :incident_updates
+  has_many :settlements
 end
