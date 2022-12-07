@@ -59,7 +59,8 @@ en:
           contact: 'Propietario'
       contract:
           kind: 'Tipo de contrato'
-          contact: 'Inquilino'
+          tenant: 'Inquilino'
+          guarantor: 'Garante'
 
 
 

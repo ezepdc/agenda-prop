@@ -3,7 +3,7 @@
 <% @contracts.each do |contract| %>
   <p>Tipo de contrato: <%= contract.kind %></p>
   <p>Propiedad ref.: <%= contract.property.property_reference %></p>
-  <p>Inquilino: <%= contract.contact.first_name %> <%= contract.contact.last_name %></p>
+  <p>Inquilino: <%= contract.tenant.full_name %></p>
   <p>Desde: <%= contract.start_date %> hasta: <%= contract.end_date %></p>
   <p>Precio base: <%= contract.base_price %></p>
   <p>Moneda: <%= contract.base_price_currency %></p>

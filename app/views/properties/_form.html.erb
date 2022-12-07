@@ -4,7 +4,7 @@
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <%= f.input :property_reference, required: true %>
-      <%= f.association :contact, collection: Contact.where(kind: 'Propietario'), label_method: :full_name, prompt: true , required: true %>
+      <%= f.association :owner, class_name: "Contact",  collection: Contact.where(kind: 'Propietario'), label_method: :full_name, prompt: true , required: true %>
       <p><%= link_to "Crear propietario", new_contact_path, target: :_blank %></p>
       <%= f.input :cadastral_reference %>
       <%= f.input :kind %>

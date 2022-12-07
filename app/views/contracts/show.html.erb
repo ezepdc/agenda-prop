@@ -1,7 +1,7 @@
 <h1>Contrato</h1>
 <p>Tipo de contrato: <%= @contract.kind %></p>
 <p>Propiedad ref.: <%= @contract.property.property_reference %></p>
-<p>Inquilino: <%= @contract.contact.first_name %> <%= @contract.contact.last_name %></p>
+<p>Inquilino: <%= @contract.tenant.full_name %></p>
 <p>Desde: <%= @contract.start_date %> hasta: <%= @contract.end_date %></p>
 <p>Precio base: <%= @contract.base_price %></p>
 <p>Moneda: <%= @contract.base_price_currency %></p>
@@ -15,6 +15,7 @@
   <p><%= link_to "Eliminar precio variable", contract_contract_price_path(@contract, contract_price), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
 <% end %>
 <p>Comision: <%= @contract.comision %></p>
+<p>Garante: <%= @contract.guarantor.full_name %></p>
 <p>Tipo documento garante: <%= @contract.guarantor_identity_kind %></p>
 <p>Número de documento garante: <%= @contract.guarantor_identity_number %></p>
 <p>Dirección de garantía: <%= @contract.guarantee_address %></p>

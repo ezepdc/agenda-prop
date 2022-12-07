@@ -3,8 +3,8 @@
 <% @properties.each do |property| %>
   <p>Propiedad ref.: <%= property.property_reference %></p>
   <p>
-    Propietario: <%= property.contact.first_name %> <%= property.contact.last_name %>
-    <%= link_to "Ver contacto", contact_path(property.contact), target: :_blank %>
+    Propietario: <%= property.owner.full_name %>
+    <%= link_to "Ver contacto", contact_path(property.owner), target: :_blank %>
   </p>
   <p>Tipo: <%= property.kind %></p>
   <p>Dirección: <%= property.address %></p>

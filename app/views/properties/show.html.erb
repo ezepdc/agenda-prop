@@ -2,8 +2,8 @@
 <p><%= link_to "Ver todos las propiedades", properties_path %></p>
 <p>Propiedad ref.: <%= @property.property_reference %></p>
 <p>
-  Propietario: <%= @property.contact.first_name %> <%= @property.contact.last_name %>
-  <%= link_to "Ver contacto", contact_path(@property.contact), target: :_blank %>
+  Propietario: <%= @property.owner.full_name %>
+  <%= link_to "Ver contacto", contact_path(@property.owner), target: :_blank %>
 </p>
 <p>Ref. catastral: <%= @property.cadastral_reference %></p>
 <p>Tipo: <%= @property.kind %></p>
@@ -25,7 +25,7 @@
 <p><%= link_to "Crear contrato", new_contract_path %></p>
 <% @contracts.each do |contract| %>
   <p>Tipo de contrato: <%= contract.kind %></p>
-  <p>Inquilino: <%= contract.contact.first_name %> <%= contract.contact.last_name %></p>
+  <p>Inquilino: <%= contract.tenant.full_name %></p>
   <p>Desde: <%= contract.start_date %> hasta: <%= contract.end_date %></p>
   <p><%= link_to "Ver contrato", contract_path(contract), target: :_blank %></p>
 <% end %>
