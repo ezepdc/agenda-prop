@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_134906) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: :cascade do |t|
+    t.bigint "property_id", null: false
+    t.date "bill_date"
+    t.string "kind"
+    t.bigint "contact_id", null: false
+    t.string "amount"
+    t.string "amount_currency"
+    t.string "concept"
+    t.string "payment_method"
+    t.text "notes"
+    t.bigint "settlement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_bills_on_contact_id"
+    t.index ["property_id"], name: "index_bills_on_property_id"
+    t.index ["settlement_id"], name: "index_bills_on_settlement_id"
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
@@ -115,6 +133,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_134906) do
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
+  create_table "settlements", force: :cascade do |t|
+    t.bigint "property_id", null: false
+    t.date "settlement_date"
+    t.string "others_income_amount"
+    t.string "others_income_amount_curreny"
+    t.string "others_income_concept"
+    t.string "others_expense_amount"
+    t.string "others_expense_amount_currency"
+    t.string "others_expense_concept"
+    t.string "amount"
+    t.string "amount_currency"
+    t.string "payment_method"
+    t.text "notes"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_settlements_on_property_id"
+    t.index ["user_id"], name: "index_settlements_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -132,6 +170,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_134906) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bills", "contacts"
+  add_foreign_key "bills", "properties"
+  add_foreign_key "bills", "settlements"
   add_foreign_key "contacts", "users"
   add_foreign_key "contract_prices", "contracts"
   add_foreign_key "contract_prices", "users"
@@ -146,4 +187,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_134906) do
   add_foreign_key "incidents", "users"
   add_foreign_key "properties", "contacts", column: "owner_id"
   add_foreign_key "properties", "users"
+  add_foreign_key "settlements", "properties"
+  add_foreign_key "settlements", "users"
 end
