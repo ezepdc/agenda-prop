@@ -1,7 +1,7 @@
 class Bill < ApplicationRecord
   belongs_to :property
   belongs_to :contact
-  belongs_to :settlement
+  has_one :settlement
   belongs_to :user
   validates :bill_date, presence: true
   validates :kind, inclusion: { in: %w(Pago Cobro) }

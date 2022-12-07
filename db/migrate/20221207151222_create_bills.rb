@@ -10,7 +10,6 @@ class CreateBills < ActiveRecord::Migration[7.0]
       t.string :concept
       t.string :payment_method
       t.text :notes
-      t.references :settlement, null: true, foreign_key: true
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

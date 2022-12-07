@@ -10,7 +10,13 @@
 <p>Moneda: <%= @bill.amount_currency %></p>
 <p>Método de pago: <%= @bill.payment_method %></p>
 <p>Creado por: <%= @bill.user.first_name %></p>
-<%# <p>Liquidado: <%= @bill.settlement_id %></p>
+<h4>Liquidación:</h4>
+<% if @settlement %>
+  <p><%= @settlement.created_at %> Por: <%= @settlement.user.first_name %></p>
+  <p><%= link_to "Ver liquidación", settlement_path(@settlement), target: :_blank %></p>
+<% else %>
+  <p>Pendiente</p>
+<% end %>
 <p>Notas: <%= @bill.notes %></p>
 <p><%= link_to "Editar pago / cobro", edit_bill_path(@bill) %></p>
 <p><%= link_to "Eliminar pago / cobro", bill_path(@bill), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>

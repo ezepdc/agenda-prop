@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_151302) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,13 +24,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
     t.string "concept"
     t.string "payment_method"
     t.text "notes"
-    t.bigint "settlement_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_bills_on_contact_id"
     t.index ["property_id"], name: "index_bills_on_property_id"
-    t.index ["settlement_id"], name: "index_bills_on_settlement_id"
     t.index ["user_id"], name: "index_bills_on_user_id"
   end
 
@@ -137,6 +135,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
 
   create_table "settlements", force: :cascade do |t|
     t.bigint "property_id", null: false
+    t.bigint "bill_id", null: false
     t.string "others_income_amount"
     t.string "others_income_amount_curreny"
     t.string "others_income_concept"
@@ -150,6 +149,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_settlements_on_bill_id"
     t.index ["property_id"], name: "index_settlements_on_property_id"
     t.index ["user_id"], name: "index_settlements_on_user_id"
   end
@@ -173,7 +173,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
 
   add_foreign_key "bills", "contacts"
   add_foreign_key "bills", "properties"
-  add_foreign_key "bills", "settlements"
   add_foreign_key "bills", "users"
   add_foreign_key "contacts", "users"
   add_foreign_key "contract_prices", "contracts"
@@ -189,6 +188,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_151622) do
   add_foreign_key "incidents", "users"
   add_foreign_key "properties", "contacts", column: "owner_id"
   add_foreign_key "properties", "users"
+  add_foreign_key "settlements", "bills"
   add_foreign_key "settlements", "properties"
   add_foreign_key "settlements", "users"
 end

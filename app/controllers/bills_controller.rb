@@ -6,6 +6,7 @@ class BillsController < ApplicationController
   end
 
   def show
+    @settlement = Settlement.where(bill_id: params[:id]).first
   end
 
   def new

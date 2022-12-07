@@ -4,19 +4,19 @@
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <%= f.association :property, label_method: :property_reference, prompt: true, required: true %>
-      <%= f.association :bills, as: :check_boxes, label_method: :reference, prompt: true, required: true %>
+      <%= f.association :bill, label_method: :reference, prompt: true, required: true %>
+      <%= f.input :others_income_concept %>
       <%= f.input :others_income_amount %>
       <%= f.input :others_income_amount_curreny %>
-      <%= f.input :others_income_concept %>
+      <%= f.input :others_expense_concept %>
       <%= f.input :others_expense_amount %>
       <%= f.input :others_expense_amount_currency %>
-      <%= f.input :others_expense_concept %>
 
       <p>aca va el monto calculado entre las bills, others incomes y other expenses</p>
 
       <%= f.input :amount, required: true %>
       <%= f.input :amount_currency %>
-      <%= f.input :payment_method %>
+      <%= f.input :payment_method, required: true %>
       <%= f.input :notes %>
       <%= f.button :submit, class: "btn btn-flat" %>
     <% end %>
