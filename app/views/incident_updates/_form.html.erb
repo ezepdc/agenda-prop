@@ -5,6 +5,7 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <%= f.input :incident_status, required: true, collection: ['Pendiente', 'En curso', 'Rechazada', 'Finalizada'], prompt: true %>
       <%= f.input :notes, required: true %>
+      <%= f.input :documents, as: :file, input_html: { multiple: true } %>
       <%= f.button :submit, class: "btn btn-flat" %>
     <% end %>
   </div>
