@@ -1,10 +1,10 @@
-<h1>Todos los pagos / cobros</h1>
-<p><%= link_to "Crear pago / cobro", new_bill_path %></p>
+<h1>Todos las transacciones</h1>
+<p><%= link_to "Crear transacción", new_bill_path %></p>
 <% @bills.each do |bill| %>
   <p>Fecha: <%= bill.bill_date %></p>
-  <p>Propiedad ref.:: <%= bill.property.property_reference %></p>
-  <p>Contacto: <%= bill.contact.full_name %></p>
+  <p>Propiedad ref.: <%= bill.property.property_reference %></p>
   <p>Tipo: <%= bill.kind %></p>
+  <p>Contacto: <%= bill.contact.full_name %></p>
   <p>Concepto: <%= bill.concept %></p>
   <p>Monto: <%= bill.amount %></p>
   <p>Creado por: <%= bill.user.first_name %></p>
@@ -14,5 +14,5 @@
   <% else %>
     Pendiente</p>
   <% end %>
-  <p><%= link_to "Ver pago / cobro", bill_path(bill) %></p>
+  <p><%= link_to "Ver transacción", bill_path(bill) %></p>
 <% end %>

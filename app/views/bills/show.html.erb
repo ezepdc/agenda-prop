@@ -1,10 +1,10 @@
-<h1>Pago / cobro</h1>
-<p><%= link_to "Ver todos los pagos / cobros", bills_path %></p>
+<h1>Transacción</h1>
+<p><%= link_to "Ver todas las transacciones", bills_path %></p>
 <p>Fecha: <%= @bill.bill_date %></p>
-<p>Propiedad ref.:: <%= @bill.property.property_reference %></p>
+<p>Propiedad ref.: <%= @bill.property.property_reference %></p>
+<p>Tipo: <%= @bill.kind %></p>
 <p>Contacto: <%= @bill.contact.full_name %></p>
 <p>Tipo de contacto: <%= @bill.contact.kind %></p>
-<p>Tipo: <%= @bill.kind %></p>
 <p>Concepto: <%= @bill.concept %></p>
 <p>Monto: <%= @bill.amount %></p>
 <p>Moneda: <%= @bill.amount_currency %></p>
@@ -23,5 +23,5 @@
   <% end %>
 </p>
 <p>Notas: <%= @bill.notes %></p>
-<p><%= link_to "Editar pago / cobro", edit_bill_path(@bill) %></p>
-<p><%= link_to "Eliminar pago / cobro", bill_path(@bill), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>
+<p><%= link_to "Editar transacción", edit_bill_path(@bill) %></p>
+<p><%= link_to "Eliminar transacción", bill_path(@bill), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>

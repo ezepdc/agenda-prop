@@ -3,13 +3,13 @@
 <p>Fecha: <%= @settlement.created_at %></p>
 <p>Propiedad ref.: <%= @settlement.property.property_reference %></p>
 <p>Propietario: <%= @settlement.property.owner.full_name %></p>
-<p>Bill: <%= @settlement.bill.reference %> <%= link_to "Ver pago / cobro", bill_path(@settlement.bill), target: :_blank %></p>
+<p>Transacciones: <%= @settlement.bill.reference %> <%= link_to "Ver transacción", bill_path(@settlement.bill), target: :_blank %></p>
+<p>Concepto de otros ingresos: <%= @settlement.others_income_concept %></p>
 <p>Monto de otros ingresos: <%= @settlement.others_income_amount %></p>
 <p>Moneda de otros ingresos: <%= @settlement.others_income_amount_curreny %></p>
-<p>Concepto de otros ingresos: <%= @settlement.others_income_concept %></p>
+<p>Concepto de otros gastos: <%= @settlement.others_expense_concept %></p>
 <p>Monto de otros gastos: <%= @settlement.others_expense_amount %></p>
 <p>Moneda de otros gastos: <%= @settlement.others_expense_amount_currency %></p>
-<p>Concepto de otros gastos: <%= @settlement.others_expense_concept %></p>
 <p>Monto de liquidación: <%= @settlement.amount %></p>
 <p>Moneda de liquidación: <%= @settlement.amount_currency %></p>
 <p>Método de pago: <%= @settlement.payment_method %></p>

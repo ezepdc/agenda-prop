@@ -3,6 +3,7 @@ class IncidentsController < ApplicationController
 
   def index
     @incidents = Incident.all
+    # @incident_last = IncidentUpdate.where(incident_id: params[:id]).last
   end
 
   def show

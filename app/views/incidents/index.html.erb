@@ -3,9 +3,12 @@
 <% @incidents.each do |incident| %>
   <p>Número: <%= incident.id %></p>
   <p>Creada: <%= incident.created_at %></p>
+  <%# <p>Estado de ultima actualización: <%= @incident_last.incident_status %></p>
   <p>Propiedad ref.: <%= incident.property.property_reference %></p>
-  <p>Contacto: <%= incident.contact.full_name %></p>
+  <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
   <p>Creada por: <%= incident.user.first_name %></p>
   <p>Tipo de incidente: <%= incident.kind %></p>
+
+
   <p><%= link_to "Ver incidencia", incident_path(incident), target: :_blank %></p>
 <% end %>

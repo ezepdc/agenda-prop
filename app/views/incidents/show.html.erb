@@ -1,6 +1,7 @@
 <h1>Incidencia</h1>
 <p><%= link_to "Ver todas las incidencias", incidents_path %></p>
 <p>Número: <%= @incident.id %></p>
+<p>Propiedad ref.: <%= @incident.property.property_reference %></p>
 <p>Creada: <%= @incident.created_at %></p>
 <% if @incident_last %>
   <p>Estado de ultima actualización: <%= @incident_last.incident_status %></p>
@@ -8,8 +9,7 @@
   <p>Sin actualizaciones</p>
 <% end %>
 <p><%= link_to "Actualizar incidencia", new_incident_incident_update_path(@incident), target: :_blank %></p>
-<p>Propiedad ref.: <%= @incident.property.property_reference %></p>
-<p>Contacto: <%= @incident.contact.full_name %></p>
+<p>Contacto que solicitó la incidencia: <%= @incident.contact.full_name %></p>
 <p>Creada por: <%= @incident.user.first_name %></p>
 <p>Tipo de incidencia: <%= @incident.kind %></p>
 <p>Descripción: <%= @incident.description %></p>
@@ -21,9 +21,9 @@
 <h4>Actualizaciones</h4>
 <% @incident_updates.each do |incident_update| %>
   <p>Fecha: <%= incident_update.created_at %></p>
-  <p>Notas: <%= incident_update.notes %></p>
-  <p>Actualizada por: <%= incident_update.user.first_name %></p>
   <p>Estado: <%= incident_update.incident_status %></p>
+  <p>Actualizada por: <%= incident_update.user.first_name %></p>
+  <p>Notas: <%= incident_update.notes %></p>
   <% incident_update.documents.each do |document| %>
     <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
   <% end %>

@@ -3,9 +3,8 @@
 <% @contacts.each do |contact| %>
   <p>Nombre: <%= contact.first_name %></p>
   <p>Apellido: <%= contact.last_name %></p>
-  <p>Email: <%= contact.email %></p>
   <p>Teléfono: <%= contact.phone %></p>
+  <p>Email: <%= contact.email %></p>
   <p>Tipo de contacto: <%= contact.kind %></p>
-  <p>Notas: <%= contact.notes %></p>
   <p><%= link_to "Ver contacto", contact_path(contact) %></p>
 <% end %>
