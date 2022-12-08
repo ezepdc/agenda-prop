@@ -12,13 +12,16 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Contactos", "/contacts", class: "nav-link" %>
+            <%= link_to "Dashboard", "/dashboard", class: "nav-link nav-link-green" %>
           </li>
           <li class="nav-item">
             <%= link_to "Propiedades", "/properties", class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Incidencias", "/incidents", class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Contactos", "/contacts", class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Transacciones", "/bills", class: "nav-link" %>

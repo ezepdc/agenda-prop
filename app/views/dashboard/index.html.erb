@@ -1,0 +1,158 @@
+<div class="container">
+  <div class="my-3">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Últimas 3 Propiedades <%= link_to "Ver todas", properties_path %> <%= link_to "Crear propiedad", new_property_path %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Propiedad ref.</th>
+                  <th scope="col">Propietario</th>
+                  <th scope="col">Dirección</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @properties.each do |property| %>
+                  <tr>
+                    <td>
+                      <%= link_to property_path(property) do %>
+                        <%= property.property_reference %>
+                      <% end %>
+                    </td>
+                    <td><%= property.owner.full_name %></td>
+                    <td><%= property.address %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Últimas 3 Incidencias <%= link_to "Ver todas", incidents_path %> <%= link_to "Crear incidencia", new_incident_path %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Propiedad ref.</th>
+                  <th scope="col">Contacto</th>
+                  <th scope="col">Tipo de incidente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @incidents.each do |incident| %>
+                  <tr>
+                    <td>
+                      <%= link_to incident_path(incident) do %>
+                        <%= incident.property.property_reference %>
+                      <% end %>
+                    </td>
+                    <td><%= incident.contact.full_name %></td>
+                    <td><%= incident.kind %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Últimos 3 Contactos <%= link_to "Ver todos", contacts_path %> <%= link_to "Crear contacto", new_contact_path %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre y apellido</th>
+                  <th scope="col">Teléfono</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @contacts.each do |contact| %>
+                  <tr>
+                    <td>
+                      <%= link_to contact_path(contact) do %>
+                        <%= contact.full_name %>
+                      <% end %>
+                    </td>
+                    <td><%= contact.phone %></td>
+                    <td><%= contact.email %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Últimas 3 Transacciones <%= link_to "Ver todas", bills_path %> <%= link_to "Crear transacción", new_bill_path %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Propiedad ref.</th>
+                  <th scope="col">Contacto</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Concepto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @bills.each do |bill| %>
+                  <tr>
+                    <td>
+                      <%= link_to bill_path(bill) do %>
+                        <%= bill.property.property_reference %>
+                      <% end %>
+                    </td>
+                    <td><%= bill.contact.full_name %></td>
+                    <td><%= bill.kind %></td>
+                    <td><%= bill.concept %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Últimas 3 Liquidaciones <%= link_to "Ver todas", settlements_path %> <%= link_to "Crear liquidación", new_settlement_path %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Propiedad ref.</th>
+                  <th scope="col">Propietario</th>
+                  <th scope="col">Monto de liquidación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @settlements.each do |settlement| %>
+                  <tr>
+                    <td>
+                      <%= link_to settlement_path(settlement) do %>
+                        <%= settlement.property.property_reference %>
+                      <% end %>
+                    </td>
+                    <td><%= settlement.property.owner.full_name %></td>
+                    <td><%= settlement.amount %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
