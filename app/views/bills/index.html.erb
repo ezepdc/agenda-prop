@@ -8,6 +8,11 @@
   <p>Concepto: <%= bill.concept %></p>
   <p>Monto: <%= bill.amount %></p>
   <p>Creado por: <%= bill.user.first_name %></p>
-  <%# <p>Liquidado: <%= bill.settlement_id %></p>
+ <p>Liquidación:
+  <% if bill.settlement %>
+    Ok</p>
+  <% else %>
+    Pendiente</p>
+  <% end %>
   <p><%= link_to "Ver pago / cobro", bill_path(bill) %></p>
 <% end %>
