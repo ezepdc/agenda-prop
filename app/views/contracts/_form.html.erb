@@ -17,9 +17,14 @@
       <p><%= link_to "Crear garante", new_contact_path, target: :_blank %></p>
       <%= f.input :guarantor_identity_kind %>
       <%= f.input :guarantor_identity_number %>
+      <%= f.input :guarantor_documents, as: :file, input_html: { multiple: true } %>
       <%= f.input :guarantee_address %>
+      <%= f.input :guarantee_documents, as: :file, input_html: { multiple: true } %>
       <%= f.input :security_deposit_amount %>
       <%= f.input :security_deposit_amount_currency %>
+      <%= f.input :security_deposit_receipts, as: :file, input_html: { multiple: true } %>
+      <%= f.input :security_deposit_return_receipts, as: :file, input_html: { multiple: true } %>
+      <%= f.input :contract_documents, as: :file, input_html: { multiple: true } %>
       <%= f.input :notes %>
       <%= f.button :submit, class: "btn btn-flat" %>
     <% end %>

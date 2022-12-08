@@ -14,13 +14,39 @@
   <p><%= link_to "Editar precio variable", edit_contract_contract_price_path(@contract, contract_price), target: :_blank %></p>
   <p><%= link_to "Eliminar precio variable", contract_contract_price_path(@contract, contract_price), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
 <% end %>
-<p>Comision: <%= @contract.comision %></p>
+<hr>
+<p>Comisión: <%= @contract.comision %></p>
 <p>Garante: <%= @contract.guarantor.full_name %></p>
 <p>Tipo documento garante: <%= @contract.guarantor_identity_kind %></p>
 <p>Número de documento garante: <%= @contract.guarantor_identity_number %></p>
+<p>
+  <% @contract.guarantor_documents.each do |document| %>
+    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+</p>
 <p>Dirección de garantía: <%= @contract.guarantee_address %></p>
+<p>
+  <% @contract.guarantee_documents.each do |document| %>
+    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+</p>
 <p>Monto depósito / fianza: <%= @contract.security_deposit_amount %></p>
 <p>Moneda depósito / fianza: <%= @contract.security_deposit_amount_currency %></p>
+<p>
+  <% @contract.security_deposit_receipts.each do |document| %>
+    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+</p>
+<p>
+  <% @contract.security_deposit_return_receipts.each do |document| %>
+    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+</p>
+<p>
+  <% @contract.contract_documents.each do |document| %>
+    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+</p>
 <p>Notas: <%= @contract.notes %></p>
 <p><%= link_to "Editar contrato", edit_contract_path(@contract) %></p>
 <p><%= link_to "Eliminar contrato", contract_path(@contract), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
