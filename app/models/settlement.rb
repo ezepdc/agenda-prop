@@ -4,4 +4,5 @@ class Settlement < ApplicationRecord
   belongs_to :user
   validates :amount, presence: true
   validates :payment_method, presence: true
+  has_many_attached :documents
 end

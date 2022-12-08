@@ -14,6 +14,11 @@
 <p>Moneda de liquidación: <%= @settlement.amount_currency %></p>
 <p>Método de pago: <%= @settlement.payment_method %></p>
 <p>Liquidado por: <%= @settlement.user.first_name %></p>
+<p>
+  <% @settlement.documents.each do |document| %>
+    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+</p>
 <p>Notas: <%= @settlement.notes %></p>
 <p><%= link_to "Editar liquidación", edit_settlement_path(@settlement) %></p>
 <p><%= link_to "Eliminar liquidación", settlement_path(@settlement), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>

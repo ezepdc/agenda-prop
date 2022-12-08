@@ -4,7 +4,8 @@
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <%= f.association :property, label_method: :property_reference, prompt: true, required: true %>
-      <%= f.association :bill, as: :check_boxes, collection: Bill.where(bill.settlement) label_method: :reference, prompt: true, required: true %>
+      <%= f.association :bill, label_method: :reference, prompt: true, required: true %>
+      <%#  as: :check_boxes, collection: Bill.where(bill.settlement) %>
       <%= f.input :others_income_concept %>
       <%= f.input :others_income_amount %>
       <%= f.input :others_income_amount_curreny %>
@@ -17,6 +18,7 @@
       <%= f.input :amount, required: true %>
       <%= f.input :amount_currency %>
       <%= f.input :payment_method, required: true %>
+      <%= f.input :documents, as: :file, input_html: { multiple: true } %>
       <%= f.input :notes %>
       <%= f.button :submit, class: "btn btn-flat" %>
     <% end %>

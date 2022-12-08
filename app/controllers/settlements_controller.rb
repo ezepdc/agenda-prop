@@ -42,6 +42,6 @@ class SettlementsController < ApplicationController
   end
 
   def settlement_params
-    params.require(:settlement).permit(:property_id, :bill_id, :others_income_amount, :others_income_amount_curreny, :others_income_concept, :others_expense_amount, :others_expense_amount_currency, :others_expense_concept, :amount, :amount_currency, :payment_method, :notes, :user_id, :created_at)
+    params.require(:settlement).permit(:property_id, :bill_id, :others_income_amount, :others_income_amount_curreny, :others_income_concept, :others_expense_amount, :others_expense_amount_currency, :others_expense_concept, :amount, :amount_currency, :payment_method, :notes, :user_id, :created_at, documents: [])
   end
 end
