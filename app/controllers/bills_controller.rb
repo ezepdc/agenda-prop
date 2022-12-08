@@ -43,6 +43,6 @@ class BillsController < ApplicationController
   end
 
   def bill_params
-    params.require(:bill).permit(:property_id, :bill_date, :kind, :contact_id, :amount, :amount_currency, :concept, :payment_method, :notes, :settlement_id, :user, :created_at)
+    params.require(:bill).permit(:property_id, :bill_date, :kind, :contact_id, :amount, :amount_currency, :concept, :payment_method, :notes, :settlement_id, :user, :created_at, documents: [])
   end
 end

@@ -17,6 +17,11 @@
 <% else %>
   <p>Pendiente</p>
 <% end %>
+<p>
+  <% @bill.documents.each do |document| %>
+    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+</p>
 <p>Notas: <%= @bill.notes %></p>
 <p><%= link_to "Editar pago / cobro", edit_bill_path(@bill) %></p>
 <p><%= link_to "Eliminar pago / cobro", bill_path(@bill), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>

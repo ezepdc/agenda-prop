@@ -8,6 +8,7 @@ class Bill < ApplicationRecord
   validates :amount, presence: true
   validates :concept, presence: true
   validates :payment_method, presence: true
+  has_many_attached :documents
 
   def reference
     "#{property.property_reference} #{kind} #{concept} Monto: #{amount}"

@@ -11,6 +11,7 @@
       <%= f.input :amount_currency %>
       <%= f.input :concept, required: true %>
       <%= f.input :payment_method, required: true %>
+      <%= f.input :documents, as: :file, input_html: { multiple: true } %>
       <%= f.input :notes %>
       <%= f.button :submit, class: "btn btn-flat" %>
     <% end %>
