@@ -1,6 +1,9 @@
 <h1>Todos las propiedades</h1>
 <p><%= link_to "Crear propiedad", new_property_path %></p>
 <% @properties.each do |property| %>
+  <% property.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
   <p>Propiedad ref.: <%= property.property_reference %></p>
   <p>
     Propietario: <%= property.owner.full_name %>

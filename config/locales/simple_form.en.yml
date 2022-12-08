@@ -63,6 +63,7 @@ en:
         amount: 'Monto'
         amount_currency: 'Moneda'
         concept: 'Concepto'
+        photos: 'Fotos'
 
 
       contact:

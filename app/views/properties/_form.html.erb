@@ -21,6 +21,7 @@
       <%= f.input :amenities %>
       <%= f.input :price %>
       <%= f.input :price_currency %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.input :notes %>
       <%= f.button :submit, class: "btn btn-flat" %>
     <% end %>
