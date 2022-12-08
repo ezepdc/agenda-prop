@@ -64,6 +64,7 @@ en:
         amount_currency: 'Moneda'
         concept: 'Concepto'
         photos: 'Fotos'
+        documents: 'Documentos'
 
 
       contact:

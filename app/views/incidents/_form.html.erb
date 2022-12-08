@@ -9,6 +9,7 @@
       <p><%= link_to "Crear contacto", new_contact_path, target: :_blank %></p>
       <%= f.input :kind, required: true %>
       <%= f.input :description, required: true %>
+      <%= f.input :documents, as: :file, input_html: { multiple: true } %>
       <%= f.button :submit, class: "btn btn-flat" %>
     <% end %>
   </div>

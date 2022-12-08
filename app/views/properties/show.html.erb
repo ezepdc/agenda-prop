@@ -2,7 +2,31 @@
 <p><%= link_to "Ver todos las propiedades", properties_path %></p>
 <% @property.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <%= cl_image_tag("sample.jpg", :flags=>"attachment:pretty_flower") %>
+
+
+  <%# <%= simple_form_for :photo, url: download_path, method: :get, data: { turbolinks: true } do |f| %>
+    <%# <%= f.input :public_id, label: "Enter the public ID of the file you want to download:" %>
+    <%# <%= f.button :submit, "Download File" %>
+  <%# <% end %>
+
+
+
+  <%# <%= cl_image_tag photo.preview(resize_to_limit: [100, 100]) %>
 <% end %>
+
+
+
+
+
+<%# <% @property.photos.each do |photo| %>
+  <%# <%= if photo.previewable? %>
+      <%# <%= cl_image_tag photo.preview(resize_to_limit: [100, 100]) %>
+  <%# <% end %>
+<%# <% end %>
+
+
+
 <p>Propiedad ref.: <%= @property.property_reference %></p>
 <p>
   Propietario: <%= @property.owner.full_name %>

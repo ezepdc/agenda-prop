@@ -5,4 +5,5 @@ class Incident < ApplicationRecord
   validates :kind, presence: true
   validates :description, presence: true
   has_many :incident_updates, dependent: :destroy
+  has_many_attached :documents
 end
