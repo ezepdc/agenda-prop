@@ -1,22 +1,35 @@
-<h1>Todos las propiedades</h1>
-<p><%= link_to "Crear propiedad", new_property_path %></p>
-<% @properties.each do |property| %>
-  <% property.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <p>Propiedad ref.: <%= property.property_reference %></p>
-  <p>
-    Propietario: <%= property.owner.full_name %>
-    <%= link_to "Ver contacto", contact_path(property.owner), target: :_blank %>
-  </p>
-  <p>Tipo: <%= property.kind %></p>
-  <p>Dirección: <%= property.address %></p>
-  <p>Superficie total: <%= property.total_area %></p>
-  <p>Superficie cubierta: <%= property.covered_area %></p>
-  <p>Habitaciones: <%= property.rooms %></p>
-  <p>Baños: <%= property.bathrooms %></p>
-  <p>Características: <%= property.amenities %></p>
-  <p>Precio: <%= property.price %></p>
-  <p>Moneda: <%= property.price_currency %></p>
-  <p><%= link_to "Ver propiedad", property_path(property) %></p>
-<% end %>
+<div class="container">
+  <div class="my-3">
+    <h1 class="d-flex justify-content-between">Todas las propiedades <%= link_to "Crear propiedad", new_property_path %></h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @properties.each do |property| %>
+        <div class="col">
+          <div class="card border-success">
+              <% if property.photos.attached? %>
+                <%= cl_image_tag property.photos.first.key, height: 300, width: 400, crop: :fill, class:"card-img-top" %>
+              <% end %>
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-between">
+                Propiedad ref.: <%= property.property_reference %>
+                <%= link_to "Ver propiedad", property_path(property) %>
+              </h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between">
+                Propietario: <%= property.owner.full_name %>
+                <%= link_to "Ver contacto", contact_path(property.owner), target: :_blank %>
+              </li>
+              <li class="list-group-item">Tipo: <%= property.kind %></li>
+              <li class="list-group-item">Dirección: <%= property.address %></li>
+              <li class="list-group-item">Superficie total: <%= property.total_area %></li>
+              <li class="list-group-item">Superficie cubierta: <%= property.covered_area %></li>
+              <li class="list-group-item">Habitaciones: <%= property.rooms %></li>
+              <li class="list-group-item">Baños: <%= property.bathrooms %></li>
+              <li class="list-group-item">Características: <%= property.amenities %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

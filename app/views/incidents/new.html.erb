@@ -1,2 +1,10 @@
-<h1>Crear incidencia</h1>
-<%= render "form", incident: @incident %>
+<div class="container">
+  <div class="my-3">
+    <div class="card border-success p-3">
+      <h1 class="d-flex justify-content-center p-3">Crear incidencia</h1>
+      <%= render "form", incident: @incident %>
+    </div>
+      <hr>
+      <%= link_to "< Todas las incidencias", incidents_path, class: "btn btn-ghost" %>
+  </div>
+</div>

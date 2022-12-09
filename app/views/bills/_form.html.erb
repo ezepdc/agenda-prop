@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-  <div class="col-12 col-md-6 col-lg-4">
+  <div class="col-12 col-md-10 col-lg-8 lh-lg text-secondary">
     <%= simple_form_for(@bill) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -7,7 +7,7 @@
       <%= f.input :bill_date, required: true %>
       <%= f.input :kind, required: true, collection: ['Cobro', 'Pago'], prompt: true %>
       <%= f.association :contact, label_method: :full_name, prompt: true , required: true %>
-      <p><%= link_to "Crear contacto", new_contact_path, target: :_blank %></p>
+      <p class="d-flex justify-content-end"><%= link_to "Crear contacto", new_contact_path, target: :_blank %></p>
       <%= f.input :concept, required: true %>
       <%= f.input :amount, required: true %>
       <%= f.input :amount_currency %>

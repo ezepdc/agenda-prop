@@ -1,2 +1,10 @@
-<h1>Editar pago / cobro</h1>
-<%= render "form", bill: @bill %>
+<div class="container">
+  <div class="my-3">
+    <div class="card border-success p-3">
+      <h1 class="d-flex justify-content-center p-3">Editar transacción</h1>
+      <%= render "form", bill: @bill %>
+    </div>
+      <hr>
+      <%= link_to "< Todas las transacciones", bills_path, class: "btn btn-ghost" %>
+  </div>
+</div>
