@@ -1,14 +1,86 @@
 <h1>Todos las incidencias</h1>
 <p><%= link_to "Crear incidencia", new_incident_path %></p>
+
+<h4>Sin estado / solo creada</h4>
 <% @incidents.each do |incident| %>
-  <p>Número: <%= incident.id %></p>
-  <p>Creada: <%= incident.created_at %></p>
-  <%# <p>Estado de ultima actualización: <%= @incident_last.incident_status %></p>
-  <p>Propiedad ref.: <%= incident.property.property_reference %></p>
-  <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
-  <p>Creada por: <%= incident.user.first_name %></p>
-  <p>Tipo de incidente: <%= incident.kind %></p>
-
-
-  <p><%= link_to "Ver incidencia", incident_path(incident), target: :_blank %></p>
+  <% if IncidentUpdate.where(incident_id: incident.id).last %>
+  <% else %>
+    <p>Número: <%= incident.id %></p>
+    <p>Creada: <%= incident.created_at %></p>
+    <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+    <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
+    <p>Creada por: <%= incident.user.first_name %></p>
+    <p>Tipo de incidente: <%= incident.kind %></p>
+    <p><%= link_to "Ver incidencia", incident_path(incident), target: :_blank %></p>
+  <% end %>
 <% end %>
+
+<hr>
+
+<h4>Pendientes</h4>
+<% @incidents.each do |incident| %>
+  <% if IncidentUpdate.where(incident_id: incident.id).last %>
+    <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Pendiente'%>
+      <p>Número: <%= incident.id %></p>
+      <p>Creada: <%= incident.created_at %></p>
+      <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+      <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
+      <p>Creada por: <%= incident.user.first_name %></p>
+      <p>Tipo de incidente: <%= incident.kind %></p>
+      <p><%= link_to "Ver incidencia", incident_path(incident), target: :_blank %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<hr>
+
+<h4>En curso</h4>
+<% @incidents.each do |incident| %>
+  <% if IncidentUpdate.where(incident_id: incident.id).last %>
+    <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'En curso'%>
+      <p>Número: <%= incident.id %></p>
+      <p>Creada: <%= incident.created_at %></p>
+      <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+      <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
+      <p>Creada por: <%= incident.user.first_name %></p>
+      <p>Tipo de incidente: <%= incident.kind %></p>
+      <p><%= link_to "Ver incidencia", incident_path(incident), target: :_blank %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<hr>
+
+<h4>Rechazada</h4>
+<% @incidents.each do |incident| %>
+  <% if IncidentUpdate.where(incident_id: incident.id).last %>
+    <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Rechazada'%>
+    <p>Número: <%= incident.id %></p>
+    <p>Creada: <%= incident.created_at %></p>
+    <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+    <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
+    <p>Creada por: <%= incident.user.first_name %></p>
+    <p>Tipo de incidente: <%= incident.kind %></p>
+    <p><%= link_to "Ver incidencia", incident_path(incident), target: :_blank %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<hr>
+
+<h4>Finalizada</h4>
+<% @incidents.each do |incident| %>
+  <% if IncidentUpdate.where(incident_id: incident.id).last %>
+    <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Finalizada'%>
+    <p>Número: <%= incident.id %></p>
+    <p>Creada: <%= incident.created_at %></p>
+    <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+    <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
+    <p>Creada por: <%= incident.user.first_name %></p>
+    <p>Tipo de incidente: <%= incident.kind %></p>
+    <p><%= link_to "Ver incidencia", incident_path(incident), target: :_blank %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<hr>

@@ -3,6 +3,8 @@ class IncidentsController < ApplicationController
 
   def index
     @incidents = Incident.all
+    @incidents_pending = IncidentUpdate.where(incident_status: 'Pendiente')
+
     # @incident_last = IncidentUpdate.where(incident_id: params[:id]).last
   end
 
