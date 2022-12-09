@@ -1,2 +1,10 @@
-<h1>Editar actualización de incidencia <%= @incident.id %> <%= @incident.property.property_reference %></h1>
-<%= render "form", contract: @contract %>
+<div class="container">
+  <div class="my-3">
+    <div class="card border-success p-3">
+      <h1 class="d-flex justify-content-center p-3">Editar actualización de incidencia <%= @incident.id %> de <%= @incident.property.property_reference %></h1>
+      <%= render "form", incident: @incident %>
+    </div>
+      <hr>
+      <%= link_to "< Vovler a la incidencia", incident_path(@incident), class: "btn btn-ghost" %>
+  </div>
+</div>

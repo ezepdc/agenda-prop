@@ -1,2 +1,10 @@
-<h1>Crear liquidación</h1>
-<%= render "form", settlement: @settlement %>
+<div class="container">
+  <div class="my-3">
+    <div class="card border-success p-3">
+      <h1 class="d-flex justify-content-center p-3">Crear liquidación</h1>
+      <%= render "form", settlement: @settlement %>
+    </div>
+      <hr>
+      <%= link_to "< Todas las liquidaciones", settlements_path, class: "btn btn-ghost" %>
+  </div>
+</div>

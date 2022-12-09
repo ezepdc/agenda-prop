@@ -1,2 +1,10 @@
-<h1>Crear precio variable</h1>
-<%= render "form", contract: @contract %>
+<div class="container">
+  <div class="my-3">
+    <div class="card border-success p-3">
+      <h1 class="d-flex justify-content-center p-3">Crear precio variable</h1>
+      <%= render "form", contract: @contract %>
+    </div>
+      <hr>
+      <%= link_to "< Volver al contrato", contract_path(@contract), class: "btn btn-ghost" %>
+  </div>
+</div>
