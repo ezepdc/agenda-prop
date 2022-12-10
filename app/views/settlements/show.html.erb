@@ -1,24 +1,42 @@
-<h1>Liquidación</h1>
-<p><%= link_to "Ver todas las liquidaciones", settlements_path %></p>
-<p>Fecha: <%= @settlement.created_at %></p>
-<p>Propiedad ref.: <%= @settlement.property.property_reference %></p>
-<p>Propietario: <%= @settlement.property.owner.full_name %></p>
-<p>Transacciones: <%= @settlement.bill.reference %> <%= link_to "Ver transacción", bill_path(@settlement.bill), target: :_blank %></p>
-<p>Concepto de otros ingresos: <%= @settlement.others_income_concept %></p>
-<p>Monto de otros ingresos: <%= @settlement.others_income_amount %></p>
-<p>Moneda de otros ingresos: <%= @settlement.others_income_amount_curreny %></p>
-<p>Concepto de otros gastos: <%= @settlement.others_expense_concept %></p>
-<p>Monto de otros gastos: <%= @settlement.others_expense_amount %></p>
-<p>Moneda de otros gastos: <%= @settlement.others_expense_amount_currency %></p>
-<p>Monto de liquidación: <%= @settlement.amount %></p>
-<p>Moneda de liquidación: <%= @settlement.amount_currency %></p>
-<p>Método de pago: <%= @settlement.payment_method %></p>
-<p>Liquidado por: <%= @settlement.user.first_name %></p>
-<p>
-  <% @settlement.documents.each do |document| %>
-    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</p>
-<p>Notas: <%= @settlement.notes %></p>
-<p><%= link_to "Editar liquidación", edit_settlement_path(@settlement) %></p>
-<p><%= link_to "Eliminar liquidación", settlement_path(@settlement), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>
+<div class="container">
+  <div class="my-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-12 col-lg-10 lh-lg">
+        <h1 class="d-flex justify-content-between">Liquidación<%= link_to "Ver todas las liquidaciones", settlements_path, class:"btn btn-light border-dark my-auto" %></h1>
+        <div class="card border-secondary">
+          <div class="card-body">
+            <h5 class="card-title"><%= @settlement.created_at %> <%= @settlement.property.property_reference %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Fecha: <%= @settlement.created_at %></li>
+            <li class="list-group-item">Propiedad ref.: <%= @settlement.property.property_reference %></li>
+            <li class="list-group-item">Propietario: <%= @settlement.property.owner.full_name %></li>
+            <li class="list-group-item d-flex justify-content-between">Transacciones: <%= @settlement.bill.reference %> <%= link_to "Ver transacción", bill_path(@settlement.bill), target: :_blank, class:"btn btn-primary" %></li>
+            <li class="list-group-item">Concepto de otros ingresos: <%= @settlement.others_income_concept %></li>
+            <li class="list-group-item">Monto de otros ingresos: <%= @settlement.others_income_amount %></li>
+            <li class="list-group-item">Moneda de otros ingresos: <%= @settlement.others_income_amount_curreny %></li>
+            <li class="list-group-item">Concepto de otros gastos: <%= @settlement.others_expense_concept %></li>
+            <li class="list-group-item">Monto de otros gastos: <%= @settlement.others_expense_amount %></li>
+            <li class="list-group-item">Moneda de otros gastos: <%= @settlement.others_expense_amount_currency %></li>
+            <li class="list-group-item">Monto de liquidación: <%= @settlement.amount %></li>
+            <li class="list-group-item">Moneda de liquidación: <%= @settlement.amount_currency %></li>
+            <li class="list-group-item">Método de pago: <%= @settlement.payment_method %></li>
+            <li class="list-group-item">Liquidado por: <%= @settlement.user.first_name %></li>
+            <li class="list-group-item"><p>Comprobantes</p>
+              <% @settlement.documents.each do |document| %>
+                <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </li>
+            <li class="list-group-item">Notas: <%= @settlement.notes %></li>
+          </ul>
+          <div class="card-footer">
+            <div class="mt-5 d-flex justify-content-between">
+              <%= link_to "Editar liquidación", edit_settlement_path(@settlement), class: "btn btn-outline-warning" %>
+              <%= link_to "Eliminar liquidación", settlement_path(@settlement), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

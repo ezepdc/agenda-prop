@@ -1,11 +1,27 @@
-<h1>Todas las liquidaciones</h1>
-<p><%= link_to "Crear liquidación", new_settlement_path %></p>
-<% @settlements.each do |settlement| %>
-  <p>Fecha: <%= settlement.created_at %></p>
-  <p>Propiedad ref.: <%= settlement.property.property_reference %></p>
-  <p>Propietario: <%= settlement.property.owner.full_name %></p>
-  <p>Monto de liquidación: <%= settlement.amount %></p>
-  <p>Método de pago: <%= settlement.payment_method %></p>
-  <p>Liquidado por: <%= settlement.user.first_name %></p>
-  <p><%= link_to "Ver liquidación", settlement_path(settlement) %></p>
-<% end %>
+<div class="container">
+  <div class="my-3">
+    <h1 class="d-flex justify-content-between">Todas las liquidaciones <%= link_to "Crear liquidación", new_settlement_path, class:"btn btn-secondary my-auto" %></h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @settlements.each do |settlement| %>
+        <div class="col">
+          <div class="card border-secondary">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-between">
+                <%= settlement.created_at %> <%= settlement.property.property_reference %>
+                <%= link_to "Ver liquidación", settlement_path(settlement), class:"btn btn-primary" %>
+              </h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Fecha: <%= settlement.created_at %></li>
+              <li class="list-group-item">Propiedad ref.: <%= settlement.property.property_reference %></li>
+              <li class="list-group-item">Propietario: <%= settlement.property.owner.full_name %></li>
+              <li class="list-group-item">Monto de liquidación: <%= settlement.amount %></li>
+              <li class="list-group-item">Método de pago: <%= settlement.payment_method %></li>
+              <li class="list-group-item">Liquidado por: <%= settlement.user.first_name %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

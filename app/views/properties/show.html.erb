@@ -1,11 +1,12 @@
 <div class="container">
   <div class="my-3">
-    <h1 class="d-flex justify-content-between">Propiedad <%= @property.property_reference %> <%= link_to "Ver todas las propiedades", properties_path, class:"btn btn-outline-dark" %></h1>
     <div class="row justify-content-center">
-      <div class="col-12 col-md-12 col-lg-10 lh-lg text-secondary">
+      <div class="col-12 col-md-12 col-lg-10 lh-lg">
+        <h1 class="d-flex justify-content-between">Propiedad <%= @property.property_reference %> <%= link_to "Ver todas las propiedades", properties_path, class:"btn btn-light border-dark my-auto" %></h1>
         <div class="card border-secondary">
             <% @property.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top" %>
+              <%= cl_image_tag photo.key, crop: :fill, class:"card-img-top img-fluid" %>
+              <%= link_to "Descargar SOLO ABRE LA FOTO", cl_image_path(photo.key, :attachment => true) %>
 
               <%# <%= cl_image_tag("sample.jpg", :flags=>"attachment:pretty_flower") %>
 
@@ -61,7 +62,7 @@
             <hr>
             <div class="mt-5 d-flex justify-content-between">
               <%= link_to "Editar propiedad", edit_property_path(@property), class: "btn btn-outline-warning" %>
-              <%= link_to "Eliminar propiedad", property_path(@property), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%>
+              <%= link_to "Eliminar propiedad", property_path(@property), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
             </div>
           </div>
         </div>

@@ -1,52 +1,82 @@
-<h1>Contrato</h1>
-<p>Tipo de contrato: <%= @contract.kind %></p>
-<p>Propiedad ref.: <%= @contract.property.property_reference %></p>
-<p>Inquilino: <%= @contract.tenant.full_name %></p>
-<p>Desde: <%= @contract.start_date %> hasta: <%= @contract.end_date %></p>
-<p>Precio base: <%= @contract.base_price %></p>
-<p>Moneda: <%= @contract.base_price_currency %></p>
-<h4>Precios variables</h4>
-<p><%= link_to "Crear precio variable", new_contract_contract_price_path(@contract), target: :_blank %></p>
-<% @contract_prices.each do |contract_price| %>
-  <p>Desde: <%= contract_price.start_date %> hasta: <%= contract_price.end_date %></p>
-  <p>Precio: <%= contract_price.price %></p>
-  <p>Moneda: <%= contract_price.price_currency %></p>
-  <p><%= link_to "Editar precio variable", edit_contract_contract_price_path(@contract, contract_price), target: :_blank %></p>
-  <p><%= link_to "Eliminar precio variable", contract_contract_price_path(@contract, contract_price), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
-<% end %>
-<hr>
-<p>Comisión: <%= @contract.comision %></p>
-<p>Garante: <%= @contract.guarantor.full_name %></p>
-<p>Tipo documento garante: <%= @contract.guarantor_identity_kind %></p>
-<p>Número de documento garante: <%= @contract.guarantor_identity_number %></p>
-<p>
-  <% @contract.guarantor_documents.each do |document| %>
-    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</p>
-<p>Dirección de garantía: <%= @contract.guarantee_address %></p>
-<p>
-  <% @contract.guarantee_documents.each do |document| %>
-    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</p>
-<p>Monto depósito / fianza: <%= @contract.security_deposit_amount %></p>
-<p>Moneda depósito / fianza: <%= @contract.security_deposit_amount_currency %></p>
-<p>
-  <% @contract.security_deposit_receipts.each do |document| %>
-    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</p>
-<p>
-  <% @contract.security_deposit_return_receipts.each do |document| %>
-    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</p>
-<p>
-  <% @contract.contract_documents.each do |document| %>
-    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</p>
-<p>Notas: <%= @contract.notes %></p>
-<p><%= link_to "Editar contrato", edit_contract_path(@contract) %></p>
-<p><%= link_to "Eliminar contrato", contract_path(@contract), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
+<div class="container">
+  <div class="my-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-12 col-lg-10 lh-lg">
+        <h1 class="d-flex justify-content-between">Contrato <%= @contract.kind %> <%= @contract.property.property_reference %></h1>
+        <div class="card border-secondary">
+          <div class="card-body">
+            <h5 class="card-title">Tipo de contrato: <%= @contract.kind %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Propiedad ref.: <%= @contract.property.property_reference %></li>
+            <li class="list-group-item">Inquilino: <%= @contract.tenant.full_name %></li>
+            <li class="list-group-item">Desde: <%= @contract.start_date %> hasta: <%= @contract.end_date %></li>
+            <li class="list-group-item">Precio base: <%= @contract.base_price %></li>
+            <li class="list-group-item">Moneda: <%= @contract.base_price_currency %></li>
+          </ul>
+          <div class="card-footer">
+            <h4 class="text-muted d-flex justify-content-between">
+              Precios variables
+              <small><%= link_to "Crear precio variable", new_contract_contract_price_path(@contract), target: :_blank, class:"btn btn-secondary" %></small>
+            </h4>
+            <% @contract_prices.each do |contract_price| %>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Desde: <%= contract_price.start_date %> hasta: <%= contract_price.end_date %></li>
+                <li class="list-group-item">Precio: <%= contract_price.price %></li>
+                <li class="list-group-item">Moneda: <%= contract_price.price_currency %></li>
+                <li class="list-group-item">
+                  <div class="d-flex justify-content-between mt-1">
+                    <%= link_to "Editar precio variable", edit_contract_contract_price_path(@contract, contract_price), target: :_blank, class: "btn btn-outline-warning btn-sm" %>
+                    <%= link_to "Eliminar precio variable", contract_contract_price_path(@contract, contract_price), class: "btn btn-outline-danger btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+                  </div>
+                </li>
+              </ul>
+              <hr>
+            <% end %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Comisión: <%= @contract.comision %></li>
+            <li class="list-group-item">Garante: <%= @contract.guarantor.full_name %></li>
+            <li class="list-group-item">Tipo documento garante: <%= @contract.guarantor_identity_kind %></li>
+            <li class="list-group-item">Número de documento garante: <%= @contract.guarantor_identity_number %></li>
+            <li class="list-group-item"><p>Documento adjunto del garante</p>
+              <% @contract.guarantor_documents.each do |document| %>
+                <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </li>
+            <li class="list-group-item">Dirección de garantía: <%= @contract.guarantee_address %></li>
+            <li class="list-group-item"><p>Documento adjunto de la garantía</p>
+              <% @contract.guarantee_documents.each do |document| %>
+                <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </li>
+            <li class="list-group-item">Monto depósito / fianza: <%= @contract.security_deposit_amount %></li>
+            <li class="list-group-item">Moneda depósito / fianza: <%= @contract.security_deposit_amount_currency %></li>
+            <li class="list-group-item"><p>Recibo adjunto del depósito / fianza</p>
+              <% @contract.security_deposit_receipts.each do |document| %>
+                <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </li>
+            <li class="list-group-item"><p>Recibo adjunto devolución del depósito / fianza</p>
+              <% @contract.security_deposit_return_receipts.each do |document| %>
+                <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </li>
+            <li class="list-group-item"><p>Contrato adjunto</p>
+              <% @contract.contract_documents.each do |document| %>
+                <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </li>
+            <li class="list-group-item">Notas: <%= @contract.notes %></li>
+          </ul>
+          <div class="card-footer">
+            <div class="mt-5 d-flex justify-content-between">
+              <%= link_to "Editar contrato", edit_contract_path(@contract), class: "btn btn-outline-warning" %>
+              <%= link_to "Eliminar contrato", contract_path(@contract), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

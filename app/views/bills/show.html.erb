@@ -1,27 +1,47 @@
-<h1>Transacción</h1>
-<p><%= link_to "Ver todas las transacciones", bills_path %></p>
-<p>Fecha: <%= @bill.bill_date %></p>
-<p>Propiedad ref.: <%= @bill.property.property_reference %></p>
-<p>Tipo: <%= @bill.kind %></p>
-<p>Contacto: <%= @bill.contact.full_name %></p>
-<p>Tipo de contacto: <%= @bill.contact.kind %></p>
-<p>Concepto: <%= @bill.concept %></p>
-<p>Monto: <%= @bill.amount %></p>
-<p>Moneda: <%= @bill.amount_currency %></p>
-<p>Método de pago: <%= @bill.payment_method %></p>
-<p>Creado por: <%= @bill.user.first_name %></p>
-<h4>Liquidación:</h4>
-<% if @settlement %>
-  <p><%= @settlement.created_at %> Por: <%= @settlement.user.first_name %></p>
-  <p><%= link_to "Ver liquidación", settlement_path(@settlement), target: :_blank %></p>
-<% else %>
-  <p>Pendiente</p>
-<% end %>
-<p>
-  <% @bill.documents.each do |document| %>
-    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</p>
-<p>Notas: <%= @bill.notes %></p>
-<p><%= link_to "Editar transacción", edit_bill_path(@bill) %></p>
-<p><%= link_to "Eliminar transacción", bill_path(@bill), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delet?"}%></p>
+<div class="container">
+  <div class="my-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-12 col-lg-10 lh-lg">
+        <h1 class="d-flex justify-content-between">Transacción<%= link_to "Ver todas las transacciones", bills_path, class:"btn btn-light border-dark my-auto" %></h1>
+        <div class="card border-secondary">
+          <div class="card-body">
+            <h5 class="card-title"><%= @bill.bill_date %> <%= @bill.property.property_reference %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Fecha: <%= @bill.bill_date %></li>
+            <li class="list-group-item">Propiedad ref.: <%= @bill.property.property_reference %></li>
+            <li class="list-group-item">Tipo: <%= @bill.kind %></li>
+            <li class="list-group-item">Contacto: <%= @bill.contact.full_name %></li>
+            <li class="list-group-item">Tipo de contacto: <%= @bill.contact.kind %></li>
+            <li class="list-group-item">Concepto: <%= @bill.concept %></li>
+            <li class="list-group-item">Monto: <%= @bill.amount %></li>
+            <li class="list-group-item">Moneda: <%= @bill.amount_currency %></li>
+            <li class="list-group-item">Método de pago: <%= @bill.payment_method %></li>
+            <li class="list-group-item">Creado por: <%= @bill.user.first_name %></li>
+            <li class="list-group-item d-flex justify-content-between">
+              Liquidación:
+              <% if @settlement %>
+                <%= @settlement.created_at %> Por: <%= @settlement.user.first_name %>
+                <%= link_to "Ver liquidación", settlement_path(@settlement), target: :_blank, class:"btn btn-primary " %>
+              <% else %>
+                Pendiente
+              <% end %>
+            </li>
+            <li class="list-group-item"><p>Comprobantes adjuntos</p>
+              <% @bill.documents.each do |document| %>
+                <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </li>
+            <li class="list-group-item">Notas: <%= @bill.notes %></li>
+          </ul>
+          <div class="card-footer">
+            <div class="mt-5 d-flex justify-content-between">
+              <%= link_to "Editar transacción", edit_bill_path(@bill), class: "btn btn-outline-warning" %>
+              <%= link_to "Eliminar transacción", bill_path(@bill), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

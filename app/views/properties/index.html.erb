@@ -1,23 +1,25 @@
 <div class="container">
   <div class="my-3">
-    <h1 class="d-flex justify-content-between">Todas las propiedades <%= link_to "Crear propiedad", new_property_path %></h1>
+    <h1 class="d-flex justify-content-between">Todas las propiedades <%= link_to "Crear propiedad", new_property_path, class:"btn btn-secondary my-auto" %></h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <% @properties.each do |property| %>
         <div class="col">
-          <div class="card border-primary">
+          <div class="card border-secondary">
               <% if property.photos.attached? %>
                 <%= cl_image_tag property.photos.first.key, height: 300, width: 400, crop: :fill, class:"card-img-top" %>
+              <% else %>
+                <%= image_tag "no-pictures.png", height: 300, width: 400, crop: :fill, class:"card-img-top" %>
               <% end %>
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-between">
                 Propiedad ref.: <%= property.property_reference %>
-                <%= link_to "Ver propiedad", property_path(property) %>
+                <%= link_to "Ver propiedad", property_path(property), class:"btn btn-primary" %>
               </h5>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item d-flex justify-content-between">
                 Propietario: <%= property.owner.full_name %>
-                <%= link_to "Ver contacto", contact_path(property.owner), target: :_blank %>
+                <%= link_to "Ver contacto", contact_path(property.owner), class:"btn btn-primary", target: :_blank %>
               </li>
               <li class="list-group-item">Tipo: <%= property.kind %></li>
               <li class="list-group-item">Dirección: <%= property.address %></li>
