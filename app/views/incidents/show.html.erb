@@ -1,37 +1,67 @@
-<h1>Incidencia</h1>
-<p><%= link_to "Ver todas las incidencias", incidents_path %></p>
-<p>Número: <%= @incident.id %></p>
-<p>Propiedad ref.: <%= @incident.property.property_reference %></p>
-<p>Creada: <%= @incident.created_at %></p>
-<% if @incident_last %>
-  <p>Estado de ultima actualización: <%= @incident_last.incident_status %></p>
-<% else %>
-  <p>Sin actualizaciones</p>
-<% end %>
-<p><%= link_to "Actualizar incidencia", new_incident_incident_update_path(@incident) %></p>
-<p>Contacto que solicitó la incidencia: <%= @incident.contact.full_name %></p>
-<p>Creada por: <%= @incident.user.first_name %></p>
-<p>Tipo de incidencia: <%= @incident.kind %></p>
-<p>Descripción: <%= @incident.description %></p>
-<p>
-  <% @incident.documents.each do |document| %>
-    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-</p>
-<h4>Actualizaciones</h4>
-<% @incident_updates.each do |incident_update| %>
-  <p>Fecha: <%= incident_update.created_at %></p>
-  <p>Estado: <%= incident_update.incident_status %></p>
-  <p>Actualizada por: <%= incident_update.user.first_name %></p>
-  <p>Notas: <%= incident_update.notes %></p>
-  <% incident_update.documents.each do |document| %>
-    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <p><%= link_to "Editar actualización de incidencia", edit_incident_incident_update_path(@incident, incident_update) %></p>
-  <p><%= link_to "Eliminar actualización de incidencia", incident_incident_update_path(@incident, incident_update), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
-<% end %>
-<hr>
-<p><%= link_to "Editar incidencia", edit_incident_path(@incident) %></p>
-<p><%= link_to "Eliminar incidencia", incident_path(@incident), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
+<div class="container">
+  <div class="my-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-12 col-lg-10 lh-lg">
+        <h1 class="d-flex justify-content-between">Incidencia<%= link_to "Ver todas las incidencias", incidents_path, class:"btn btn-light border-dark my-auto" %></h1>
+        <div class="card shadow p-3 mb-5w">
+          <div class="card-body">
+            <h5 class="card-title">Número: <%= @incident.id %> <%= @incident.property.property_reference %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Número: <%= @incident.id %></li>
+            <li class="list-group-item">Propiedad ref.: <%= @incident.property.property_reference %></li>
+            <li class="list-group-item">Creada: <%= @incident.created_at %></li>
+            <li class="list-group-item">
+             <% if @incident_last %>
+                Estado de ultima actualización: <%= @incident_last.incident_status %>
+              <% else %>
+                Sin actualizaciones
+              <% end %>
+            </li>
+            <li class="list-group-item">Contacto que solicitó la incidencia: <%= @incident.contact.full_name %></li>
+            <li class="list-group-item">Creada por: <%= @incident.user.first_name %></li>
+            <li class="list-group-item">Tipo de incidencia: <%= @incident.kind %></li>
+            <li class="list-group-item">Descripción: <%= @incident.description %></li>
+            <li class="list-group-item"><p>Comprobantes</p>
+            <% @incident.documents.each do |document| %>
+              <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+            </li>
+          </ul>
+          <div class="card-footer">
+            <h4 class="text-muted d-flex justify-content-between">Actualizaciones
+            <small><%= link_to "Actualizar incidencia", new_incident_incident_update_path(@incident), class:"btn btn-secondary" %></small></h4>
+            <% @incident_updates.each do |incident_update| %>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Fecha: <%= incident_update.created_at %></li>
+                <li class="list-group-item">Estado: <%= incident_update.incident_status %></li>
+                <li class="list-group-item">Actualizada por: <%= incident_update.user.first_name %></li>
+                <li class="list-group-item">Notas: <%= incident_update.notes %></li>
+                <li class="list-group-item"><p>Comprobantes</p>
+                  <% incident_update.documents.each do |document| %>
+                    <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
+                </li>
+                <li class="list-group-item">
+                  <div class="d-flex justify-content-between mt-1">
+                    <%= link_to "Editar actualización de incidencia", edit_incident_incident_update_path(@incident, incident_update), class: "btn btn-outline-warning btn-sm" %>
+                    <%= link_to "Eliminar actualización de incidencia", incident_incident_update_path(@incident, incident_update), class: "btn btn-outline-danger btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+                  </div>
+                </li>
+              </ul>
+              <hr>
+            <% end %>
+          </div>
+          <div class="card-footer">
+            <div class="mt-5 d-flex justify-content-between">
+              <%= link_to "Editar incidencia", edit_incident_path(@incident), class: "btn btn-outline-warning" %>
+              <%= link_to "Eliminar incidencia", incident_path(@incident), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <hr>
   <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>
