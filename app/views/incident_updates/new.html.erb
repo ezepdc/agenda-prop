@@ -4,7 +4,7 @@
       <h1 class="d-flex justify-content-center p-3">Actualizar incidencia <%= @incident.id %> de <%= @incident.property.property_reference %></h1>
       <%= render "form", incident: @incident %>
     </div>
-      <hr>
-      <%= link_to "< Vovler a la incidencia", incident_path(@incident), class: "btn btn-ghost" %>
   </div>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
 </div>

@@ -1,26 +1,28 @@
 <div class="container pt-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6 col-lg-4">
-      <h2 class="text-center mb-5">Iniciar sesión</h2>
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
-        <div class="form-inputs">
-          <div class="col-12 mb-3">
-            <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
+      <div class="card shadow p-3 mb-5">
+        <h2 class="text-center mb-5">Iniciar sesión</h2>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+          <div class="form-inputs">
+            <div class="col-12 mb-3">
+              <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+            </div>
+            <div class="col-12 mb-3">
+              <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password" } %>
+            </div>
+            <div class="col-12 mb-3">
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            </div>
           </div>
-          <div class="col-12 mb-3">
-            <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-          </div>
-          <div class="col-12 mb-3">
-            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          </div>
-        </div>
-        <%= f.button :submit, "Log in", class: "btn btn-flat" %>
-      <% end %>
+          <%= f.button :submit, "Log in", class: "btn btn-flat" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

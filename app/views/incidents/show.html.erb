@@ -33,3 +33,5 @@
 <hr>
 <p><%= link_to "Editar incidencia", edit_incident_path(@incident) %></p>
 <p><%= link_to "Eliminar incidencia", incident_path(@incident), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>

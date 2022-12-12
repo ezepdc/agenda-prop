@@ -4,7 +4,7 @@
       <h1 class="d-flex justify-content-center p-3">Editar contacto</h1>
       <%= render "form", contact: @contact %>
     </div>
-      <hr>
-      <%= link_to "< Volver al contacto", contact_path(@contact), class: "btn btn-ghost" %>
   </div>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
 </div>

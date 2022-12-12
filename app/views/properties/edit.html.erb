@@ -4,7 +4,7 @@
       <h1 class="d-flex justify-content-center p-3">Editar propiedad</h1>
       <%= render "form", property: @property %>
     </div>
-      <hr>
-      <%= link_to "< Volver a la propiedad", property_path(@property), class: "btn btn-ghost" %>
   </div>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
 </div>
