@@ -22,7 +22,7 @@
               Liquidación:
               <% if @settlement %>
                 <%= @settlement.created_at %> Por: <%= @settlement.user.first_name %>
-                <%= link_to "Ver liquidación", settlement_path(@settlement), target: :_blank, class:"btn btn-primary " %>
+                <%= link_to "Ver liquidación", settlement_path(@settlement), class:"btn btn-primary " %>
               <% else %>
                 Pendiente
               <% end %>

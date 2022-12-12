@@ -19,7 +19,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item d-flex justify-content-between">
                 Propietario: <%= property.owner.full_name %>
-                <%= link_to "Ver contacto", contact_path(property.owner), class:"btn btn-primary", target: :_blank %>
+                <%= link_to "Ver contacto", contact_path(property.owner), class:"btn btn-primary" %>
               </li>
               <li class="list-group-item">Tipo: <%= property.kind %></li>
               <li class="list-group-item">Dirección: <%= property.address %></li>

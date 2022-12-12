@@ -8,7 +8,7 @@
 <% else %>
   <p>Sin actualizaciones</p>
 <% end %>
-<p><%= link_to "Actualizar incidencia", new_incident_incident_update_path(@incident), target: :_blank %></p>
+<p><%= link_to "Actualizar incidencia", new_incident_incident_update_path(@incident) %></p>
 <p>Contacto que solicitó la incidencia: <%= @incident.contact.full_name %></p>
 <p>Creada por: <%= @incident.user.first_name %></p>
 <p>Tipo de incidencia: <%= @incident.kind %></p>
@@ -27,7 +27,7 @@
   <% incident_update.documents.each do |document| %>
     <%= cl_image_tag document.key, height: 300, width: 400, crop: :fill %>
   <% end %>
-  <p><%= link_to "Editar actualización de incidencia", edit_incident_incident_update_path(@incident, incident_update), target: :_blank %></p>
+  <p><%= link_to "Editar actualización de incidencia", edit_incident_incident_update_path(@incident, incident_update) %></p>
   <p><%= link_to "Eliminar actualización de incidencia", incident_incident_update_path(@incident, incident_update), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
 <% end %>
 <hr>

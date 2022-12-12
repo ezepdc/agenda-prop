@@ -11,7 +11,7 @@
             <li class="list-group-item">Fecha: <%= @settlement.created_at %></li>
             <li class="list-group-item">Propiedad ref.: <%= @settlement.property.property_reference %></li>
             <li class="list-group-item">Propietario: <%= @settlement.property.owner.full_name %></li>
-            <li class="list-group-item d-flex justify-content-between">Transacciones: <%= @settlement.bill.reference %> <%= link_to "Ver transacción", bill_path(@settlement.bill), target: :_blank, class:"btn btn-primary" %></li>
+            <li class="list-group-item d-flex justify-content-between">Transacciones: <%= @settlement.bill.reference %> <%= link_to "Ver transacción", bill_path(@settlement.bill), class:"btn btn-primary" %></li>
             <li class="list-group-item">Concepto de otros ingresos: <%= @settlement.others_income_concept %></li>
             <li class="list-group-item">Monto de otros ingresos: <%= @settlement.others_income_amount %></li>
             <li class="list-group-item">Moneda de otros ingresos: <%= @settlement.others_income_amount_curreny %></li>
