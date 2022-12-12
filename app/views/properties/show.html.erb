@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-12 col-md-12 col-lg-10 lh-lg">
         <h1 class="d-flex justify-content-between">Propiedad <%= @property.property_reference %> <%= link_to "Ver todas las propiedades", properties_path, class:"btn btn-light border-dark my-auto" %></h1>
-        <div class="card border-secondary">
+        <div class="card shadow p-3 mb-5">
             <% @property.photos.each do |photo| %>
               <%= cl_image_tag photo.key, crop: :fill, class:"card-img-top img-fluid" %>
               <%= link_to "Descargar SOLO ABRE LA FOTO", cl_image_path(photo.key, :attachment => true) %>
