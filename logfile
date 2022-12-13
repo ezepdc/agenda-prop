@@ -1,0 +1,9 @@
+2022-12-13 16:30:29.901 CET [18183] LOG:  starting PostgreSQL 14.6 (Homebrew) on x86_64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2022-12-13 16:30:29.913 CET [18183] LOG:  listening on IPv6 address "::1", port 5432
+2022-12-13 16:30:29.913 CET [18183] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-12-13 16:30:29.918 CET [18183] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-12-13 16:30:29.936 CET [18184] LOG:  database system was shut down at 2022-12-13 16:28:56 CET
+2022-12-13 16:30:29.959 CET [18183] LOG:  database system is ready to accept connections
+2022-12-13 17:37:23.978 CET [27310] ERROR:  database "agenda_prop_development" is being accessed by other users
+2022-12-13 17:37:23.978 CET [27310] DETAIL:  There is 1 other session using the database.
+2022-12-13 17:37:23.978 CET [27310] STATEMENT:  DROP DATABASE IF EXISTS "agenda_prop_development"
