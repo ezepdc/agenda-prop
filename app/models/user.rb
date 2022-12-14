@@ -4,9 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :registerable
   # :registerable
   has_many :contacts
-  validates :phone, numericality: true, allow_blank: true
-  validates :first_name, presence: true
-  validates :agency_name, presence: true
   has_many :properties
   has_many :contracts
   has_many :contract_prices
@@ -14,4 +11,7 @@ class User < ApplicationRecord
   has_many :incident_updates
   has_many :settlements
   has_many :bills
+  validates :phone, numericality: true, allow_blank: true
+  validates :first_name, presence: true
+  validates :agency_name, presence: true
 end

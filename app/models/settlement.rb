@@ -1,8 +1,8 @@
 class Settlement < ApplicationRecord
+  belongs_to :user
   belongs_to :property
   belongs_to :bill
-  belongs_to :user
+  has_many_attached :documents
   validates :amount, presence: true
   validates :payment_method, presence: true
-  has_many_attached :documents
 end
