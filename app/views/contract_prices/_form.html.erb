@@ -1,13 +1,7 @@
-<div class="row justify-content-center">
-  <div class="col-12 col-md-10 col-lg-8 lh-lg text-muted">
-    <%= simple_form_for([@contract, @contract_price]) do |f| %>
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
-      <%= f.input :price %>
-      <%= f.input :price_currency %>
-      <%= f.button :submit, class: "btn btn-flat" %>
-    <% end %>
-  </div>
-</div>
+<%= simple_form_for([@contract, @contract_price]) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :price %>
+  <%= f.input :price_currency %>
+  <%= f.button :submit, class: "btn btn-flat" %>
+<% end %>
