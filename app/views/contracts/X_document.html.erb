@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-between">
+  <div class="row">
+    <div class="col">
+      <iframe src="<%= document.url %>" height="200" width="300"></iframe>
+    </div>
+    <div class="col">
+      <p><%= document.filename %></p>
+      <p><%= link_to "Descargar documento", document.url, download: document.filename, target: :_blank %></p>
+    </div>
+  </div>
+</div>
