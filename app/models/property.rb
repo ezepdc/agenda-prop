@@ -5,6 +5,6 @@ class Property < ApplicationRecord
   has_many :incidents, dependent: :destroy
   has_many :settlements, dependent: :destroy
   has_many :bills, dependent: :destroy
-  has_many_attached :photos
+  has_many_attached :photos, dependent: :destroy
   validates :property_reference, presence: true
 end
