@@ -6,7 +6,7 @@ class BillsController < ApplicationController
   end
 
   def show
-    @settlement = Settlement.where(bill_id: params[:id]).first
+    @settlement = @bill.settlement
   end
 
   def new
@@ -43,6 +43,20 @@ class BillsController < ApplicationController
   end
 
   def bill_params
-    params.require(:bill).permit(:property_id, :bill_date, :kind, :contact_id, :amount, :amount_currency, :concept, :payment_method, :notes, :settlement_id, :user, :created_at, documents: [])
+    params.require(:bill).permit(
+      :property_id,
+      :bill_date,
+      :kind,
+      :contact_id,
+      :amount,
+      :amount_currency,
+      :concept,
+      :payment_method,
+      :notes,
+      :settlement_id,
+      :user,
+      :created_at,
+      documents: []
+    )
   end
 end

@@ -3,7 +3,7 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = Property.all
-    
+
   end
 
   def show
@@ -59,6 +59,26 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:property_reference, :owner_id, :cadastral_reference, :kind, :address, :apartment, :city, :state, :country, :postal_code, :total_area, :covered_area, :rooms, :bathrooms, :amenities, :price, :price_currency, :notes, photos: [])
+    params.require(:property).permit(
+      :property_reference,
+      :owner_id,
+      :cadastral_reference,
+      :kind,
+      :address,
+      :apartment,
+      :city,
+      :state,
+      :country,
+      :postal_code,
+      :total_area,
+      :covered_area,
+      :rooms,
+      :bathrooms,
+      :amenities,
+      :price,
+      :price_currency,
+      :notes,
+      photos: []
+    )
   end
 end

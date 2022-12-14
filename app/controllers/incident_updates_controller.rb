@@ -44,6 +44,12 @@ class IncidentUpdatesController < ApplicationController
   end
 
   def incident_update_params
-    params.require(:incident_update).permit(:created_at, :notes, :incident_status, :user, documents: [])
+    params.require(:incident_update).permit(
+      :created_at,
+      :notes,
+      :incident_status,
+      :user,
+      documents: []
+    )
   end
 end

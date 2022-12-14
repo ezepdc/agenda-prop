@@ -44,6 +44,11 @@ class ContractPricesController < ApplicationController
   end
 
   def contract_price_params
-    params.require(:contract_price).permit(:start_date, :end_date, :price, :price_currency)
+    params.require(:contract_price).permit(
+      :start_date,
+      :end_date,
+      :price,
+      :price_currency
+    )
   end
 end

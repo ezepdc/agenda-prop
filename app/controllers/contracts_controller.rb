@@ -43,6 +43,27 @@ class ContractsController < ApplicationController
   end
 
   def contract_params
-    params.require(:contract).permit(:kind, :property_id, :tenant_id, :guarantor_id, :start_date, :end_date, :base_price, :base_price_currency, :comision, :guarantor_identity_kind, :guarantor_identity_number, :guarantee_address, :security_deposit_amount, :security_deposit_amount_currency, :notes, guarantor_documents: [], guarantee_documents: [], security_deposit_receipts: [], security_deposit_return_receipts: [], contract_documents: [])
+    params.require(:contract).permit(
+      :kind,
+      :property_id,
+      :tenant_id,
+      :guarantor_id,
+      :start_date,
+      :end_date,
+      :base_price,
+      :base_price_currency,
+      :comision,
+      :guarantor_identity_kind,
+      :guarantor_identity_number,
+      :guarantee_address,
+      :security_deposit_amount,
+      :security_deposit_amount_currency,
+      :notes,
+      guarantor_documents: [],
+      guarantee_documents: [],
+      security_deposit_receipts: [],
+      security_deposit_return_receipts: [],
+      contract_documents: []
+    )
   end
 end
