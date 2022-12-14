@@ -15,7 +15,7 @@
                 </h5>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Creada: <%= incident.created_at %></li>
+                <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
                 <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
                 <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
                 <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
@@ -37,7 +37,7 @@
                   </h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Creada: <%= incident.created_at %></li>
+                  <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
                   <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
                   <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
                   <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
@@ -64,7 +64,7 @@
                   </h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Creada: <%= incident.created_at %></li>
+                  <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
                   <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
                   <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
                   <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
@@ -91,7 +91,7 @@
                   </h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Creada: <%= incident.created_at %></li>
+                  <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
                   <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
                   <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
                   <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
@@ -118,7 +118,7 @@
                   </h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Creada: <%= incident.created_at %></li>
+                  <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
                   <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
                   <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
                   <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
@@ -149,7 +149,7 @@
           <% if IncidentUpdate.where(incident_id: incident.id).last %>
           <% else %>
             <p>Número: <%= incident.id %></p>
-            <p>Creada: <%= incident.created_at %></p>
+            <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
             <p>Propiedad ref.: <%= incident.property.property_reference %></p>
             <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
             <p>Creada por: <%= incident.user.first_name %></p>
@@ -161,7 +161,7 @@
           <% if IncidentUpdate.where(incident_id: incident.id).last %>
             <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Pendiente'%>
               <p>Número: <%= incident.id %></p>
-              <p>Creada: <%= incident.created_at %></p>
+              <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
               <p>Propiedad ref.: <%= incident.property.property_reference %></p>
               <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
               <p>Creada por: <%= incident.user.first_name %></p>
@@ -193,7 +193,7 @@
           <% if IncidentUpdate.where(incident_id: incident.id).last %>
             <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Rechazada'%>
             <p>Número: <%= incident.id %></p>
-            <p>Creada: <%= incident.created_at %></p>
+            <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
             <p>Propiedad ref.: <%= incident.property.property_reference %></p>
             <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
             <p>Creada por: <%= incident.user.first_name %></p>
@@ -209,7 +209,7 @@
           <% if IncidentUpdate.where(incident_id: incident.id).last %>
             <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Finalizada'%>
             <p>Número: <%= incident.id %></p>
-            <p>Creada: <%= incident.created_at %></p>
+            <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
             <p>Propiedad ref.: <%= incident.property.property_reference %></p>
             <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
             <p>Creada por: <%= incident.user.first_name %></p>

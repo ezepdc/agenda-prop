@@ -10,7 +10,7 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Número: <%= @incident.id %></li>
             <li class="list-group-item">Propiedad ref.: <%= @incident.property.property_reference %></li>
-            <li class="list-group-item">Creada: <%= @incident.created_at %></li>
+            <li class="list-group-item">Creada: <%= @incident.created_at.strftime("%A, %e %B %Y") %></li>
             <li class="list-group-item">
              <% if @incident_last %>
                 Estado de ultima actualización: <%= @incident_last.incident_status %>
@@ -43,7 +43,7 @@
             <small><%= link_to "Actualizar incidencia", new_incident_incident_update_path(@incident), class:"btn btn-secondary" %></small></h4>
             <% @incident_updates.each do |incident_update| %>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Fecha: <%= incident_update.created_at %></li>
+                <li class="list-group-item">Fecha: <%= incident_update.created_at.strftime("%A, %e %B %Y") %></li>
                 <li class="list-group-item">Estado: <%= incident_update.incident_status %></li>
                 <li class="list-group-item">Actualizada por: <%= incident_update.user.first_name %></li>
                 <li class="list-group-item">Notas: <%= incident_update.notes %></li>

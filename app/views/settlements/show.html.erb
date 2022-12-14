@@ -5,10 +5,10 @@
         <h1 class="d-flex justify-content-between">Liquidación<%= link_to "Ver todas las liquidaciones", settlements_path, class:"btn btn-light border-dark my-auto" %></h1>
         <div class="card shadow p-3 mb-5w">
           <div class="card-body">
-            <h5 class="card-title"><%= @settlement.created_at %> <%= @settlement.property.property_reference %></h5>
+            <h5 class="card-title"><%= @settlement.created_at.strftime("%A, %e %B %Y") %> <%= @settlement.property.property_reference %></h5>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Fecha: <%= @settlement.created_at %></li>
+            <li class="list-group-item">Fecha: <%= @settlement.created_at.strftime("%A, %e %B %Y") %></li>
             <li class="list-group-item">Propiedad ref.: <%= @settlement.property.property_reference %></li>
             <li class="list-group-item">Propietario: <%= @settlement.property.owner.full_name %></li>
             <li class="list-group-item d-flex justify-content-between">Transacciones: <%= @settlement.bill.reference %> <%= link_to "Ver transacción", bill_path(@settlement.bill), class:"btn btn-primary" %></li>

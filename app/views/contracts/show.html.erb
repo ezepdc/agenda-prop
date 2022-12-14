@@ -10,7 +10,7 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Propiedad ref.: <%= @contract.property.property_reference %></li>
             <li class="list-group-item">Inquilino: <%= @contract.tenant.full_name %></li>
-            <li class="list-group-item">Desde: <%= @contract.start_date %> hasta: <%= @contract.end_date %></li>
+            <li class="list-group-item">Desde: <%= @contract.start_date.strftime("%d/%m/%Y") %> hasta: <%= @contract.end_date.strftime("%d/%m/%Y") %></li>
             <li class="list-group-item">Precio base: <%= @contract.base_price %></li>
             <li class="list-group-item">Moneda: <%= @contract.base_price_currency %></li>
           </ul>
@@ -21,7 +21,7 @@
             </h4>
             <% @contract_prices.each do |contract_price| %>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Desde: <%= contract_price.start_date %> hasta: <%= contract_price.end_date %></li>
+                <li class="list-group-item">Desde: <%= contract_price.start_date.strftime("%d/%m/%Y") %> hasta: <%= contract_price.end_date.strftime("%d/%m/%Y") %></li>
                 <li class="list-group-item">Precio: <%= contract_price.price %></li>
                 <li class="list-group-item">Moneda: <%= contract_price.price_currency %></li>
                 <li class="list-group-item">
