@@ -9,6 +9,7 @@ class Bill < ApplicationRecord
   validates :amount, presence: true
   validates :concept, presence: true
   validates :payment_method, presence: true
+  validates :amount, numericality: true, allow_blank: true
 
   def reference
     "#{property.property_reference} #{kind} #{concept} Monto: #{amount}"

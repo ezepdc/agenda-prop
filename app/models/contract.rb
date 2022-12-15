@@ -10,4 +10,6 @@ class Contract < ApplicationRecord
   has_many_attached :security_deposit_return_receipts, dependent: :destroy
   has_many_attached :contract_documents, dependent: :destroy
   validates :kind, presence: true
+  validates :base_price, numericality: true, allow_blank: true
+  validates :security_deposit_amount, numericality: true, allow_blank: true
 end

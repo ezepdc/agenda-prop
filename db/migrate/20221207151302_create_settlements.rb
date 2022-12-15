@@ -3,13 +3,13 @@ class CreateSettlements < ActiveRecord::Migration[7.0]
     create_table :settlements do |t|
       t.references :property, null: false, foreign_key: true
       t.references :bill, null: false, foreign_key: true
-      t.string :others_income_amount
+      t.integer :others_income_amount
       t.string :others_income_amount_curreny
       t.string :others_income_concept
-      t.string :others_expense_amount
+      t.integer :others_expense_amount
       t.string :others_expense_amount_currency
       t.string :others_expense_concept
-      t.string :amount
+      t.integer :amount
       t.string :amount_currency
       t.string :payment_method
       t.text :notes
