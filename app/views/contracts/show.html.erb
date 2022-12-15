@@ -40,82 +40,22 @@
             <li class="list-group-item">Tipo documento garante: <%= @contract.guarantor_identity_kind %></li>
             <li class="list-group-item">Número de documento garante: <%= @contract.guarantor_identity_number %></li>
             <li class="list-group-item"><p>Documento adjunto del garante</p>
-              <% @contract.guarantor_documents.each do |document| %>
-                <div class="d-flex justify-content-between">
-                  <div class="row">
-                    <div class="col">
-                      <iframe src="<%= document.url %>" height="200" width="300"></iframe>
-                    </div>
-                    <div class="col">
-                      <p><%= document.filename %></p>
-                      <p><%= link_to "Descargar documento", document.url, download: document.filename, target: :_blank %></p>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+              <%= render partial: "document", collection: @contract.guarantor_documents %>
             </li>
             <li class="list-group-item">Dirección de garantía: <%= @contract.guarantee_address %></li>
             <li class="list-group-item"><p>Documento adjunto de la garantía</p>
-              <% @contract.guarantee_documents.each do |document| %>
-                <div class="d-flex justify-content-between">
-                  <div class="row">
-                    <div class="col">
-                      <iframe src="<%= document.url %>" height="200" width="300"></iframe>
-                    </div>
-                    <div class="col">
-                      <p><%= document.filename %></p>
-                      <p><%= link_to "Descargar documento", document.url, download: document.filename, target: :_blank %></p>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+              <%= render partial: "document", collection: @contract.guarantee_documents %>
             </li>
             <li class="list-group-item">Monto depósito / fianza: <%= @contract.security_deposit_amount %></li>
             <li class="list-group-item">Moneda depósito / fianza: <%= @contract.security_deposit_amount_currency %></li>
             <li class="list-group-item"><p>Recibo adjunto del depósito / fianza</p>
-              <% @contract.security_deposit_receipts.each do |document| %>
-                <div class="d-flex justify-content-between">
-                  <div class="row">
-                    <div class="col">
-                      <iframe src="<%= document.url %>" height="200" width="300"></iframe>
-                    </div>
-                    <div class="col">
-                      <p><%= document.filename %></p>
-                      <p><%= link_to "Descargar documento", document.url, download: document.filename, target: :_blank %></p>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+              <%= render partial: "document", collection: @contract.security_deposit_receipts %>
             </li>
             <li class="list-group-item"><p>Recibo adjunto devolución del depósito / fianza</p>
-              <% @contract.security_deposit_return_receipts.each do |document| %>
-                <div class="d-flex justify-content-between">
-                  <div class="row">
-                    <div class="col">
-                      <iframe src="<%= document.url %>" height="200" width="300"></iframe>
-                    </div>
-                    <div class="col">
-                      <p><%= document.filename %></p>
-                      <p><%= link_to "Descargar documento", document.url, download: document.filename, target: :_blank %></p>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+              <%= render partial: "document", collection: @contract.security_deposit_return_receipts %>
             </li>
             <li class="list-group-item"><p>Contrato adjunto</p>
-              <% @contract.contract_documents.each do |document| %>
-                <div class="d-flex justify-content-between">
-                  <div class="row">
-                    <div class="col">
-                      <iframe src="<%= document.url %>" height="200" width="300"></iframe>
-                    </div>
-                    <div class="col">
-                      <p><%= document.filename %></p>
-                      <p><%= link_to "Descargar documento", document.url, download: document.filename, target: :_blank %></p>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+              <%= render partial: "document", collection: @contract.contract_documents %>
             </li>
             <li class="list-group-item">Notas: <%= @contract.notes %></li>
           </ul>

@@ -6,4 +6,8 @@ class Incident < ApplicationRecord
   has_many_attached :documents, dependent: :destroy
   validates :kind, presence: true
   validates :description, presence: true
+
+  def status
+    incident_updates&.last&.incident_status || "Pendiente"
+  end
 end

@@ -4,48 +4,8 @@
     <h4>Pendientes</h4>
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <% @incidents.each do |incident| %>
-        <% if IncidentUpdate.where(incident_id: incident.id).last %>
-        <% else %>
-          <div class="col">
-            <div class="card shadow p-3 mb-5">
-              <div class="card-body">
-                <h5 class="card-title d-flex justify-content-between">
-                  Número: <%= incident.id %>
-                  <%= link_to "Ver incidencia", incident_path(incident), class:"btn btn-primary" %>
-                </h5>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
-                <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
-                <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
-                <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
-                <li class="list-group-item">Tipo de incidente: <%= incident.kind %></li>
-              </ul>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-      <% @incidents.each do |incident| %>
-        <% if IncidentUpdate.where(incident_id: incident.id).last %>
-          <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Pendiente'%>
-            <div class="col">
-              <div class="card shadow p-3 mb-5">
-                <div class="card-body">
-                  <h5 class="card-title d-flex justify-content-between">
-                    Número: <%= incident.id %>
-                    <%= link_to "Ver incidencia", incident_path(incident), class:"btn btn-primary" %>
-                  </h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
-                  <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
-                  <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
-                  <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
-                  <li class="list-group-item">Tipo de incidente: <%= incident.kind %></li>
-                </ul>
-              </div>
-            </div>
-          <% end %>
+        <% if incident.status == 'Pendiente' %>
+          <%= render "incident", incident: incident %>
         <% end %>
       <% end %>
     </div>
@@ -53,26 +13,8 @@
     <h4>En curso</h4>
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <% @incidents.each do |incident| %>
-        <% if IncidentUpdate.where(incident_id: incident.id).last %>
-          <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'En curso'%>
-            <div class="col">
-              <div class="card shadow p-3 mb-5">
-                <div class="card-body">
-                  <h5 class="card-title d-flex justify-content-between">
-                    Número: <%= incident.id %>
-                    <%= link_to "Ver incidencia", incident_path(incident), class:"btn btn-primary" %>
-                  </h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
-                  <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
-                  <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
-                  <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
-                  <li class="list-group-item">Tipo de incidente: <%= incident.kind %></li>
-                </ul>
-              </div>
-            </div>
-          <% end %>
+        <% if incident.status == 'En curso' %>
+          <%= render "incident", incident: incident %>
         <% end %>
       <% end %>
     </div>
@@ -80,26 +22,8 @@
     <h4>Rechazadas</h4>
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <% @incidents.each do |incident| %>
-        <% if IncidentUpdate.where(incident_id: incident.id).last %>
-          <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Rechazada'%>
-            <div class="col">
-              <div class="card shadow p-3 mb-5">
-                <div class="card-body">
-                  <h5 class="card-title d-flex justify-content-between">
-                    Número: <%= incident.id %>
-                    <%= link_to "Ver incidencia", incident_path(incident), class:"btn btn-primary" %>
-                  </h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
-                  <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
-                  <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
-                  <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
-                  <li class="list-group-item">Tipo de incidente: <%= incident.kind %></li>
-                </ul>
-              </div>
-            </div>
-          <% end %>
+        <% if incident.status == 'Rechazada' %>
+          <%= render "incident", incident: incident %>
         <% end %>
       <% end %>
     </div>
@@ -107,26 +31,8 @@
     <h4>Finalizadas</h4>
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <% @incidents.each do |incident| %>
-        <% if IncidentUpdate.where(incident_id: incident.id).last %>
-          <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Finalizada'%>
-            <div class="col">
-              <div class="card shadow p-3 mb-5">
-                <div class="card-body">
-                  <h5 class="card-title d-flex justify-content-between">
-                    Número: <%= incident.id %>
-                    <%= link_to "Ver incidencia", incident_path(incident), class:"btn btn-primary" %>
-                  </h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
-                  <li class="list-group-item">Propiedad ref.: <%= incident.property.property_reference %></li>
-                  <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
-                  <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
-                  <li class="list-group-item">Tipo de incidente: <%= incident.kind %></li>
-                </ul>
-              </div>
-            </div>
-          <% end %>
+        <% if incident.status == 'Finalizada' %>
+          <%= render "incident", incident: incident %>
         <% end %>
       <% end %>
     </div>
