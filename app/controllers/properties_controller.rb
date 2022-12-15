@@ -60,7 +60,7 @@ class PropertiesController < ApplicationController
 
   def property_params
     params.require(:property).permit(
-      :property_reference,
+      :reference,
       :owner_id,
       :cadastral_reference,
       :kind,
