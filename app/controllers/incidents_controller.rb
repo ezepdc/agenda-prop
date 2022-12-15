@@ -3,6 +3,9 @@ class IncidentsController < ApplicationController
 
   def index
     @incidents = Incident.all
+    if params[:query].present?
+      @incident_updates = IncidentUpdate.where(status: params[:query])
+    end
   end
 
   def show

@@ -1,4 +1,19 @@
 <div class="container">
+    <div class="my-3">
+    <%= form_with url: incidents_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a incident status"
+      %>
+      <%= submit_tag "Search", class: "btn btn-flat" %>
+    <% end %>
+  </div>
+  <% if @incident_updates %>
+  <% @incident_updates.each do |incident_update| %>
+    <%= incident_update.incident.property.reference %>
+  <% end %>
+  <% end %>
   <div class="my-3">
     <h1 class="d-flex justify-content-between">Todos las incidencias <%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-auto" %></h1>
     <h4>Pendientes</h4>
