@@ -1,4 +1,4 @@
-# fly.toml file generated for agenda-prop on 2022-12-13T17:51:38+01:00
+# fly.toml file generated for agenda-prop on 2022-12-15T15:34:52+01:00
 
 app = "agenda-prop"
 kill_signal = "SIGINT"
