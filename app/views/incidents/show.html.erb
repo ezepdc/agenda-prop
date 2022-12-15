@@ -5,15 +5,15 @@
         <h1 class="d-flex justify-content-between">Incidencia<%= link_to "Ver todas las incidencias", incidents_path, class:"btn btn-light border-dark my-auto" %></h1>
         <div class="card shadow p-3 mb-5w">
           <div class="card-body">
-            <h5 class="card-title">Número: <%= @incident.id %> <%= @incident.property.property_reference %></h5>
+            <h5 class="card-title">Número: <%= @incident.id %> <%= @incident.property.reference %></h5>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Número: <%= @incident.id %></li>
-            <li class="list-group-item">Propiedad ref.: <%= @incident.property.property_reference %></li>
+            <li class="list-group-item">Propiedad ref.: <%= @incident.property.reference %></li>
             <li class="list-group-item">Creada: <%= @incident.created_at.strftime("%A, %e %B %Y") %></li>
             <li class="list-group-item">
              <% if @incident_last %>
-                Estado de ultima actualización: <%= @incident_last.incident_status %>
+                Estado de ultima actualización: <%= @incident_last.status %>
               <% else %>
                 Sin actualizaciones
               <% end %>
@@ -44,7 +44,7 @@
             <% @incident_updates.each do |incident_update| %>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Fecha: <%= incident_update.created_at.strftime("%A, %e %B %Y") %></li>
-                <li class="list-group-item">Estado: <%= incident_update.incident_status %></li>
+                <li class="list-group-item">Estado: <%= incident_update.status %></li>
                 <li class="list-group-item">Actualizada por: <%= incident_update.user.first_name %></li>
                 <li class="list-group-item">Notas: <%= incident_update.notes %></li>
                 <li class="list-group-item"><p>Comprobantes</p>

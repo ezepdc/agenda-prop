@@ -56,7 +56,7 @@
           <% else %>
             <p>Número: <%= incident.id %></p>
             <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
-            <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+            <p>Propiedad ref.: <%= incident.property.reference %></p>
             <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
             <p>Creada por: <%= incident.user.first_name %></p>
             <p>Tipo de incidente: <%= incident.kind %></p>
@@ -65,10 +65,10 @@
         <% end %>
         <% @incidents.each do |incident| %>
           <% if IncidentUpdate.where(incident_id: incident.id).last %>
-            <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Pendiente'%>
+            <% if IncidentUpdate.where(incident_id: incident.id).last.status == 'Pendiente'%>
               <p>Número: <%= incident.id %></p>
               <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
-              <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+              <p>Propiedad ref.: <%= incident.property.reference %></p>
               <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
               <p>Creada por: <%= incident.user.first_name %></p>
               <p>Tipo de incidente: <%= incident.kind %></p>
@@ -81,10 +81,10 @@
         <h4>En curso</h4>
         <% @incidents.each do |incident| %>
           <% if IncidentUpdate.where(incident_id: incident.id).last %>
-            <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'En curso'%>
+            <% if IncidentUpdate.where(incident_id: incident.id).last.status == 'En curso'%>
               <p>Número: <%= incident.id %></p>
               <p>Creada: <%= incident.created_at %></p>
-              <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+              <p>Propiedad ref.: <%= incident.property.reference %></p>
               <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
               <p>Creada por: <%= incident.user.first_name %></p>
               <p>Tipo de incidente: <%= incident.kind %></p>
@@ -97,10 +97,10 @@
         <h4>Rechazada</h4>
         <% @incidents.each do |incident| %>
           <% if IncidentUpdate.where(incident_id: incident.id).last %>
-            <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Rechazada'%>
+            <% if IncidentUpdate.where(incident_id: incident.id).last.status == 'Rechazada'%>
             <p>Número: <%= incident.id %></p>
             <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
-            <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+            <p>Propiedad ref.: <%= incident.property.reference %></p>
             <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
             <p>Creada por: <%= incident.user.first_name %></p>
             <p>Tipo de incidente: <%= incident.kind %></p>
@@ -113,10 +113,10 @@
         <h4>Finalizada</h4>
         <% @incidents.each do |incident| %>
           <% if IncidentUpdate.where(incident_id: incident.id).last %>
-            <% if IncidentUpdate.where(incident_id: incident.id).last.incident_status == 'Finalizada'%>
+            <% if IncidentUpdate.where(incident_id: incident.id).last.status == 'Finalizada'%>
             <p>Número: <%= incident.id %></p>
             <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
-            <p>Propiedad ref.: <%= incident.property.property_reference %></p>
+            <p>Propiedad ref.: <%= incident.property.reference %></p>
             <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
             <p>Creada por: <%= incident.user.first_name %></p>
             <p>Tipo de incidente: <%= incident.kind %></p>

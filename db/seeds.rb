@@ -58,7 +58,7 @@ i = 1
   puts "Contact with id: #{contact.id} has been created"
 
   property = Property.create(
-    property_reference: Faker::Ancient.hero,
+    reference: Faker::Ancient.hero,
     cadastral_reference: Faker::Number.hexadecimal(digits: 3),
     kind: ["Lote", "Depto", "Casa"].sample,
     address: Faker::Address.street_address,
@@ -138,7 +138,7 @@ i = 1
   incident_update = IncidentUpdate.create(
     incident_id: i,
     notes: Faker::Lorem.paragraph(sentence_count: 2),
-    incident_status: ["Pendiente", "En curso", "Rechazada", "Finalizada"].sample,
+    status: ["Pendiente", "En curso", "Rechazada", "Finalizada"].sample,
     user_id: 1
     # documents: Faker::LoremFlickr.image(size: "400x400", search_terms: ['house'])
   )

@@ -2,14 +2,14 @@
   <div class="my-3">
     <div class="row justify-content-center">
       <div class="col-12 col-md-12 col-lg-10 lh-lg">
-        <h1 class="d-flex justify-content-between">Propiedad <%= @property.property_reference %> <%= link_to "Ver todas las propiedades", properties_path, class:"btn btn-light border-dark my-auto" %></h1>
+        <h1 class="d-flex justify-content-between">Propiedad <%= @property.reference %> <%= link_to "Ver todas las propiedades", properties_path, class:"btn btn-light border-dark my-auto" %></h1>
         <div class="card shadow p-3 mb-5">
           <% @property.photos.each do |photo| %>
             <%= cl_image_tag photo.key, crop: :fill, class:"card-img-top img-fluid" %>
             <%= link_to "Descargar imagen", photo.url, download: photo.filename, target: :_blank %>
           <% end %>
           <div class="card-body">
-            <h5 class="card-title">Propiedad ref.: <%= @property.property_reference %></h5>
+            <h5 class="card-title">Propiedad ref.: <%= @property.reference %></h5>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between">

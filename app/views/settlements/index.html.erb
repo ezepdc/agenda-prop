@@ -7,13 +7,13 @@
           <div class="card shadow p-3 mb-5">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-between">
-                <%= settlement.created_at.strftime("%A, %e %B %Y") %> <%= settlement.property.property_reference %>
+                <%= settlement.created_at.strftime("%A, %e %B %Y") %> <%= settlement.property.reference %>
                 <%= link_to "Ver liquidación", settlement_path(settlement), class:"btn btn-primary" %>
               </h5>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Fecha: <%= settlement.created_at.strftime("%A, %e %B %Y") %></li>
-              <li class="list-group-item">Propiedad ref.: <%= settlement.property.property_reference %></li>
+              <li class="list-group-item">Propiedad ref.: <%= settlement.property.reference %></li>
               <li class="list-group-item">Propietario: <%= settlement.property.owner.full_name %></li>
               <li class="list-group-item">Monto de liquidación: <%= settlement.amount %></li>
               <li class="list-group-item">Método de pago: <%= settlement.payment_method %></li>

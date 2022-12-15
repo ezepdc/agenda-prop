@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-12 col-md-10 col-lg-8 lh-lg text-muted">
     <%= simple_form_for([@incident, @incident_update]) do |f| %>
-      <%= f.input :incident_status, required: true, collection: ['Pendiente', 'En curso', 'Rechazada', 'Finalizada'], prompt: true %>
+      <%= f.input :status, required: true, collection: ['Pendiente', 'En curso', 'Rechazada', 'Finalizada'], prompt: true %>
       <%= f.input :notes, required: true %>
       <%= f.input :documents, as: :file, input_html: { multiple: true } %>
       <%= f.button :submit, class: "btn btn-flat" %>

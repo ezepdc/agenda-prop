@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-12 col-md-10 col-lg-8 lh-lg text-muted">
     <%= simple_form_for(@settlement) do |f| %>
-      <%= f.association :property, label_method: :property_reference, prompt: true, required: true %>
+      <%= f.association :property, label_method: :reference, prompt: true, required: true %>
       <%= f.association :bill, label_method: :reference, prompt: true, required: true %>
       <%#  as: :check_boxes, collection: Bill.where(bill.settlement) %>
       <%= f.input :others_income_concept %>

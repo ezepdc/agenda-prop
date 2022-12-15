@@ -6,7 +6,7 @@ class Property < ApplicationRecord
   has_many :settlements, dependent: :destroy
   has_many :bills, dependent: :destroy
   has_many_attached :photos, dependent: :destroy
-  validates :property_reference, presence: true
+  validates :reference, presence: true
   validates :total_area, numericality: true, allow_blank: true
   validates :covered_area, numericality: true, allow_blank: true
   validates :price, numericality: true, allow_blank: true

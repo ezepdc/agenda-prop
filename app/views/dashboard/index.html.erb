@@ -19,7 +19,7 @@
                   <tr>
                     <td>
                       <%= link_to property_path(property) do %>
-                        <%= property.property_reference %>
+                        <%= property.reference %>
                       <% end %>
                     </td>
                     <td><%= property.owner.full_name %></td>
@@ -49,7 +49,7 @@
                   <tr>
                     <td>
                       <%= link_to incident_path(incident) do %>
-                        <%= incident.property.property_reference %>
+                        <%= incident.property.reference %>
                       <% end %>
                     </td>
                     <td><%= incident.contact.full_name %></td>
@@ -110,7 +110,7 @@
                   <tr>
                     <td>
                       <%= link_to bill_path(bill) do %>
-                        <%= bill.property.property_reference %>
+                        <%= bill.property.reference %>
                       <% end %>
                     </td>
                     <td><%= bill.contact.full_name %></td>
@@ -141,7 +141,7 @@
                   <tr>
                     <td>
                       <%= link_to settlement_path(settlement) do %>
-                        <%= settlement.property.property_reference %>
+                        <%= settlement.property.reference %>
                       <% end %>
                     </td>
                     <td><%= settlement.property.owner.full_name %></td>

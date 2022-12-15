@@ -5,11 +5,11 @@
         <h1 class="d-flex justify-content-between">Transacción<%= link_to "Ver todas las transacciones", bills_path, class:"btn btn-light border-dark my-auto" %></h1>
         <div class="card shadow p-3 mb-5">
           <div class="card-body">
-            <h5 class="card-title"><%= @bill.bill_date.strftime("%A, %e %B %Y") %> <%= @bill.property.property_reference %></h5>
+            <h5 class="card-title"><%= @bill.bill_date.strftime("%A, %e %B %Y") %> <%= @bill.property.reference %></h5>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Fecha: <%= @bill.bill_date.strftime("%A, %e %B %Y") %></li>
-            <li class="list-group-item">Propiedad ref.: <%= @bill.property.property_reference %></li>
+            <li class="list-group-item">Propiedad ref.: <%= @bill.property.reference %></li>
             <li class="list-group-item">Tipo: <%= @bill.kind %></li>
             <li class="list-group-item">Contacto: <%= @bill.contact.full_name %></li>
             <li class="list-group-item">Tipo de contacto: <%= @bill.contact.kind %></li>

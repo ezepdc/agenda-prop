@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.date "bill_date"
     t.string "kind"
     t.bigint "contact_id", null: false
-    t.string "amount"
+    t.integer "amount"
     t.string "amount_currency"
     t.string "concept"
     t.string "payment_method"
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.string "phone"
+    t.integer "phone"
     t.string "kind"
     t.text "notes"
     t.bigint "user_id", null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.bigint "contract_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.string "price"
+    t.integer "price"
     t.string "price_currency"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -91,13 +91,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.bigint "property_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.string "base_price"
+    t.integer "base_price"
     t.string "base_price_currency"
     t.string "comision"
     t.string "guarantor_identity_kind"
     t.string "guarantor_identity_number"
     t.string "guarantee_address"
-    t.string "security_deposit_amount"
+    t.integer "security_deposit_amount"
     t.string "security_deposit_amount_currency"
     t.text "notes"
     t.bigint "user_id", null: false
@@ -114,7 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
   create_table "incident_updates", force: :cascade do |t|
     t.bigint "incident_id", null: false
     t.text "notes"
-    t.string "incident_status"
+    t.string "status"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -136,7 +136,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string "property_reference"
+    t.string "reference"
     t.string "cadastral_reference"
     t.string "kind"
     t.string "address"
@@ -145,12 +145,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.string "state"
     t.string "country"
     t.string "postal_code"
-    t.string "total_area"
-    t.string "covered_area"
+    t.integer "total_area"
+    t.integer "covered_area"
     t.integer "rooms"
     t.integer "bathrooms"
     t.string "amenities"
-    t.string "price"
+    t.integer "price"
     t.string "price_currency"
     t.text "notes"
     t.bigint "user_id", null: false
@@ -164,13 +164,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
   create_table "settlements", force: :cascade do |t|
     t.bigint "property_id", null: false
     t.bigint "bill_id", null: false
-    t.string "others_income_amount"
+    t.integer "others_income_amount"
     t.string "others_income_amount_curreny"
     t.string "others_income_concept"
-    t.string "others_expense_amount"
+    t.integer "others_expense_amount"
     t.string "others_expense_amount_currency"
     t.string "others_expense_concept"
-    t.string "amount"
+    t.integer "amount"
     t.string "amount_currency"
     t.string "payment_method"
     t.text "notes"
@@ -192,7 +192,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "phone"
+    t.integer "phone"
     t.string "role"
     t.string "agency_name"
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -12,6 +12,6 @@ class Bill < ApplicationRecord
   validates :amount, numericality: true, allow_blank: true
 
   def reference
-    "#{property.property_reference} #{kind} #{concept} Monto: #{amount}"
+    "#{property.reference} #{kind} #{concept} Monto: #{amount}"
   end
 end
