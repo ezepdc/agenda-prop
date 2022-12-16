@@ -7,3 +7,6 @@
 2022-12-13 17:37:23.978 CET [27310] ERROR:  database "agenda_prop_development" is being accessed by other users
 2022-12-13 17:37:23.978 CET [27310] DETAIL:  There is 1 other session using the database.
 2022-12-13 17:37:23.978 CET [27310] STATEMENT:  DROP DATABASE IF EXISTS "agenda_prop_development"
+2022-12-16 19:34:54.891 CET [33992] ERROR:  null value in column "user_id" of relation "contacts" violates not-null constraint
+2022-12-16 19:34:54.891 CET [33992] DETAIL:  Failing row contains (4, Terry, Weber, jonathon@beahan.org, 80113866, Totam numquam dolor., null, 2022-12-16 18:34:54.890838, 2022-12-16 18:34:54.890838, 2).
+2022-12-16 19:34:54.891 CET [33992] STATEMENT:  INSERT INTO "contacts" ("first_name", "last_name", "email", "phone", "notes", "user_id", "created_at", "updated_at", "kind") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"

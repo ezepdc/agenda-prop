@@ -12,18 +12,17 @@ Incident.destroy_all
 Settlement.destroy_all
 
 puts "Creating..."
-i = 1
+user = User.create(
+  first_name: "Ezequiel",
+  email: "epuyosdacosta@gmail.com",
+  agency_name: "Agenda prop",
+  password: "Agendaprop+23"
+)
+puts "User with id: #{user.id} has been created"
 
-11.times do
-  puts i
-  user = User.create(
-    first_name: "Ezequiel",
-    email: "epuyosdacosta@gmail.com",
-    agency_name: "Agenda prop",
-    password: "Agendaprop+23"
-  )
-  puts "User with id: #{user.id} has been created"
-
+11.times do |index|
+  index += 1
+  puts index
   owner = Contact.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -31,7 +30,7 @@ i = 1
     phone: Faker::Number.number(digits: 8),
     kind: "owner",
     notes: Faker::Lorem.sentence(word_count: 3),
-    user_id: 1
+    user: user
   )
   puts "Owner with id: #{owner.id} has been created"
 
@@ -42,7 +41,7 @@ i = 1
     phone: Faker::Number.number(digits: 8),
     kind: "tenant",
     notes: Faker::Lorem.sentence(word_count: 3),
-    user_id: 1
+    user: user
   )
   puts "Tenant with id: #{tenant.id} has been created"
 
@@ -53,7 +52,7 @@ i = 1
     phone: Faker::Number.number(digits: 8),
     kind: ["guarantor", "tenant", "owner", "supplier"].sample,
     notes: Faker::Lorem.sentence(word_count: 3),
-    user_id: 1
+    user: user
   )
   puts "Contact with id: #{contact.id} has been created"
 
@@ -76,7 +75,7 @@ i = 1
     price_currency: "USD",
     notes: Faker::Books::CultureSeries.culture_ship,
     owner_id: 1,
-    user_id: 1
+    user: user
     # photo.attach(filename: 'photo.jpg', io: URI.open('https://loremflickr.com/400/400/house'))
   )
   puts "Property with id: #{property.id} has been created"
@@ -84,20 +83,20 @@ i = 1
   bill = Bill.create(
     bill_date: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now),
     kind: ["payout", "collection"].sample,
-    property_id: i,
-    contact_id: i,
+    property_id: index,
+    contact_id: index,
     amount: rand(400..800),
     amount_currency: "USD",
     concept: Faker::Lorem.sentence(word_count: 3),
     payment_method: ["Efectivo", "Transferencia"].sample,
     notes: Faker::Lorem.paragraph(sentence_count: 2),
-    user_id: 1
+    user: user
   )
   puts "Bill with id: #{bill.id} has been created"
 
   contract = Contract.create(
     kind: Faker::Lorem.word,
-    property_id: i,
+    property_id: index,
     start_date: Faker::Time.between(from: DateTime.now - 20, to: DateTime.now),
     end_date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1095),
     base_price: rand(300..1000),
@@ -110,51 +109,50 @@ i = 1
     security_deposit_amount_currency: "USD",
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     tenant_id: 2,
-    guarantor_id: i,
-    user_id: 1
+    guarantor_id: index,
+    user: user
   )
   puts "Contract with id: #{contract.id} has been created"
 
   contract_price = ContractPrice.create(
-    contract_id: i,
+    contract_id: index,
     start_date: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now),
     end_date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30),
     price: rand(300..1000),
     price_currency: "USD",
-    user_id: 1
+    user: user
   )
   puts "Contract price with id: #{contract_price.id} has been created"
 
   incident = Incident.create(
-    property_id: i,
-    contact_id: i,
+    property_id: index,
+    contact_id: index,
     kind: Faker::Lorem.word,
     description: Faker::Lorem.paragraph(sentence_count: 2),
-    user_id: 1
+    user: user
     # document.attach(Faker::LoremFlickr.image(size: "400x400", search_terms: ['house']))
   )
   puts "Incident with id: #{incident.id} has been created"
 
   incident_update = IncidentUpdate.create(
-    incident_id: i,
+    incident_id: index,
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     status: ["pending", "doing", "rejected", "done"].sample,
-    user_id: 1
+    user: user
     # documents: Faker::LoremFlickr.image(size: "400x400", search_terms: ['house'])
   )
   puts "Incident updates with id: #{incident_update.id} has been created"
 
   settlement = Settlement.create(
-    property_id: i,
-    bill_id: i,
+    property_id: index,
+    bill_id: index,
     amount: rand(400..800),
     amount_currency: "USD",
     payment_method: ["Efectivo", "Transferencia"].sample,
     notes: Faker::Lorem.paragraph(sentence_count: 2),
-    user_id: 1
+    user: user
   )
   puts "Settlement with id: #{settlement.id} has been created"
-  i += 1
 end
 
 puts "Finished!"
