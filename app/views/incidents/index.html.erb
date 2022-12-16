@@ -1,15 +1,22 @@
 <div class="container">
   <div class="my-3">
-    <h1 class="d-flex justify-content-between">Incidencias <%= params[:query] %><%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-auto" %></h1>
-    <nav class="nav nav-pills flex-column flex-sm-row">
-      <%= link_to "Pendientes", incidents_path(query: "Pendiente"), class: "flex-sm-fill text-sm-center nav-link #{'active' if params[:query] == 'Pendiente'}" %>
-      <%= link_to "En curso", incidents_path(query: "En curso"), class: "flex-sm-fill text-sm-center nav-link #{'active' if params[:query] == 'En curso'}" %>
-      <%= link_to "Rechazadas", incidents_path(query: "Rechazada"), class: "flex-sm-fill text-sm-center nav-link #{'active' if params[:query] == 'Rechazada'}" %>
-      <%= link_to "Finalizadas", incidents_path(query: "Finalizada"), class: "flex-sm-fill text-sm-center nav-link #{'active' if params[:query] == 'Finalizada'}" %>
-    </nav>
+    <ul class="nav nav-tabs nav-fill shadow rounded-top">
+      <li class="nav-item">
+        <%= link_to "Pendientes", incidents_path(query: "Pendiente"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'Pendiente' ? 'active' : 'nav-link-gray'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "En curso", incidents_path(query: "En curso"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'En curso' ? 'active' : 'nav-link-gray'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Rechazadas", incidents_path(query: "Rechazada"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'Rechazada' ? 'active' : 'nav-link-gray'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Finalizadas", incidents_path(query: "Finalizada"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'Finalizada' ? 'active' : 'nav-link-gray'}" %>
+      </li>
+    </ul>
   </div>
   <div class="my-3">
-    <h1 class="d-flex justify-content-between">Incidencias <%= params[:query] %><%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-auto" %></h1>
+    <h1 class="d-flex justify-content-end"><%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-3" %></h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <% if @incident_updates %>
         <% @incident_updates.each do |incident_update| %>

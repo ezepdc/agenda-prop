@@ -7,7 +7,7 @@
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
 $body-bg:                 $light-gray;
-$font-size-base: 1rem;
+$font-size-base:          1rem;
 
 // Colors
 $body-color: $gray;
@@ -17,9 +17,14 @@ $secondary:  $green;
 // $info:       $yellow;
 // $danger:     $red;
 // $warning:    $orange;
-$nav-tabs-link-active-color:        $green;
-$nav-link-hover-color:              $darkgray;
 
+// Nav
+$nav-tabs-link-active-color:        $green;
+$nav-tabs-link-active-bg:           $white;
+$nav-link-hover-color:              $green;
+$nav-tabs-link-hover-border-color:  $green;
+$nav-tabs-border-color:             $green;
+$nav-tabs-link-active-border-color: $green $green $nav-tabs-link-active-bg;
 
 // Buttons & inputs' radius
 $border-radius:    12px;
