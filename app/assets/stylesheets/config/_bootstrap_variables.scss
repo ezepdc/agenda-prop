@@ -22,9 +22,10 @@ $secondary:  $green;
 $nav-tabs-link-active-color:        $green;
 $nav-tabs-link-active-bg:           $white;
 $nav-link-hover-color:              $green;
-$nav-tabs-link-hover-border-color:  $green;
-$nav-tabs-border-color:             $green;
-$nav-tabs-link-active-border-color: $green $green $nav-tabs-link-active-bg;
+$nav-tabs-link-hover-border-color:  $nav-tabs-link-active-bg $nav-tabs-link-active-bg $yellow;
+$nav-tabs-border-color:             $nav-tabs-link-active-bg;
+$nav-tabs-link-active-border-color: $nav-tabs-link-active-bg $nav-tabs-link-active-bg $green;
+$nav-tabs-border-width:             4px;
 
 // Buttons & inputs' radius
 $border-radius:    12px;
