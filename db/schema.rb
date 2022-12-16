@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_16_160342) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_16_181559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,7 +45,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_160342) do
   create_table "bills", force: :cascade do |t|
     t.bigint "property_id", null: false
     t.date "bill_date"
-    t.string "kind"
     t.bigint "contact_id", null: false
     t.integer "amount"
     t.string "amount_currency"
@@ -55,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_160342) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "kind"
     t.index ["contact_id"], name: "index_bills_on_contact_id"
     t.index ["property_id"], name: "index_bills_on_property_id"
     t.index ["user_id"], name: "index_bills_on_user_id"
@@ -65,11 +65,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_160342) do
     t.string "last_name"
     t.string "email"
     t.integer "phone"
-    t.string "kind"
     t.text "notes"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "kind"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 

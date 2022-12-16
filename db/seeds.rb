@@ -29,7 +29,7 @@ i = 1
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     phone: Faker::Number.number(digits: 8),
-    kind: "Propietario",
+    kind: "owner",
     notes: Faker::Lorem.sentence(word_count: 3),
     user_id: 1
   )
@@ -40,7 +40,7 @@ i = 1
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     phone: Faker::Number.number(digits: 8),
-    kind: "Inquilino",
+    kind: "tenant",
     notes: Faker::Lorem.sentence(word_count: 3),
     user_id: 1
   )
@@ -51,7 +51,7 @@ i = 1
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     phone: Faker::Number.number(digits: 8),
-    kind: ["Propietario", "Inquilino", "Proveedor"].sample,
+    kind: ["guarantor", "tenant", "owner", "supplier"].sample,
     notes: Faker::Lorem.sentence(word_count: 3),
     user_id: 1
   )
@@ -83,7 +83,7 @@ i = 1
 
   bill = Bill.create(
     bill_date: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now),
-    kind: ["Cobro", "Pago"].sample,
+    kind: ["payout", "collection"].sample,
     property_id: i,
     contact_id: i,
     amount: rand(400..800),

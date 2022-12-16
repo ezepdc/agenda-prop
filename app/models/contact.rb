@@ -6,9 +6,9 @@ class Contact < ApplicationRecord
   has_many :incidents, dependent: :destroy
   has_many :bills, dependent: :destroy
   validates_presence_of :first_name
-  validates :kind, inclusion: { in: %w(Garante Inquilino Propietario Proveedor) }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   validates :phone, numericality: true, allow_blank: true
+  enum kind: [:guarantor, :tenant, :owner, :supplier]
 
   def full_name
     "#{first_name} #{last_name}"
