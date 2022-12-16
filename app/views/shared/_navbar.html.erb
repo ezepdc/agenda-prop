@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+<div class="navbar navbar-expand-sm navbar-light shadow navbar-lewagon sticky-top">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "agenda-prop.png" %>
@@ -14,7 +14,7 @@
           <li class="nav-item">
             <%= link_to "Dashboard", "/dashboard", class: "nav-link #{is_active('dashboard')}" %></li>
             <%= link_to "Propiedades", "/properties", class: "nav-link #{is_active('properties')}" %></li>
-            <%= link_to "Incidencias", "/incidents?query=Pendiente", class: "nav-link #{is_active('incidents')}" %></li>
+            <%= link_to "Incidencias", "/incidents?query=pending", class: "nav-link #{is_active('incidents')}" %></li>
             <%= link_to "Contactos", "/contacts", class: "nav-link #{is_active('contacts')}" %></li>
             <%= link_to "Transacciones", "/bills", class: "nav-link #{is_active('bills')}" %></li>
             <%= link_to "Liquidaciones", "/settlements", class: "nav-link #{is_active('settlements')}" %></li>
@@ -30,9 +30,11 @@
           </li>
         </ul>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-link" %>
-        </li>
+        <ul class="nav nav-tabs mx-3">
+          <li class="nav-item">
+            <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-link nav-link-gray" %>
+          </li>
+        </ul>
       <% end %>
     </div>
   </div>

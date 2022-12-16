@@ -138,7 +138,7 @@ i = 1
   incident_update = IncidentUpdate.create(
     incident_id: i,
     notes: Faker::Lorem.paragraph(sentence_count: 2),
-    status: ["Pendiente", "En curso", "Rechazada", "Finalizada"].sample,
+    status: ["pending", "doing", "rejected", "done"].sample,
     user_id: 1
     # documents: Faker::LoremFlickr.image(size: "400x400", search_terms: ['house'])
   )

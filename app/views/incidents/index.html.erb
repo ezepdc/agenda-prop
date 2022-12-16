@@ -1,21 +1,19 @@
 <div class="container">
-  <div class="my-3">
-    <ul class="nav nav-tabs nav-fill shadow rounded-top">
+    <ul class="nav nav-tabs nav-fill shadow fixed-top">
       <li class="nav-item">
-        <%= link_to "Pendientes", incidents_path(query: "Pendiente"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'Pendiente' ? 'active' : 'nav-link-gray'}" %>
+        <%= link_to "Pendientes", incidents_path(query: "pending"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'pending' ? 'active' : 'nav-link-gray'}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "En curso", incidents_path(query: "En curso"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'En curso' ? 'active' : 'nav-link-gray'}" %>
+        <%= link_to "En curso", incidents_path(query: "doing"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'doing' ? 'active' : 'nav-link-gray'}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Rechazadas", incidents_path(query: "Rechazada"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'Rechazada' ? 'active' : 'nav-link-gray'}" %>
+        <%= link_to "Rechazadas", incidents_path(query: "rejected"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'rejected' ? 'active' : 'nav-link-gray'}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Finalizadas", incidents_path(query: "Finalizada"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'Finalizada' ? 'active' : 'nav-link-gray'}" %>
+        <%= link_to "Finalizadas", incidents_path(query: "done"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'done' ? 'active' : 'nav-link-gray'}" %>
       </li>
     </ul>
-  </div>
-  <div class="my-3">
+  <div class="incident">
     <h1 class="d-flex justify-content-end"><%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-3" %></h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <% if @incident_updates %>
