@@ -2,6 +2,9 @@ class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :edit, :update, :destroy]
 
   def index
+# https://blog.saeloun.com/2022/01/05/how-to-use-enums-in-rails.html
+
+
     @incidents = Incident.all
     if params[:query] == "Todas"
       @incidents = Incident.all
