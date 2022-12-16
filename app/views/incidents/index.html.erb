@@ -1,53 +1,57 @@
 <div class="container">
-    <div class="my-3">
-    <%= form_with url: incidents_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a incident status"
-      %>
-      <%= submit_tag "Search", class: "btn btn-flat" %>
-    <% end %>
-  </div>
-  <% if @incident_updates %>
-  <% @incident_updates.each do |incident_update| %>
-    <%= incident_update.incident.property.reference %>
-  <% end %>
-  <% end %>
   <div class="my-3">
-    <h1 class="d-flex justify-content-between">Todos las incidencias <%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-auto" %></h1>
-    <h4>Pendientes</h4>
+    <h1 class="d-flex justify-content-between">Incidencias <%= params[:query] %><%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-auto" %></h1>
+    <nav class="nav nav-pills flex-column flex-sm-row">
+      <%= link_to "Pendientes", incidents_path(query: "Pendiente"), class: "flex-sm-fill text-sm-center nav-link #{'active' if params[:query] == 'Pendiente'}" %>
+      <%= link_to "En curso", incidents_path(query: "En curso"), class: "flex-sm-fill text-sm-center nav-link #{'active' if params[:query] == 'En curso'}" %>
+      <%= link_to "Rechazadas", incidents_path(query: "Rechazada"), class: "flex-sm-fill text-sm-center nav-link #{'active' if params[:query] == 'Rechazada'}" %>
+      <%= link_to "Finalizadas", incidents_path(query: "Finalizada"), class: "flex-sm-fill text-sm-center nav-link #{'active' if params[:query] == 'Finalizada'}" %>
+    </nav>
+  </div>
+  <div class="my-3">
+    <h1 class="d-flex justify-content-between">Incidencias <%= params[:query] %><%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-auto" %></h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
-      <% @incidents.each do |incident| %>
-        <% if incident.status == 'Pendiente' %>
-          <%= render "incident", incident: incident %>
+      <% if @incident_updates %>
+        <% @incident_updates.each do |incident_update| %>
+          <div class="col">
+            <div class="card shadow p-3 mb-5">
+              <div class="card-body">
+                <h5 class="card-title d-flex justify-content-between">
+                  Número: <%= incident_update.incident.id %>
+                  <%= link_to "Ver incidencia", incident_path(incident_update.incident), class:"btn btn-primary" %>
+                </h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Ultimo estado: <%= incident_update.status %></li>
+                <li class="list-group-item">Creada: <%= incident_update.incident.created_at.strftime("%A, %e %B %Y") %></li>
+                <li class="list-group-item">Propiedad ref.: <%= incident_update.incident.property.reference %></li>
+                <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident_update.incident.contact.full_name %></li>
+                <li class="list-group-item">Creada por: <%= incident_update.incident.user.first_name %></li>
+                <li class="list-group-item">Tipo de incidente: <%= incident_update.incident.kind %></li>
+              </ul>
+            </div>
+          </div>
         <% end %>
-      <% end %>
-    </div>
-    <hr>
-    <h4>En curso</h4>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-      <% @incidents.each do |incident| %>
-        <% if incident.status == 'En curso' %>
-          <%= render "incident", incident: incident %>
-        <% end %>
-      <% end %>
-    </div>
-    <hr>
-    <h4>Rechazadas</h4>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-      <% @incidents.each do |incident| %>
-        <% if incident.status == 'Rechazada' %>
-          <%= render "incident", incident: incident %>
-        <% end %>
-      <% end %>
-    </div>
-    <hr>
-    <h4>Finalizadas</h4>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-      <% @incidents.each do |incident| %>
-        <% if incident.status == 'Finalizada' %>
-          <%= render "incident", incident: incident %>
+      <% else %>
+        <% @incidents.each do |incident| %>
+          <div class="col">
+            <div class="card shadow p-3 mb-5">
+              <div class="card-body">
+                <h5 class="card-title d-flex justify-content-between">
+                  Número: <%= incident.id %>
+                  <%= link_to "Ver incidencia", incident_path(incident), class:"btn btn-primary" %>
+                </h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Ultimo estado: <%= incident.status %></li>
+                <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
+                <li class="list-group-item">Propiedad ref.: <%= incident.property.reference %></li>
+                <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
+                <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
+                <li class="list-group-item">Tipo de incidente: <%= incident.kind %></li>
+              </ul>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
@@ -55,94 +59,3 @@
   <hr>
   <%= link_to "Volver", :back, class: "btn btn-dark" %>
 </div>
-
-
-
-
-<% if false %>
-<div class="container">
-  <div class="my-3">
-    <h1 class="d-flex justify-content-between">Todos las incidencias <%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-auto" %></h1>
-    <div class="row align-items-start">
-      <div class="col">
-        <h4>Pendientes</h4>
-          <% @incidents.each do |incident| %>
-          <% if IncidentUpdate.where(incident_id: incident.id).last %>
-          <% else %>
-            <p>Número: <%= incident.id %></p>
-            <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
-            <p>Propiedad ref.: <%= incident.property.reference %></p>
-            <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
-            <p>Creada por: <%= incident.user.first_name %></p>
-            <p>Tipo de incidente: <%= incident.kind %></p>
-            <p><%= link_to "Ver incidencia", incident_path(incident) %></p>
-          <% end %>
-        <% end %>
-        <% @incidents.each do |incident| %>
-          <% if IncidentUpdate.where(incident_id: incident.id).last %>
-            <% if IncidentUpdate.where(incident_id: incident.id).last.status == 'Pendiente'%>
-              <p>Número: <%= incident.id %></p>
-              <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
-              <p>Propiedad ref.: <%= incident.property.reference %></p>
-              <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
-              <p>Creada por: <%= incident.user.first_name %></p>
-              <p>Tipo de incidente: <%= incident.kind %></p>
-              <p><%= link_to "Ver incidencia", incident_path(incident) %></p>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="col">
-        <h4>En curso</h4>
-        <% @incidents.each do |incident| %>
-          <% if IncidentUpdate.where(incident_id: incident.id).last %>
-            <% if IncidentUpdate.where(incident_id: incident.id).last.status == 'En curso'%>
-              <p>Número: <%= incident.id %></p>
-              <p>Creada: <%= incident.created_at %></p>
-              <p>Propiedad ref.: <%= incident.property.reference %></p>
-              <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
-              <p>Creada por: <%= incident.user.first_name %></p>
-              <p>Tipo de incidente: <%= incident.kind %></p>
-              <p><%= link_to "Ver incidencia", incident_path(incident) %></p>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="col">
-        <h4>Rechazada</h4>
-        <% @incidents.each do |incident| %>
-          <% if IncidentUpdate.where(incident_id: incident.id).last %>
-            <% if IncidentUpdate.where(incident_id: incident.id).last.status == 'Rechazada'%>
-            <p>Número: <%= incident.id %></p>
-            <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
-            <p>Propiedad ref.: <%= incident.property.reference %></p>
-            <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
-            <p>Creada por: <%= incident.user.first_name %></p>
-            <p>Tipo de incidente: <%= incident.kind %></p>
-            <p><%= link_to "Ver incidencia", incident_path(incident) %></p>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="col">
-        <h4>Finalizada</h4>
-        <% @incidents.each do |incident| %>
-          <% if IncidentUpdate.where(incident_id: incident.id).last %>
-            <% if IncidentUpdate.where(incident_id: incident.id).last.status == 'Finalizada'%>
-            <p>Número: <%= incident.id %></p>
-            <p>Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></p>
-            <p>Propiedad ref.: <%= incident.property.reference %></p>
-            <p>Contacto que solicitó la incidencia: <%= incident.contact.full_name %></p>
-            <p>Creada por: <%= incident.user.first_name %></p>
-            <p>Tipo de incidente: <%= incident.kind %></p>
-            <p><%= link_to "Ver incidencia", incident_path(incident) %></p>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <%= link_to "Volver", :back, class: "btn btn-dark" %>
-</div>
-<% end %>

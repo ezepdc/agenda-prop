@@ -3,7 +3,12 @@ class IncidentsController < ApplicationController
 
   def index
     @incidents = Incident.all
-    if params[:query].present?
+    if params[:query] == "Todas"
+      @incidents = Incident.all
+    elsif params[:query].present? && params[:query] == "Pendiente"
+      @incident_updates = IncidentUpdate.where(status: params[:query]) # Trae todas las pendientes pero se necesitan los ultimos updates que sean pendientes
+      @incidents = Incident.all # Para filtrar los incidentes que no tienen updates. El problema es que trae todos y no el ultimo
+    else
       @incident_updates = IncidentUpdate.where(status: params[:query])
     end
   end
