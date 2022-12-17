@@ -76,8 +76,11 @@ puts "User with id: #{user.id} has been created"
     notes: Faker::Books::CultureSeries.culture_ship,
     owner_id: 1,
     user: user
-    # photo.attach(filename: 'photo.jpg', io: URI.open('https://loremflickr.com/400/400/house'))
   )
+  file = URI.open('https://loremflickr.com/400/400/house')
+  property.photos.attach(io: file, filename: "photo#{index}.jpg")
+  file = URI.open('https://loremflickr.com/400/400/house')
+  property.photos.attach(io: file, filename: "photo#{index+1}.jpg")
   puts "Property with id: #{property.id} has been created"
 
   bill = Bill.create(
@@ -130,8 +133,9 @@ puts "User with id: #{user.id} has been created"
     kind: Faker::Lorem.word,
     description: Faker::Lorem.paragraph(sentence_count: 2),
     user: user
-    # document.attach(Faker::LoremFlickr.image(size: "400x400", search_terms: ['house']))
   )
+  file = URI.open("#{Faker::LoremFlickr.image(size: "400x400", search_terms: ['house'])}")
+  incident.documents.attach(io: file, filename: "document#{index}.jpg")
   puts "Incident with id: #{incident.id} has been created"
 
   incident_update = IncidentUpdate.create(
@@ -139,8 +143,9 @@ puts "User with id: #{user.id} has been created"
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     status: ["pending", "doing", "rejected", "done"].sample,
     user: user
-    # documents: Faker::LoremFlickr.image(size: "400x400", search_terms: ['house'])
   )
+  file = URI.open("#{Faker::LoremFlickr.image(size: "400x400", search_terms: ['house'])}")
+  incident_update.documents.attach(io: file, filename: "document#{index}.jpg")
   puts "Incident updates with id: #{incident_update.id} has been created"
 
   settlement = Settlement.create(
