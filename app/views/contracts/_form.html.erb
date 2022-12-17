@@ -4,14 +4,14 @@
       <%= f.input :kind, required: true %>
       <%= f.association :property, label_method: :reference, prompt: true , required: true %>
       <p class="d-flex justify-content-end"><%= link_to "Crear propiedad", new_property_path, target: :_blank %></p>
-      <%= f.association :tenant, class_name: "Contact", collection: Contact.where(kind: 'Inquilino'), label_method: :full_name, prompt: true , required: true %>
+      <%= f.association :tenant, class_name: "Contact", collection: Contact.tenant, label_method: :full_name, prompt: true , required: true %>
       <p class="d-flex justify-content-end"><%= link_to "Crear inquilino", new_contact_path, target: :_blank %></p>
       <%= f.input :start_date %>
       <%= f.input :end_date %>
       <%= f.input :base_price %>
       <%= f.input :base_price_currency %>
       <%= f.input :comision %>
-      <%= f.association :guarantor, class_name: "Contact", collection: Contact.where(kind: 'Garante'), label_method: :full_name, prompt: true , required: true %>
+      <%= f.association :guarantor, class_name: "Contact", collection: Contact.guarantor, label_method: :full_name, prompt: true , required: true %>
       <p class="d-flex justify-content-end"><%= link_to "Crear garante", new_contact_path, target: :_blank %></p>
       <%= f.input :guarantor_identity_kind %>
       <%= f.input :guarantor_identity_number %>

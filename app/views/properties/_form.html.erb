@@ -2,7 +2,7 @@
   <div class="col-12 col-md-10 col-lg-8 lh-lg text-muted">
     <%= simple_form_for(@property) do |f| %>
       <%= f.input :reference, required: true %>
-      <%= f.association :owner, class_name: "Contact",  collection: Contact.where(kind: 'Propietario'), label_method: :full_name, prompt: true , required: true %>
+      <%= f.association :owner, class_name: "Contact",  collection: Contact.owner, label_method: :full_name, prompt: true , required: true %>
       <p class="d-flex justify-content-end"><%= link_to "Crear propietario", new_contact_path, target: :_blank %></p>
       <%= f.input :cadastral_reference %>
       <%= f.input :kind %>
