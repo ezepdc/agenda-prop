@@ -16,29 +16,8 @@
   <div class="incident">
     <h1 class="d-flex justify-content-end"><%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-3" %></h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
-      <% if @incident_updates %>
-        <% @incident_updates.each do |incident_update| %>
-          <div class="col">
-            <div class="card shadow p-3 mb-5">
-              <div class="card-body">
-                <h5 class="card-title d-flex justify-content-between">
-                  Número: <%= incident_update.incident.id %>
-                  <%= link_to "Ver incidencia", incident_path(incident_update.incident), class:"btn btn-primary" %>
-                </h5>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Ultimo estado: <%= incident_update.status %></li>
-                <li class="list-group-item">Creada: <%= l(incident_update.incident.created_at, format: :long) %></li>
-                <li class="list-group-item">Propiedad ref.: <%= incident_update.incident.property.reference %></li>
-                <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident_update.incident.contact.full_name %></li>
-                <li class="list-group-item">Creada por: <%= incident_update.incident.user.first_name %></li>
-                <li class="list-group-item">Tipo de incidente: <%= incident_update.incident.kind %></li>
-              </ul>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <% @incidents.each do |incident| %>
+      <% @incidents.each do |incident| %>
+        <% if incident.status == params[:query] %>
           <div class="col">
             <div class="card shadow p-3 mb-5">
               <div class="card-body">
