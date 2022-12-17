@@ -5,10 +5,10 @@
         <h1 class="d-flex justify-content-between">Transacción<%= link_to "Ver todas las transacciones", bills_path, class:"btn btn-light border-dark my-auto" %></h1>
         <div class="card shadow p-3 mb-5">
           <div class="card-body">
-            <h5 class="card-title"><%= @bill.bill_date.strftime("%A, %e %B %Y") %> <%= @bill.property.reference %></h5>
+            <h5 class="card-title"><%= l(@bill.bill_date, format: :long) %> <%= @bill.property.reference %></h5>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Fecha: <%= @bill.bill_date.strftime("%A, %e %B %Y") %></li>
+            <li class="list-group-item">Fecha: <%= l(@bill.bill_date, format: :long) %></li>
             <li class="list-group-item">Propiedad ref.: <%= @bill.property.reference %></li>
             <li class="list-group-item">Tipo: <%= @bill.kind %></li>
             <li class="list-group-item">Contacto: <%= @bill.contact.full_name %></li>
@@ -21,7 +21,7 @@
             <li class="list-group-item d-flex justify-content-between">
               Liquidación:
               <% if @settlement %>
-                <%= @settlement.created_at.strftime("%A, %e %B %Y") %> Por: <%= @settlement.user.first_name %>
+                <%= l(@settlement.created_at, format: :long) %> Por: <%= @settlement.user.first_name %>
                 <%= link_to "Ver liquidación", settlement_path(@settlement), class:"btn btn-primary " %>
               <% else %>
                 Pendiente

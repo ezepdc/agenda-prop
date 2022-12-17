@@ -42,7 +42,7 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Tipo de contrato: <%= contract.kind %></li>
                 <li class="list-group-item">Inquilino: <%= contract.tenant.full_name %></li>
-                <li class="list-group-item  d-flex justify-content-between">Desde: <%= contract.start_date.strftime("%d/%m/%Y") %> hasta: <%= contract.end_date.strftime("%d/%m/%Y") %>  <%= link_to "Ver contrato", contract_path(contract), class:"btn btn-primary" %></li>
+                <li class="list-group-item  d-flex justify-content-between">Desde: <%= l(contract.start_date, format: :long) %> hasta: <%= l(contract.end_date, format: :long) %>  <%= link_to "Ver contrato", contract_path(contract), class:"btn btn-primary" %></li>
               </ul>
             <% end %>
             <hr>

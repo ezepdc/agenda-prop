@@ -28,7 +28,7 @@
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Ultimo estado: <%= incident_update.status %></li>
-                <li class="list-group-item">Creada: <%= incident_update.incident.created_at.strftime("%A, %e %B %Y") %></li>
+                <li class="list-group-item">Creada: <%= l(incident_update.incident.created_at, format: :long) %></li>
                 <li class="list-group-item">Propiedad ref.: <%= incident_update.incident.property.reference %></li>
                 <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident_update.incident.contact.full_name %></li>
                 <li class="list-group-item">Creada por: <%= incident_update.incident.user.first_name %></li>
@@ -49,7 +49,7 @@
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Ultimo estado: <%= incident.status %></li>
-                <li class="list-group-item">Creada: <%= incident.created_at.strftime("%A, %e %B %Y") %></li>
+                <li class="list-group-item">Creada: <%= l(incident.created_at, format: :long) %></li>
                 <li class="list-group-item">Propiedad ref.: <%= incident.property.reference %></li>
                 <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
                 <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>

@@ -7,12 +7,12 @@
           <div class="card shadow p-3 mb-5">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-between">
-                <%= bill.bill_date.strftime("%A, %e %B %Y") %> <%= bill.property.reference %>
+                <%= l(bill.bill_date, format: :long) %> <%= bill.property.reference %>
                 <%= link_to "Ver transacción", bill_path(bill), class:"btn btn-primary" %>
               </h5>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Fecha: <%= bill.bill_date.strftime("%A, %e %B %Y") %></li>
+              <li class="list-group-item">Fecha: <%= l(bill.bill_date, format: :long) %></li>
               <li class="list-group-item">Propiedad ref.: <%= bill.property.reference %></li>
               <li class="list-group-item">Tipo: <%= bill.kind %></li>
               <li class="list-group-item">Contacto: <%= bill.contact.full_name %></li>

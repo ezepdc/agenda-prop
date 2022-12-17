@@ -32,6 +32,6 @@
 en:
   hello: "Hello world"
 
-  activerecord:
-    attributes:
-      pending: 'Pendiente'
+  time:
+    formats:
+      long: "%A, %e %B %Y"
