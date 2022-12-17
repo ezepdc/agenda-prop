@@ -2,13 +2,14 @@ require "open-uri"
 require "faker"
 
 puts "Cleaning database..."
+User.destroy.all
+Contact.destroy_all
 Property.destroy_all
 Bill.destroy_all
-Contact.destroy_all
-ContractPrice.destroy_all
 Contract.destroy_all
-IncidentUpdate.destroy_all
+ContractPrice.destroy_all
 Incident.destroy_all
+IncidentUpdate.destroy_all
 Settlement.destroy_all
 
 puts "Creating..."
