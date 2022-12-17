@@ -2,7 +2,7 @@ class SettlementsController < ApplicationController
   before_action :set_settlement, only: [:show, :edit, :update, :destroy]
 
   def index
-    @settlements = Settlement.all
+    @pagy, @settlements = pagy(Settlement.all)
   end
 
   def show

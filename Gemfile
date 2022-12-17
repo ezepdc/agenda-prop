@@ -5,6 +5,7 @@ gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
 gem 'faker'
 gem 'open-uri', '~> 0.2.0'
+gem 'pagy', '~> 5.10'
 
 ruby "3.1.2"
 

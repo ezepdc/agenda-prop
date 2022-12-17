@@ -21,6 +21,7 @@
       <% end %>
     </div>
   </div>
+  <%== render partial: 'shared/pagy', locals: {pagy: @pagy} %>
   <hr>
   <%= link_to "Volver", :back, class: "btn btn-dark" %>
 </div>

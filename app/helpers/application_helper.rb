@@ -1,5 +1,6 @@
 module ApplicationHelper
-
+  include Pagy::Frontend
+  
   def class_for_nav(status, actual = params[:controller])
     if actual == status
       "active"

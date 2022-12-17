@@ -2,7 +2,7 @@ class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contracts = Contract.all
+    @pagy, @contracts = pagy(Contract.all)
   end
 
   def show

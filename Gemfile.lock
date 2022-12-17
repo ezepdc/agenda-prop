@@ -170,6 +170,8 @@ GEM
       time
       uri
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     pg (1.4.5)
     public_suffix (5.0.0)
     puma (5.6.5)
@@ -292,6 +294,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   open-uri (~> 0.2.0)
+  pagy (~> 5.10)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)

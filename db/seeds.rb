@@ -20,7 +20,7 @@ user = User.create(
 )
 puts "User with id: #{user.id} has been created"
 
-11.times do |index|
+50.times do |index|
   index += 1
   puts index
   owner = Contact.create(
