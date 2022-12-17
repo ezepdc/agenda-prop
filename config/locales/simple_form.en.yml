@@ -89,13 +89,12 @@ en:
       bill:
         kind: 'Pago o cobro'
 
-
-
     helpers:
       submit:
         user:
           create: "Crear %{model}"
           update: "Guardar cambios"
+
 
     #   user:
     #     new:
@@ -112,4 +111,3 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
-

@@ -1,0 +1,17 @@
+<div class="col">
+  <div class="card shadow p-3 mb-5">
+    <div class="card-body">
+      <h5 class="card-title d-flex justify-content-between">
+        Número: <%= incident.id %>
+        <%= link_to "Ver incidencia", incident_path(incident), class:"btn btn-primary" %>
+      </h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Creada: <%= l(incident.created_at, format: :long) %></li>
+      <li class="list-group-item">Propiedad ref.: <%= incident.property.reference %></li>
+      <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
+      <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
+      <li class="list-group-item">Tipo de incidente: <%= incident.kind %></li>
+    </ul>
+  </div>
+</div>

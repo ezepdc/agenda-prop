@@ -32,6 +32,23 @@
 en:
   hello: "Hello world"
 
+  # enums:
+  #   incident_update:
+  #     status:
+  #       pending: Pendiente
+  #       moderator: "Moderator"
+  #       member: "Member"
+
   time:
     formats:
       long: "%A, %e %B %Y"
+
+  date:
+    order:
+      - day
+      - month
+      - year
+    formats:
+      long: "%e %B %Y"
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Augosto, Septiembre, Octubre, Noviembre, Diciembre]
