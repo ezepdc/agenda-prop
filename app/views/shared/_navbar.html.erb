@@ -12,12 +12,12 @@
       <% if user_signed_in? %>
         <ul class="nav nav-tabs mx-3">
           <li class="nav-item">
-            <%= link_to "Dashboard", "/dashboard", class: "nav-link #{is_active('dashboard')}" %></li>
-            <%= link_to "Propiedades", "/properties", class: "nav-link #{is_active('properties')}" %></li>
-            <%= link_to "Incidencias", "/incidents?query=pending", class: "nav-link #{is_active('incidents')}" %></li>
-            <%= link_to "Contactos", "/contacts", class: "nav-link #{is_active('contacts')}" %></li>
-            <%= link_to "Transacciones", "/bills", class: "nav-link #{is_active('bills')}" %></li>
-            <%= link_to "Liquidaciones", "/settlements", class: "nav-link #{is_active('settlements')}" %></li>
+            <%= link_to "Dashboard", "/dashboard", class: "nav-link #{class_for_nav("dashboard")}" %></li>
+            <%= link_to "Propiedades", "/properties", class: "nav-link #{class_for_nav('properties')}" %></li>
+            <%= link_to "Incidencias", "/incidents?query=pending", class: "nav-link #{class_for_nav('incidents')}" %></li>
+            <%= link_to "Contactos", "/contacts", class: "nav-link #{class_for_nav('contacts')}" %></li>
+            <%= link_to "Transacciones", "/bills", class: "nav-link #{class_for_nav('bills')}" %></li>
+            <%= link_to "Liquidaciones", "/settlements", class: "nav-link #{class_for_nav('settlements')}" %></li>
           </li>
         </ul>
         <ul class="navbar-nav">

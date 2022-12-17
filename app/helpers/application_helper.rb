@@ -1,10 +1,10 @@
 module ApplicationHelper
 
-  def is_active(status)
-    if params[:controller] == status
-      'active'
+  def class_for_nav(status, actual = params[:controller])
+    if actual == status
+      "active"
     else
-      'nav-link-gray'
+      "nav-link-gray"
     end
   end
 end

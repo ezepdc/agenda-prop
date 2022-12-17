@@ -1,16 +1,16 @@
 <div class="container">
     <ul class="nav nav-tabs nav-fill shadow fixed-top">
       <li class="nav-item">
-        <%= link_to "Pendientes", incidents_path(query: "pending"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'pending' ? 'active' : 'nav-link-gray'}" %>
+        <%= link_to "Pendientes", incidents_path(query: "pending"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("pending", params[:query])}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "En curso", incidents_path(query: "doing"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'doing' ? 'active' : 'nav-link-gray'}" %>
+        <%= link_to "En curso", incidents_path(query: "doing"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("doing", params[:query])}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Rechazadas", incidents_path(query: "rejected"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'rejected' ? 'active' : 'nav-link-gray'}" %>
+        <%= link_to "Rechazadas", incidents_path(query: "rejected"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("rejected", params[:query])}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Finalizadas", incidents_path(query: "done"), class: "flex-sm-fill text-sm-center nav-link #{params[:query] == 'done' ? 'active' : 'nav-link-gray'}" %>
+        <%= link_to "Finalizadas", incidents_path(query: "done"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("done", params[:query])}" %>
       </li>
     </ul>
   <div class="incident">
