@@ -9,7 +9,7 @@ class Bill < ApplicationRecord
   validates :concept, presence: true
   validates :payment_method, presence: true
   validates :amount, numericality: true, allow_blank: true
-  enum kind: [:payout, :collection]
+  enum kind: { payout: 0, collection: 1 }
 
   def reference
     "#{property.reference} #{kind} #{concept} Monto: #{amount}"
