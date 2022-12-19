@@ -19,6 +19,7 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.string :price_currency
       t.text :notes
       t.references :user, null: false, foreign_key: true
+      t.references :owner, foreign_key: { to_table: :contacts }
 
       t.timestamps
     end

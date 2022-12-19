@@ -8,6 +8,7 @@ class Contact < ApplicationRecord
   validates_presence_of :first_name
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   validates :phone, numericality: true, allow_blank: true
+  validates :kind, presence: true
   enum kind: { guarantor: 0, tenant: 1, owner: 2, supplier: 3 }
   def full_name
     "#{first_name} #{last_name}"

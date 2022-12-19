@@ -15,7 +15,9 @@ class CreateContracts < ActiveRecord::Migration[7.0]
       t.string :security_deposit_amount_currency
       t.text :notes
       t.references :user, null: false, foreign_key: true
-
+      t.references :tenant, foreign_key: { to_table: :contacts }
+      t.references :guarantor, foreign_key: { to_table: :contacts }
+      
       t.timestamps
     end
   end

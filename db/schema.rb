@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_16_181559) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,15 +46,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_181559) do
     t.bigint "property_id", null: false
     t.date "bill_date"
     t.bigint "contact_id", null: false
-    t.integer "amount"
-    t.string "amount_currency"
+    t.integer "price_cents"
+    t.string "price_currency"
     t.string "concept"
     t.string "payment_method"
+    t.integer "kind"
     t.text "notes"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "kind"
     t.index ["contact_id"], name: "index_bills_on_contact_id"
     t.index ["property_id"], name: "index_bills_on_property_id"
     t.index ["user_id"], name: "index_bills_on_user_id"
@@ -65,11 +65,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_181559) do
     t.string "last_name"
     t.string "email"
     t.integer "phone"
+    t.integer "kind"
     t.text "notes"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "kind"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
@@ -101,10 +101,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_181559) do
     t.string "security_deposit_amount_currency"
     t.text "notes"
     t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "tenant_id"
     t.bigint "guarantor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["guarantor_id"], name: "index_contracts_on_guarantor_id"
     t.index ["property_id"], name: "index_contracts_on_property_id"
     t.index ["tenant_id"], name: "index_contracts_on_tenant_id"
@@ -115,9 +115,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_181559) do
     t.bigint "incident_id", null: false
     t.text "notes"
     t.bigint "user_id", null: false
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 0
     t.index ["incident_id"], name: "index_incident_updates_on_incident_id"
     t.index ["user_id"], name: "index_incident_updates_on_user_id"
   end
@@ -154,9 +154,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_181559) do
     t.string "price_currency"
     t.text "notes"
     t.bigint "user_id", null: false
+    t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "owner_id"
     t.index ["owner_id"], name: "index_properties_on_owner_id"
     t.index ["user_id"], name: "index_properties_on_user_id"
   end

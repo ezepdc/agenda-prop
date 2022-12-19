@@ -6,6 +6,7 @@ gem "cloudinary"
 gem 'faker'
 gem 'open-uri', '~> 0.2.0'
 gem 'pagy', '~> 5.10'
+gem 'money-rails', '~>1.12'
 
 ruby "3.1.2"
 

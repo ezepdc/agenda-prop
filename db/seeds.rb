@@ -2,7 +2,7 @@ require "open-uri"
 require "faker"
 
 puts "Cleaning database..."
-User.destroy.all
+User.destroy_all
 Contact.destroy_all
 Property.destroy_all
 Bill.destroy_all
@@ -89,8 +89,7 @@ puts "User with id: #{user.id} has been created"
     kind: ["payout", "collection"].sample,
     property_id: index,
     contact_id: index,
-    amount: rand(400..800),
-    amount_currency: "USD",
+    price: rand(400..800),
     concept: Faker::Lorem.sentence(word_count: 3),
     payment_method: ["Efectivo", "Transferencia"].sample,
     notes: Faker::Lorem.paragraph(sentence_count: 2),

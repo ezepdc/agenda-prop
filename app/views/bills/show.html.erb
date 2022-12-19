@@ -14,8 +14,7 @@
             <li class="list-group-item">Contacto: <%= @bill.contact.full_name %></li>
             <li class="list-group-item">Tipo de contacto: <%= @bill.contact.kind %></li>
             <li class="list-group-item">Concepto: <%= @bill.concept %></li>
-            <li class="list-group-item">Monto: <%= @bill.amount %></li>
-            <li class="list-group-item">Moneda: <%= @bill.amount_currency %></li>
+            <li class="list-group-item">Monto: <%= humanized_money_with_symbol(@bill.price) %> <%= @bill.price_currency %></li>
             <li class="list-group-item">Método de pago: <%= @bill.payment_method %></li>
             <li class="list-group-item">Creado por: <%= @bill.user.first_name %></li>
             <li class="list-group-item d-flex justify-content-between">
