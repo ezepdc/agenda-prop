@@ -15,8 +15,7 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.integer :rooms
       t.integer :bathrooms
       t.string :amenities
-      t.integer :price
-      t.string :price_currency
+      t.monetize :price, amount: { null: true, default: nil }, currency: { null: true, default: nil }
       t.text :notes
       t.references :user, null: false, foreign_key: true
       t.references :owner, foreign_key: { to_table: :contacts }

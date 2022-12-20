@@ -18,7 +18,7 @@
       <%= f.input :bathrooms %>
       <%= f.input :amenities %>
       <%= f.input :price %>
-      <%= f.input :price_currency %>
+      <%= f.input :price_currency, as: :radio_buttons, collection: ['USD', 'ARS']%>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.input :notes %>
       <%= f.button :submit, class: "btn btn-flat" %>

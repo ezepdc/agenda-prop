@@ -29,8 +29,7 @@
             <li class="list-group-item">Habitaciones: <%= @property.rooms %></li>
             <li class="list-group-item">Baños: <%= @property.bathrooms %></li>
             <li class="list-group-item">Características: <%= @property.amenities %></li>
-            <li class="list-group-item">Precio: <%= @property.price %></li>
-            <li class="list-group-item">Moneda: <%= @property.price_currency %></li>
+            <li class="list-group-item">Precio: <%= humanized_money_with_symbol(@property.price) %> <%= @property.price_currency %></li>
             <li class="list-group-item">Notas: <%= @property.notes %></li>
           </ul>
           <div class="card-footer">

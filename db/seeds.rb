@@ -13,6 +13,7 @@ IncidentUpdate.destroy_all
 Settlement.destroy_all
 
 puts "Creating..."
+
 user = User.create(
   first_name: "Ezequiel",
   email: "epuyosdacosta@gmail.com",
@@ -21,7 +22,55 @@ user = User.create(
 )
 puts "User with id: #{user.id} has been created"
 
-10.times do |index|
+25.times do
+  owner = Contact.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    phone: Faker::Number.number(digits: 8),
+    kind: "owner",
+    notes: Faker::Lorem.sentence(word_count: 3),
+    user: user
+  )
+  puts "Owner with id: #{owner.id} has been created"
+
+  tenant = Contact.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    phone: Faker::Number.number(digits: 8),
+    kind: "tenant",
+    notes: Faker::Lorem.sentence(word_count: 3),
+    user: user
+  )
+  puts "Tenant with id: #{tenant.id} has been created"
+
+  guarantor = Contact.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    phone: Faker::Number.number(digits: 8),
+    kind: "guarantor",
+    notes: Faker::Lorem.sentence(word_count: 3),
+    user: user
+  )
+  puts "Guarantor with id: #{guarantor.id} has been created"
+
+  contact = Contact.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    phone: Faker::Number.number(digits: 8),
+    kind: ["guarantor", "tenant", "owner", "supplier"].sample,
+    notes: Faker::Lorem.sentence(word_count: 3),
+    user: user
+  )
+  puts "Contact with id: #{contact.id} has been created"
+end
+
+puts '<-> Contacts created'
+
+5.times do |index|
   index += 1
   puts index
   owner = Contact.create(
@@ -45,6 +94,17 @@ puts "User with id: #{user.id} has been created"
     user: user
   )
   puts "Tenant with id: #{tenant.id} has been created"
+
+  guarantor = Contact.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    phone: Faker::Number.number(digits: 8),
+    kind: "guarantor",
+    notes: Faker::Lorem.sentence(word_count: 3),
+    user: user
+  )
+  puts "Guarantor with id: #{guarantor.id} has been created"
 
   contact = Contact.create(
     first_name: Faker::Name.first_name,
@@ -72,10 +132,9 @@ puts "User with id: #{user.id} has been created"
     rooms: rand(1..10),
     bathrooms: rand(1..10),
     amenities: Faker::House.furniture,
-    price: rand(400..800),
-    price_currency: "USD",
+    price: rand(100000..2000000),
     notes: Faker::Books::CultureSeries.culture_ship,
-    owner_id: owner,
+    owner: owner,
     user: user
   )
   file = URI.open('https://loremflickr.com/400/400/house')
@@ -87,8 +146,8 @@ puts "User with id: #{user.id} has been created"
   bill = Bill.create(
     bill_date: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now),
     kind: ["payout", "collection"].sample,
-    property_id: index,
-    contact_id: index,
+    property: property,
+    contact: contact,
     price: rand(400..800),
     concept: Faker::Lorem.sentence(word_count: 3),
     payment_method: ["Efectivo", "Transferencia"].sample,
@@ -99,37 +158,34 @@ puts "User with id: #{user.id} has been created"
 
   contract = Contract.create(
     kind: Faker::Lorem.word,
-    property_id: index,
+    property: property,
     start_date: Faker::Time.between(from: DateTime.now - 20, to: DateTime.now),
     end_date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1095),
-    base_price: rand(300..1000),
-    base_price_currency: "USD",
+    price: rand(300..1000),
     comision: rand(3..9),
     guarantor_identity_kind: "DNI",
     guarantor_identity_number: rand(40000..80000),
     guarantee_address: Faker::Address.street_address,
-    security_deposit_amount: rand(300..1000),
-    security_deposit_amount_currency: "USD",
+    security_deposit_amount_cents: rand(300..1000),
     notes: Faker::Lorem.paragraph(sentence_count: 2),
-    tenant_id: tenant,
-    guarantor_id: index,
+    tenant: tenant,
+    guarantor: guarantor,
     user: user
   )
   puts "Contract with id: #{contract.id} has been created"
 
   contract_price = ContractPrice.create(
-    contract_id: index,
+    contract: contract,
     start_date: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now),
     end_date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30),
     price: rand(300..1000),
-    price_currency: "USD",
     user: user
   )
   puts "Contract price with id: #{contract_price.id} has been created"
 
   incident = Incident.create(
-    property_id: index,
-    contact_id: index,
+    property: property,
+    contact: contact,
     kind: Faker::Lorem.word,
     description: Faker::Lorem.paragraph(sentence_count: 2),
     user: user
@@ -139,7 +195,7 @@ puts "User with id: #{user.id} has been created"
   puts "Incident with id: #{incident.id} has been created"
 
   incident_update = IncidentUpdate.create(
-    incident_id: index,
+    incident: incident,
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     status: ["pending", "doing", "rejected", "done"].sample,
     user: user
@@ -149,10 +205,9 @@ puts "User with id: #{user.id} has been created"
   puts "Incident updates with id: #{incident_update.id} has been created"
 
   settlement = Settlement.create(
-    property_id: index,
-    bill_id: index,
-    amount: rand(400..800),
-    amount_currency: "USD",
+    property: property,
+    bill: bill,
+    price: rand(400..800),
     payment_method: ["Efectivo", "Transferencia"].sample,
     notes: Faker::Lorem.paragraph(sentence_count: 2),
     user: user

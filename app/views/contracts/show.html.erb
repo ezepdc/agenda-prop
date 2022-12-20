@@ -11,8 +11,7 @@
             <li class="list-group-item">Propiedad ref.: <%= @contract.property.reference %></li>
             <li class="list-group-item">Inquilino: <%= @contract.tenant.full_name %></li>
             <li class="list-group-item">Desde: <%= l(@contract.start_date, format: :long) %> hasta: <%= l(@contract.end_date, format: :long) %></li>
-            <li class="list-group-item">Precio base: <%= @contract.base_price %></li>
-            <li class="list-group-item">Moneda: <%= @contract.base_price_currency %></li>
+            <li class="list-group-item">Precio base: <%= humanized_money_with_symbol(@contract.price) %> <%= @contract.price_currency %></li>
           </ul>
           <div class="card-footer">
             <h4 class="text-muted d-flex justify-content-between">
@@ -22,8 +21,7 @@
             <% @contract_prices.each do |contract_price| %>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Desde: <%= l(contract_price.start_date, format: :long) %> hasta: <%= l(contract_price.end_date, format: :long) %></li>
-                <li class="list-group-item">Precio: <%= contract_price.price %></li>
-                <li class="list-group-item">Moneda: <%= contract_price.price_currency %></li>
+                <li class="list-group-item">Precio: <%= humanized_money_with_symbol(contract_price.price) %> <%= contract_price.price_currency %></li>
                 <li class="list-group-item">
                   <div class="d-flex justify-content-between mt-1">
                     <%= link_to "Editar precio variable", edit_contract_contract_price_path(@contract, contract_price), class: "btn btn-outline-warning btn-sm" %>
@@ -36,7 +34,7 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Comisión: <%= @contract.comision %></li>
-            <li class="list-group-item">Garante: <%= @contract.guarantor.full_name %></li>
+            <li class="list-group-item">Garante: <% if @contract.guarantor %> <%= @contract.guarantor.full_name %> <% end %></li>
             <li class="list-group-item">Tipo documento garante: <%= @contract.guarantor_identity_kind %></li>
             <li class="list-group-item">Número de documento garante: <%= @contract.guarantor_identity_number %></li>
             <li class="list-group-item"><p>Documento adjunto del garante</p>
@@ -46,8 +44,7 @@
             <li class="list-group-item"><p>Documento adjunto de la garantía</p>
               <%= render partial: "document", collection: @contract.guarantee_documents %>
             </li>
-            <li class="list-group-item">Monto depósito / fianza: <%= @contract.security_deposit_amount %></li>
-            <li class="list-group-item">Moneda depósito / fianza: <%= @contract.security_deposit_amount_currency %></li>
+            <li class="list-group-item">Monto depósito / fianza: <%= humanized_money_with_symbol(@contract.security_deposit_amount) %> <%= @contract.security_deposit_amount_currency %></li>
             <li class="list-group-item"><p>Recibo adjunto del depósito / fianza</p>
               <%= render partial: "document", collection: @contract.security_deposit_receipts %>
             </li>

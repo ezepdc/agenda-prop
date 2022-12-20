@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.bigint "contract_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.integer "price"
+    t.integer "price_cents"
     t.string "price_currency"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -91,13 +91,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.bigint "property_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.integer "base_price"
-    t.string "base_price_currency"
+    t.integer "price_cents"
+    t.string "price_currency"
     t.string "comision"
     t.string "guarantor_identity_kind"
     t.string "guarantor_identity_number"
     t.string "guarantee_address"
-    t.integer "security_deposit_amount"
+    t.integer "security_deposit_amount_cents"
     t.string "security_deposit_amount_currency"
     t.text "notes"
     t.bigint "user_id", null: false
@@ -150,7 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.integer "rooms"
     t.integer "bathrooms"
     t.string "amenities"
-    t.integer "price"
+    t.integer "price_cents"
     t.string "price_currency"
     t.text "notes"
     t.bigint "user_id", null: false
@@ -170,8 +170,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
     t.integer "others_expense_amount"
     t.string "others_expense_amount_currency"
     t.string "others_expense_concept"
-    t.integer "amount"
-    t.string "amount_currency"
+    t.integer "price_cents"
+    t.string "price_currency"
     t.string "payment_method"
     t.text "notes"
     t.bigint "user_id", null: false

@@ -15,8 +15,7 @@
               <li class="list-group-item">Propiedad ref.: <%= contract.property.reference %></li>
               <li class="list-group-item">Inquilino: <%= contract.tenant.full_name %></li>
               <li class="list-group-item">Desde: <%= contract.start_date %> hasta: <%= contract.end_date %></li>
-              <li class="list-group-item">Precio base: <%= contract.base_price %></li>
-              <li class="list-group-item">Moneda: <%= contract.base_price_currency %></li>
+              <li class="list-group-item">Precio base: <%= humanized_money_with_symbol(contract.price) %> <%= contract.price_currency %></li>
               <li class="list-group-item">Comision: <%= contract.comision %></li>
             </ul>
           </div>

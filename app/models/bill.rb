@@ -12,6 +12,6 @@ class Bill < ApplicationRecord
   enum kind: { payout: 0, collection: 1 }
 
   def reference
-    "#{property.reference} #{kind} #{concept} Monto: #{price}"
+    "#{property.reference} #{kind} #{concept}"
   end
 end

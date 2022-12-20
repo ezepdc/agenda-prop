@@ -9,8 +9,7 @@ class CreateSettlements < ActiveRecord::Migration[7.0]
       t.integer :others_expense_amount
       t.string :others_expense_amount_currency
       t.string :others_expense_concept
-      t.integer :amount
-      t.string :amount_currency
+      t.monetize :price, amount: { null: true, default: nil }, currency: { null: true, default: nil }
       t.string :payment_method
       t.text :notes
       t.references :user, null: false, foreign_key: true

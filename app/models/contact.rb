@@ -10,6 +10,7 @@ class Contact < ApplicationRecord
   validates :phone, numericality: true, allow_blank: true
   validates :kind, presence: true
   enum kind: { guarantor: 0, tenant: 1, owner: 2, supplier: 3 }
+
   def full_name
     "#{first_name} #{last_name}"
   end
