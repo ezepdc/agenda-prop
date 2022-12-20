@@ -75,7 +75,7 @@ puts "User with id: #{user.id} has been created"
     price: rand(400..800),
     price_currency: "USD",
     notes: Faker::Books::CultureSeries.culture_ship,
-    owner_id: 1,
+    owner_id: owner,
     user: user
   )
   file = URI.open('https://loremflickr.com/400/400/house')
@@ -111,7 +111,7 @@ puts "User with id: #{user.id} has been created"
     security_deposit_amount: rand(300..1000),
     security_deposit_amount_currency: "USD",
     notes: Faker::Lorem.paragraph(sentence_count: 2),
-    tenant_id: 2,
+    tenant_id: tenant,
     guarantor_id: index,
     user: user
   )
