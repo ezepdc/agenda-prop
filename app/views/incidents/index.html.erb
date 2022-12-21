@@ -1,23 +1,23 @@
 <div class="container">
     <ul class="nav nav-tabs nav-fill shadow fixed-top">
       <li class="nav-item">
-        <%= link_to "Pendientes", incidents_path(query: "Pendiente"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("Pendiente", params[:query])}" %>
+        <%= link_to "Pendientes", incidents_path({status: :pending}), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("pending", params[:status])}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "En curso", incidents_path(query: "En curso"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("En curso", params[:query])}" %>
+        <%= link_to "En curso", incidents_path({status: :doing}), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("doing", params[:status])}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Rechazadas", incidents_path(query: "Rechazada"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("Rechazada", params[:query])}" %>
+        <%= link_to "Rechazadas", incidents_path({status: :rejected}), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("rejected", params[:status])}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Finalizadas", incidents_path(query: "Finalizada"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("Finalizada", params[:query])}" %>
+        <%= link_to "Finalizadas", incidents_path({status: :done}), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("done", params[:status])}" %>
       </li>
     </ul>
   <div class="incident">
     <h1 class="d-flex justify-content-end"><%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-3" %></h1>
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <% @incidents.each do |incident| %>
-        <% if incident.status == params[:query] %>
+
           <div class="col">
             <div class="card shadow p-3 mb-5">
               <div class="card-body">
@@ -37,7 +37,7 @@
               </ul>
             </div>
           </div>
-        <% end %>
+
       <% end %>
     </div>
   </div>

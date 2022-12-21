@@ -2,7 +2,18 @@ class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pagy, @incidents = pagy(Incident.all)
+    @incidents =  case params["status"]
+                  when "pending"
+                    Incident.where(id: IncidentUpdate.pending.select(:incident_id).distinct)
+                  when "doing"
+                    Incident.where(id: IncidentUpdate.doing.select(:incident_id).distinct)
+                  when "rejected"
+                    Incident.where(id: IncidentUpdate.rejected.select(:incident_id).distinct)
+                  when "done"
+                    Incident.where(id: IncidentUpdate.done.select(:incident_id).distinct)
+                  end
+
+    @pagy, @incidents = pagy(@incidents)
   end
 
   def show
