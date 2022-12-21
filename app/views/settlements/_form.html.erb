@@ -6,10 +6,10 @@
       <%#  as: :check_boxes, collection: Bill.where(bill.settlement) %>
       <%= f.input :others_income_concept %>
       <%= f.input :others_income_amount %>
-      <%= f.input :others_income_amount_curreny %>
+      <%= f.input :others_income_amount_currency, as: :radio_buttons, collection: ['USD', 'ARS']%>
       <%= f.input :others_expense_concept %>
       <%= f.input :others_expense_amount %>
-      <%= f.input :others_expense_amount_currency %>
+      <%= f.input :others_expense_amount_currency, as: :radio_buttons, collection: ['USD', 'ARS']%>
 
       <p>aca va el monto calculado entre las bills, others incomes y other expenses</p>
 

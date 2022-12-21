@@ -53,7 +53,7 @@ en:
         description: 'Descripción'
         status: 'Estado de incidencia'
         others_income_amount: 'Monto de otros ingresos'
-        others_income_amount_curreny: 'Moneda de otros ingresos'
+        others_income_amount_currency: 'Moneda de otros ingresos'
         others_income_concept: 'Concepto de otros ingresos'
         others_expense_amount: 'Monto de otros gastos'
         others_expense_amount_currency: 'Moneda de otros gastos'

@@ -164,12 +164,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_093005) do
   create_table "settlements", force: :cascade do |t|
     t.bigint "property_id", null: false
     t.bigint "bill_id", null: false
-    t.integer "others_income_amount"
-    t.string "others_income_amount_curreny"
     t.string "others_income_concept"
-    t.integer "others_expense_amount"
-    t.string "others_expense_amount_currency"
+    t.integer "others_income_amount_cents"
+    t.string "others_income_amount_currency"
     t.string "others_expense_concept"
+    t.integer "others_expense_amount_cents"
+    t.string "others_expense_amount_currency"
     t.integer "price_cents"
     t.string "price_currency"
     t.string "payment_method"
