@@ -14,7 +14,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Fecha: <%= l(bill.bill_date, format: :long) %></li>
               <li class="list-group-item">Propiedad ref.: <%= bill.property.reference %></li>
-              <li class="list-group-item">Tipo: <%= bill.kind %></li>
+              <li class="list-group-item">Tipo: <%= bill.translated_kind %></li>
               <li class="list-group-item">Contacto: <%= bill.contact.full_name %></li>
               <li class="list-group-item">Concepto: <%= bill.concept %></li>
               <li class="list-group-item">Monto: <%= humanized_money_with_symbol(bill.price) %> <%= bill.price_currency %></li></li>

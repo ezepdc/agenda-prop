@@ -65,7 +65,7 @@
       <div class="col">
         <div class="card shadow p-3 mb-5">
           <div class="card-body">
-            <h5 class="card-title d-flex justify-content-between">Últimos 3 Contactos <%= link_to "Ver todos", contacts_path, class:"btn btn-outline-primary" %> <%= link_to "Crear contacto", new_contact_path, class:"btn btn-outline-secondary" %></h5>
+            <h5 class="card-title d-flex justify-content-between">Contactos <%= link_to "Ver todos", contacts_path, class:"btn btn-outline-primary" %> <%= link_to "Crear contacto", new_contact_path, class:"btn btn-outline-secondary" %></h5>
             <table class="table">
               <thead>
                 <tr>
@@ -114,7 +114,7 @@
                       <% end %>
                     </td>
                     <td><%= bill.contact.full_name %></td>
-                    <td><%= bill.kind %></td>
+                    <td><%= bill.translated_kind %></td>
                     <td><%= bill.concept %></td>
                     <td></td>
                   </tr>
@@ -145,7 +145,7 @@
                       <% end %>
                     </td>
                     <td><%= settlement.property.owner.full_name %></td>
-                    <td><%= settlement.amount %></td>
+                    <td><%= humanized_money_with_symbol(settlement.price) %> <%= settlement.price_currency %></td>
                     <td></td>
                   </tr>
                 <% end %>

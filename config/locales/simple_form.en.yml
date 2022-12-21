@@ -87,7 +87,7 @@ en:
       settlement:
         amount_currency: 'Moneda de liquidación'
       bill:
-        kind: 'Pago o cobro'
+        kind: 'Tipo de transacción'
 
     helpers:
       submit:

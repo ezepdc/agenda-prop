@@ -5,7 +5,7 @@
       <%= f.input :last_name %>
       <%= f.input :phone %>
       <%= f.input :email %>
-      <%= f.input :kind, required: true, collection: Contact.kinds.keys, prompt: true %>
+      <%= f.input :kind, required: true, collection: Contact.translated_kinds, prompt: true, as: :radio_buttons %>
       <%= f.input :notes %>
       <%= f.button :submit, class: "btn btn-flat" %>
     <% end %>

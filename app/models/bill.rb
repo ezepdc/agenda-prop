@@ -9,9 +9,11 @@ class Bill < ApplicationRecord
   validates :payment_method, presence: true
   validates :kind, presence: true
   monetize :price_cents
+  include TranslateEnum
   enum kind: { payout: 0, collection: 1 }
+  translate_enum :kind
 
   def reference
-    "#{property.reference} #{kind} #{concept}"
+    "#{property.reference} #{translated_kind} #{concept}"
   end
 end

@@ -1,16 +1,16 @@
 <div class="container">
     <ul class="nav nav-tabs nav-fill shadow fixed-top">
       <li class="nav-item">
-        <%= link_to "Pendientes", incidents_path(query: "pending"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("pending", params[:query])}" %>
+        <%= link_to "Pendientes", incidents_path(query: "Pendiente"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("Pendiente", params[:query])}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "En curso", incidents_path(query: "doing"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("doing", params[:query])}" %>
+        <%= link_to "En curso", incidents_path(query: "En curso"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("En curso", params[:query])}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Rechazadas", incidents_path(query: "rejected"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("rejected", params[:query])}" %>
+        <%= link_to "Rechazadas", incidents_path(query: "Rechazada"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("Rechazada", params[:query])}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Finalizadas", incidents_path(query: "done"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("done", params[:query])}" %>
+        <%= link_to "Finalizadas", incidents_path(query: "Finalizada"), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("Finalizada", params[:query])}" %>
       </li>
     </ul>
   <div class="incident">
@@ -31,6 +31,7 @@
                 <li class="list-group-item">Creada: <%= l(incident.created_at, format: :long) %></li>
                 <li class="list-group-item">Propiedad ref.: <%= incident.property.reference %></li>
                 <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
+                <li class="list-group-item">Tipo de contacto <%= incident.contact.translated_kind %></li>
                 <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
                 <li class="list-group-item">Tipo de incidente: <%= incident.kind %></li>
               </ul>

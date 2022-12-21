@@ -2,7 +2,7 @@
   <div class="my-3">
     <div class="row justify-content-center">
       <div class="col-12 col-md-12 col-lg-10 lh-lg">
-        <h1 class="d-flex justify-content-between">Incidencia<%= link_to "Ver todas las incidencias", incidents_path, class:"btn btn-light border-dark my-auto" %></h1>
+        <h1 class="d-flex justify-content-between">Incidencia<%= link_to "Ver todas las incidencias", incidents_path(query: "Pendiente"), class:"btn btn-light border-dark my-auto" %></h1>
         <div class="card shadow p-3 mb-5w">
           <div class="card-body">
             <h5 class="card-title">Número: <%= @incident.id %> <%= @incident.property.reference %></h5>
@@ -13,12 +13,13 @@
             <li class="list-group-item">Creada: <%= l(@incident.created_at, format: :long) %></li>
             <li class="list-group-item">
              <% if @incident_last %>
-                Estado de ultima actualización: <%= @incident_last.status %>
+                Estado de ultima actualización: <%= @incident_last.translated_status %>
               <% else %>
                 Sin actualizaciones
               <% end %>
             </li>
             <li class="list-group-item">Contacto que solicitó la incidencia: <%= @incident.contact.full_name %></li>
+            <li class="list-group-item">Tipo de contacto: <%= @incident.contact.translated_kind %></li>
             <li class="list-group-item">Creada por: <%= @incident.user.first_name %></li>
             <li class="list-group-item">Tipo de incidencia: <%= @incident.kind %></li>
             <li class="list-group-item">Descripción: <%= @incident.description %></li>
@@ -44,7 +45,7 @@
             <% @incident_updates.each do |incident_update| %>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Fecha: <%= l(incident_update.created_at, format: :long) %></li>
-                <li class="list-group-item">Estado: <%= incident_update.status %></li>
+                <li class="list-group-item">Estado: <%= incident_update.translated_status %></li>
                 <li class="list-group-item">Actualizada por: <%= incident_update.user.first_name %></li>
                 <li class="list-group-item">Notas: <%= incident_update.notes %></li>
                 <li class="list-group-item"><p>Comprobantes</p>

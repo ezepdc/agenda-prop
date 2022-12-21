@@ -7,6 +7,7 @@ gem 'faker'
 gem 'open-uri', '~> 0.2.0'
 gem 'pagy', '~> 5.10'
 gem 'money-rails', '~>1.12'
+gem 'translate_enum', require: 'translate_enum/active_record'
 
 ruby "3.1.2"
 

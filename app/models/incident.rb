@@ -8,6 +8,6 @@ class Incident < ApplicationRecord
   validates :description, presence: true
 
   def status
-    incident_updates&.last&.status || "pending"
+    incident_updates&.last&.translated_status || "Pendiente"
   end
 end

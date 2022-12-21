@@ -39,6 +39,20 @@ en:
   #       moderator: "Moderator"
   #       member: "Member"
 
+  attributes:
+    status_list:
+      pending: Pendiente
+      doing: En curso
+      rejected: Rechazada
+      done: Finalizada
+    kind_list:
+      payout: Pago
+      collection: Cobro
+      guarantor: Garante
+      tenant: Inquilino
+      owner: Propietario
+      supplier: Proveedor
+
   time:
     formats:
       long: "%A, %e %B %Y"

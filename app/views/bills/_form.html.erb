@@ -3,7 +3,7 @@
     <%= simple_form_for(@bill) do |f| %>
       <%= f.association :property, label_method: :reference, prompt: true, required: true %>
       <%= f.input :bill_date, required: true %>
-      <%= f.input :kind, required: true, collection: Bill.kinds.keys, prompt: true %>
+      <%= f.input :kind, required: true, collection: Bill.translated_kinds, prompt: true, as: :radio_buttons %>
       <%= f.association :contact, label_method: :full_name, prompt: true , required: true %>
       <p class="d-flex justify-content-end"><%= link_to "Crear contacto", new_contact_path, target: :_blank %></p>
       <%= f.input :concept, required: true %>

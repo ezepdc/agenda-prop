@@ -70,7 +70,7 @@ end
 
 puts '<-> Contacts created'
 
-5.times do |index|
+25.times do |index|
   index += 1
   puts index
   owner = Contact.create(
