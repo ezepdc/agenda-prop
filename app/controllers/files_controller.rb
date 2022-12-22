@@ -7,7 +7,8 @@ class FilesController < ApplicationController
   end
 
   private
-    def set_file
-      @file = ActiveStorage::Attachment.find(params[:id])
-    end
+
+  def set_file
+    @file = ActiveStorage::Attachment.find(params[:id])
+  end
 end

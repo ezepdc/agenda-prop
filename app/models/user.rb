@@ -13,4 +13,12 @@ class User < ApplicationRecord
   validates :phone, numericality: true, allow_blank: true
   validates :first_name, presence: true
   validates :agency_name, presence: true
+
+  after_create :send_welcome_email
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
 end
