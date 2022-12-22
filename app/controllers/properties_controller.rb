@@ -36,21 +36,6 @@ class PropertiesController < ApplicationController
     redirect_to properties_path
   end
 
-  # def download
-  #   require "cloudinary"
-
-    # Cloudinary.config do |config|
-    #   config.cloud_name = "your_cloud_name"
-    #   config.api_key = "your_api_key"
-    #   config.api_secret = "your_api_secret"
-    # end
-
-  #   public_id = "my_file"
-  #   save_location = "downloads/my_file.jpg"
-
-  #   Cloudinary::Uploader.download(public_id, save_location)
-  # end
-
   private
 
   def set_property

@@ -7,6 +7,7 @@
           <% @property.photos.each do |photo| %>
             <%= cl_image_tag photo.key, crop: :fill, class:"card-img-top img-fluid" %>
             <%= link_to "Descargar imagen", photo.url, download: photo.filename, target: :_blank %>
+            <%= link_to 'Delete', property_photo_path(@property, photo), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"} %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title">Propiedad ref.: <%= @property.reference %></h5>
@@ -29,7 +30,7 @@
             <li class="list-group-item">Habitaciones: <%= @property.rooms %></li>
             <li class="list-group-item">Baños: <%= @property.bathrooms %></li>
             <li class="list-group-item">Características: <%= @property.amenities %></li>
-            <li class="list-group-item">Precio: <%= humanized_money_with_symbol(@property.price) %> <%= @property.price_currency %></li>
+            <li class="list-group-item">Precio: <%= humanized_money_with_symbol(@property.price) %> <%= @property.price_currency %> </li>
             <li class="list-group-item">Notas: <%= @property.notes %></li>
           </ul>
           <div class="card-footer">

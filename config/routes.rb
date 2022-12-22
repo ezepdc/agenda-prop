@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "dashboard", to: "dashboard#index"
   resources :contacts
-  resources :properties
+  resources :properties do
+    resources :photos, only: [:destroy]
+  end
   resources :contracts do
     resources :contract_prices
   end
