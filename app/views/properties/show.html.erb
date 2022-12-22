@@ -7,7 +7,7 @@
           <% @property.photos.each do |photo| %>
             <%= cl_image_tag photo.key, crop: :fill, class:"card-img-top img-fluid" %>
             <%= link_to "Descargar imagen", photo.url, download: photo.filename, target: :_blank %>
-            <%= link_to 'Delete', property_photo_path(@property, photo), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"} %>
+            <%= link_to 'Delete', property_file_path(@property, photo), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"} %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title">Propiedad ref.: <%= @property.reference %></h5>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "dashboard#index"
   resources :contacts
   resources :properties do
-    resources :photos, only: [:destroy]
+    resources :files, only: [:destroy]
   end
   resources :contracts do
     resources :contract_prices
