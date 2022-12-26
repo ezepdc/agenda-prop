@@ -1,9 +1,15 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "https://www.agendaprop.com/" }
-  # Settings specified here will take precedence over those in config/application.rb.
+  # Gmail
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: "https://www.agendaprop.com/" }
+
+  # Domain
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
+  config.action_mailer.default_url_options = { host: "agenda-prop.fly.dev" }
+  # or your custom domain name eg. "www.yourdomain.com"# Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true

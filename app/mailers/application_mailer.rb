@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "agendapropinfo@gmail.com"
+  default from: "info@agendaprop.com"
   layout "mailer"
 end
