@@ -22,7 +22,7 @@ user = User.create(
 )
 puts "User with id: #{user.id} has been created"
 
-25.times do
+5.times do
   owner = Contact.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -70,7 +70,7 @@ end
 
 puts '<-> Contacts created'
 
-25.times do |index|
+5.times do |index|
   index += 1
   puts index
   owner = Contact.create(

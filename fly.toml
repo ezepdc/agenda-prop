@@ -1,6 +1,6 @@
-# fly.toml file generated for agenda-prop on 2022-12-20T08:44:01+01:00
+# fly.toml file generated for agendaprop on 2022-12-26T15:37:00+01:00
 
-app = "agenda-prop"
+app = "agendaprop"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
