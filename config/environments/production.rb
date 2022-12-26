@@ -8,7 +8,7 @@ Rails.application.configure do
   # Domain
   config.action_mailer.delivery_method     = :postmark
   config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
-  config.action_mailer.default_url_options = { host: "agenda-prop.fly.dev" }
+  config.action_mailer.default_url_options = { host: "agendaprop.fly.dev" }
   # or your custom domain name eg. "www.yourdomain.com"# Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
