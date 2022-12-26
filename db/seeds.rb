@@ -16,7 +16,7 @@ puts "Creating..."
 
 user = User.create(
   first_name: "Ezequiel",
-  email: "epuyosdacosta@gmail.com",
+  email: "info@agendaprop.com",
   agency_name: "Agenda prop",
   password: "Agendaprop+23"
 )
