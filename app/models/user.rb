@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :agency_name, presence: true
 
-  # after_create :send_welcome_email
+  after_create :send_welcome_email
 
   private
 
