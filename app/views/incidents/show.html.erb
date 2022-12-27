@@ -27,8 +27,10 @@
               <div class="row row-cols-1 row-cols-md-2 g-2">
                 <% @incident.documents.each do |document| %>
                   <div class="col">
-                    <% if %w(jpg jpeg gif png).include?(document.filename.extension) %>
+                    <% if document.variable? %>
                       <%= link_to cl_image_tag(document.key, width: 300, height: 200), rails_blob_path(document, disposition: :attachment), target: :_blank %>
+                    <% elsif document.image? %>
+                      <%= cl_image_tag document.key, width: 300 %>
                     <% else %>
                       <iframe src="<%= document.url %>" height="200" width="300"></iframe>
                     <% end %>
@@ -51,8 +53,10 @@
                   <div class="row row-cols-1 row-cols-md-2 g-2">
                     <% incident_update.documents.each do |document| %>
                       <div class="col">
-                        <% if %w(jpg jpeg gif png).include?(document.filename.extension) %>
+                        <% if document.variable? %>
                           <%= link_to cl_image_tag(document.key, width: 300, height: 200), rails_blob_path(document, disposition: :attachment), target: :_blank %>
+                        <% elsif document.image? %>
+                          <%= cl_image_tag document.key, width: 300 %>
                         <% else %>
                           <iframe src="<%= document.url %>" height="200" width="300"></iframe>
                         <% end %>
