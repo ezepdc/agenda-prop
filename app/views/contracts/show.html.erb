@@ -38,21 +38,31 @@
             <li class="list-group-item">Tipo documento garante: <%= @contract.guarantor_identity_kind %></li>
             <li class="list-group-item">Número de documento garante: <%= @contract.guarantor_identity_number %></li>
             <li class="list-group-item"><p>Documento adjunto del garante</p>
-              <%= render partial: "document", collection: @contract.guarantor_documents %>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.guarantor_documents %>
+              </div>
             </li>
             <li class="list-group-item">Dirección de garantía: <%= @contract.guarantee_address %></li>
             <li class="list-group-item"><p>Documento adjunto de la garantía</p>
-              <%= render partial: "document", collection: @contract.guarantee_documents %>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.guarantee_documents %>
+              </div>
             </li>
             <li class="list-group-item">Monto depósito / fianza: <%= humanized_money_with_symbol(@contract.security_deposit_amount) %> <%= @contract.security_deposit_amount_currency %></li>
             <li class="list-group-item"><p>Recibo adjunto del depósito / fianza</p>
-              <%= render partial: "document", collection: @contract.security_deposit_receipts %>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.security_deposit_receipts %>
+              </div>
             </li>
             <li class="list-group-item"><p>Recibo adjunto devolución del depósito / fianza</p>
-              <%= render partial: "document", collection: @contract.security_deposit_return_receipts %>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.security_deposit_return_receipts %>
+              </div>
             </li>
             <li class="list-group-item"><p>Contrato adjunto</p>
-              <%= render partial: "document", collection: @contract.contract_documents %>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.contract_documents %>
+              </div>
             </li>
             <li class="list-group-item">Notas: <%= @contract.notes %></li>
           </ul>

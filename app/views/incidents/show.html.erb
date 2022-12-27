@@ -24,19 +24,18 @@
             <li class="list-group-item">Tipo de incidencia: <%= @incident.kind %></li>
             <li class="list-group-item">Descripción: <%= @incident.description %></li>
             <li class="list-group-item"><p>Comprobantes</p>
-            <% @incident.documents.each do |document| %>
-              <div class="d-flex justify-content-between">
-                <div class="row">
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <% @incident.documents.each do |document| %>
                   <div class="col">
-                    <iframe src="<%= document.url %>" height="200" width="300"></iframe>
+                    <% if %w(jpg jpeg gif png).include?(document.filename.extension) %>
+                      <%= link_to cl_image_tag(document.key, width: 300, height: 200), rails_blob_path(document, disposition: :attachment), target: :_blank %>
+                    <% else %>
+                      <iframe src="<%= document.url %>" height="200" width="300"></iframe>
+                    <% end %>
+                    <p><%= link_to document.filename, rails_blob_path(document, disposition: :attachment), target: :_blank %></p>
                   </div>
-                  <div class="col">
-                    <p><%= document.filename %></p>
-                    <p><%= link_to "Descargar documento", document.url, download: document.filename, target: :_blank %></p>
-                  </div>
-                </div>
+                <% end %>
               </div>
-            <% end %>
             </li>
           </ul>
           <div class="card-footer">
@@ -49,19 +48,18 @@
                 <li class="list-group-item">Actualizada por: <%= incident_update.user.first_name %></li>
                 <li class="list-group-item">Notas: <%= incident_update.notes %></li>
                 <li class="list-group-item"><p>Comprobantes</p>
-                  <% incident_update.documents.each do |document| %>
-                  <div class="d-flex justify-content-between">
-                    <div class="row">
+                  <div class="row row-cols-1 row-cols-md-2 g-2">
+                    <% incident_update.documents.each do |document| %>
                       <div class="col">
-                        <iframe src="<%= document.url %>" height="200" width="300"></iframe>
+                        <% if %w(jpg jpeg gif png).include?(document.filename.extension) %>
+                          <%= link_to cl_image_tag(document.key, width: 300, height: 200), rails_blob_path(document, disposition: :attachment), target: :_blank %>
+                        <% else %>
+                          <iframe src="<%= document.url %>" height="200" width="300"></iframe>
+                        <% end %>
+                        <p><%= link_to document.filename, rails_blob_path(document, disposition: :attachment), target: :_blank %></p>
                       </div>
-                      <div class="col">
-                        <p><%= document.filename %></p>
-                        <p><%= link_to "Descargar documento", document.url, download: document.filename, target: :_blank %></p>
-                      </div>
-                    </div>
+                    <% end %>
                   </div>
-                  <% end %>
                 </li>
                 <li class="list-group-item">
                   <div class="d-flex justify-content-between mt-1">
