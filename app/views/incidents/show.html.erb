@@ -2,7 +2,7 @@
   <div class="my-3">
     <div class="row justify-content-center">
       <div class="col-12 col-md-12 col-lg-10 lh-lg">
-        <h1 class="d-flex justify-content-between">Incidencia<%= link_to "Ver todas las incidencias", incidents_path(query: "Pendiente"), class:"btn btn-light border-dark my-auto" %></h1>
+        <h1 class="d-flex justify-content-between">Incidencia<%= link_to "Ver todas las incidencias", incidents_path({status: :pending}), class:"btn btn-light border-dark my-auto" %></h1>
         <div class="card shadow p-3 mb-5w">
           <div class="card-body">
             <h5 class="card-title">Número: <%= @incident.id %> <%= @incident.property.reference %></h5>
