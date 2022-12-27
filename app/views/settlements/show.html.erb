@@ -20,19 +20,18 @@
             <li class="list-group-item">Método de pago: <%= @settlement.payment_method %></li>
             <li class="list-group-item">Liquidado por: <%= @settlement.user.first_name %></li>
             <li class="list-group-item"><p>Comprobantes</p>
-              <% @settlement.documents.each do |document| %>
-                <div class="d-flex justify-content-between">
-                  <div class="row">
-                    <div class="col">
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <% @settlement.documents.each do |document| %>
+                  <div class="col">
+                    <% if %w(jpg jpeg gif png).include?(document.filename.extension) %>
+                      <%= link_to cl_image_tag(document.key, width: 300, height: 200), rails_blob_path(document, disposition: :attachment), target: :_blank %>
+                    <% else %>
                       <iframe src="<%= document.url %>" height="200" width="300"></iframe>
-                    </div>
-                    <div class="col">
-                      <p><%= document.filename %></p>
-                      <p><%= link_to "Descargar documento", document.url, download: document.filename, target: :_blank %></p>
-                    </div>
+                    <% end %>
+                    <p><%= link_to document.filename, rails_blob_path(document, disposition: :attachment), target: :_blank %></p>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </li>
             <li class="list-group-item">Notas: <%= @settlement.notes %></li>
           </ul>
