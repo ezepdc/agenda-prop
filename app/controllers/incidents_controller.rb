@@ -12,7 +12,6 @@ class IncidentsController < ApplicationController
                   when "done"
                     Incident.where(id: IncidentUpdate.done.select(:incident_id).distinct)
                   end
-
     @pagy, @incidents = pagy(@incidents)
   end
 
