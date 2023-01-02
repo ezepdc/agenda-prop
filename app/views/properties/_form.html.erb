@@ -1,10 +1,20 @@
-
 <div class="row justify-content-center">
   <div class="col-12 col-md-10 col-lg-8 lh-lg text-muted">
     <%= simple_form_for(@property) do |f| %>
       <%= f.input :reference, required: true %>
-      <%= f.association :owner, class_name: "Contact",  collection: Contact.owner, label_method: :full_name, prompt: true , required: true %>
-      <p class="d-flex justify-content-end"><%= link_to "Crear propietario", new_contact_path, target: :_blank %></p>
+      <%# <p class="d-flex justify-content-end"><%= link_to "Crear propietario", new_contact_path, target: :_blank %></p> %>
+
+      
+
+
+
+      <%= f.simple_fields_for :owner, class_name: "Contact" do |owner_form| %>
+        <%= render 'owner_fields', f: owner_form %>
+      <% end %>
+
+      <%= link_to_add_association 'Crear propietario', f, :owner, class_name: "Contact" %>
+
+
       <%= f.input :cadastral_reference %>
       <%= f.input :kind %>
       <%= f.input :address %>

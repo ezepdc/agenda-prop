@@ -1,6 +1,7 @@
 class Contact < ApplicationRecord
   belongs_to :user
   has_many :properties, foreign_key: 'owner_id', dependent: :destroy
+  has_many :properties, foreign_key: 'owner_id', dependent: :destroy
   has_many :contracts, foreign_key: 'tenant_id', dependent: :destroy
   has_many :contracts, foreign_key: 'guarantor_id', dependent: :destroy
   has_many :incidents, dependent: :destroy

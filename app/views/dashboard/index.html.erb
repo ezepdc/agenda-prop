@@ -35,7 +35,7 @@
       <div class="col">
         <div class="card shadow p-3 mb-5">
           <div class="card-body">
-            <h5 class="card-title d-flex justify-content-between">Incidencias <%= link_to "Ver todas", incidents_path, class:"btn btn-outline-primary" %> <%= link_to "Crear incidencia", new_incident_path, class:"btn btn-outline-secondary" %></h5>
+            <h5 class="card-title d-flex justify-content-between">Incidencias <%= link_to "Ver todas", incidents_path({status: :pending}), class:"btn btn-outline-primary" %> <%= link_to "Crear incidencia", new_incident_path, class:"btn btn-outline-secondary" %></h5>
             <table class="table">
               <thead>
                 <tr>
