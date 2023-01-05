@@ -63,8 +63,7 @@ class PropertiesController < ApplicationController
       :price,
       :price_currency,
       :notes,
-      photos: [],
-      owner_attributes: [:id, :first_name, :kind, :_destroy]
+      photos: []
     )
   end
 end

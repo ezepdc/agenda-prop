@@ -1,5 +1,0 @@
-<div class="nested-fields">
-  <%= f.input :first_name, required: true %>
-  <%= f.input :kind, required: true, collection: Contact.translated_kinds, prompt: true, as: :radio_buttons %>
-  <%= link_to_remove_association "Remove owner", f %>
-</div>

@@ -10,5 +10,4 @@ class Property < ApplicationRecord
   validates :total_area, numericality: true, allow_blank: true
   validates :covered_area, numericality: true, allow_blank: true
   monetize :price_cents, allow_nil: true
-  accepts_nested_attributes_for :owner, reject_if: :all_blank
 end

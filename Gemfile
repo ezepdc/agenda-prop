@@ -10,7 +10,6 @@ gem 'money-rails', '~>1.12'
 gem 'translate_enum', require: 'translate_enum/active_record'
 gem 'letter_opener', group: :development
 gem 'postmark-rails'
-gem "cocoon"
 
 
 ruby "3.1.2"
