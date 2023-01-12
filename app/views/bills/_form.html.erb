@@ -1,0 +1,18 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8 lh-lg text-muted">
+    <%= simple_form_for(@bill) do |f| %>
+      <%= f.association :property, label_method: :reference, prompt: true, required: true %>
+      <%= f.input :bill_date, required: true %>
+      <%= f.input :kind, required: true, collection: Bill.translated_kinds, prompt: true, as: :radio_buttons %>
+      <%= f.association :contact, label_method: :full_name, prompt: true , required: true %>
+      <p class="d-flex justify-content-end"><%= link_to "Crear contacto", new_contact_path, target: :_blank %></p>
+      <%= f.input :concept, required: true %>
+      <%= f.input :price, required: true %>
+      <%= f.input :price_currency, required: true, as: :radio_buttons, collection: ['USD', 'ARS']%>
+      <%= f.input :payment_method, required: true %>
+      <%= f.input :documents, as: :file, input_html: { multiple: true } %>
+      <%= f.input :notes %>
+      <%= f.button :submit, class: "btn btn-flat" %>
+    <% end %>
+  </div>
+</div>

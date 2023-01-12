@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="my-3">
+    <h1 class="d-flex justify-content-between">Todas las liquidaciones <%= link_to "Crear liquidación", new_settlement_path, class:"btn btn-secondary my-auto" %></h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @settlements.each do |settlement| %>
+        <div class="col">
+          <div class="card shadow p-3 mb-5">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-between">
+                <%= l(settlement.created_at, format: :long) %> <%= settlement.property.reference %>
+                <%= link_to "Ver liquidación", settlement_path(settlement), class:"btn btn-primary" %>
+              </h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Fecha: <%= l(settlement.created_at, format: :long) %></li>
+              <li class="list-group-item">Propiedad ref.: <%= settlement.property.reference %></li>
+              <li class="list-group-item">Propietario: <%= settlement.property.owner.full_name %></li>
+              <li class="list-group-item">Monto de liquidación: <%= humanized_money_with_symbol(settlement.price) %> <%= settlement.price_currency %></li>
+              <li class="list-group-item">Método de pago: <%= settlement.payment_method %></li>
+              <li class="list-group-item">Liquidado por: <%= settlement.user.first_name %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%== render partial: 'shared/pagy', locals: {pagy: @pagy} %>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

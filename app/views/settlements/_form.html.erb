@@ -1,0 +1,24 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8 lh-lg text-muted">
+    <%= simple_form_for(@settlement) do |f| %>
+      <%= f.association :property, label_method: :reference, prompt: true, required: true %>
+      <%= f.association :bill, label_method: :reference, prompt: true, required: true %>
+      <%#  as: :check_boxes, collection: Bill.where(bill.settlement) %>
+      <%= f.input :others_income_concept %>
+      <%= f.input :others_income_amount %>
+      <%= f.input :others_income_amount_currency, as: :radio_buttons, collection: ['USD', 'ARS']%>
+      <%= f.input :others_expense_concept %>
+      <%= f.input :others_expense_amount %>
+      <%= f.input :others_expense_amount_currency, as: :radio_buttons, collection: ['USD', 'ARS']%>
+
+      <p>aca va el monto calculado entre las bills, others incomes y other expenses</p>
+
+      <%= f.input :price, required: true %>
+      <%= f.input :price_currency, required: true, as: :radio_buttons, collection: ['USD', 'ARS']%>
+      <%= f.input :payment_method, required: true %>
+      <%= f.input :documents, as: :file, input_html: { multiple: true } %>
+      <%= f.input :notes %>
+      <%= f.button :submit, class: "btn btn-flat" %>
+    <% end %>
+  </div>
+</div>

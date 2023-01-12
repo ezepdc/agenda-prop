@@ -7,19 +7,29 @@
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
 $body-bg:                 $light-gray;
-$font-size-base: 1rem;
+$font-size-base:          1rem;
 
 // Colors
 $body-color: $gray;
 $primary:    $blue;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+$secondary:  $green;
+// $success:    $green;
+// $info:       $yellow;
+// $danger:     $red;
+// $warning:    $orange;
+
+// Nav
+$nav-tabs-link-active-color:        $green;
+$nav-tabs-link-active-bg:           $white;
+$nav-link-hover-color:              $green;
+$nav-tabs-link-hover-border-color:  $nav-tabs-link-active-bg $nav-tabs-link-active-bg $yellow;
+$nav-tabs-border-color:             $nav-tabs-link-active-bg;
+$nav-tabs-link-active-border-color: $nav-tabs-link-active-bg $nav-tabs-link-active-bg $green;
+$nav-tabs-border-width:             4px;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
+$border-radius:    12px;
+$border-radius-lg: 12px;
+$border-radius-sm: 12px;
 
 // Override other variables below!

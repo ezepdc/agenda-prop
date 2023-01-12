@@ -1,0 +1,16 @@
+2022-12-13 16:30:29.901 CET [18183] LOG:  starting PostgreSQL 14.6 (Homebrew) on x86_64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2022-12-13 16:30:29.913 CET [18183] LOG:  listening on IPv6 address "::1", port 5432
+2022-12-13 16:30:29.913 CET [18183] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-12-13 16:30:29.918 CET [18183] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-12-13 16:30:29.936 CET [18184] LOG:  database system was shut down at 2022-12-13 16:28:56 CET
+2022-12-13 16:30:29.959 CET [18183] LOG:  database system is ready to accept connections
+2022-12-13 17:37:23.978 CET [27310] ERROR:  database "agenda_prop_development" is being accessed by other users
+2022-12-13 17:37:23.978 CET [27310] DETAIL:  There is 1 other session using the database.
+2022-12-13 17:37:23.978 CET [27310] STATEMENT:  DROP DATABASE IF EXISTS "agenda_prop_development"
+2022-12-16 19:34:54.891 CET [33992] ERROR:  null value in column "user_id" of relation "contacts" violates not-null constraint
+2022-12-16 19:34:54.891 CET [33992] DETAIL:  Failing row contains (4, Terry, Weber, jonathon@beahan.org, 80113866, Totam numquam dolor., null, 2022-12-16 18:34:54.890838, 2022-12-16 18:34:54.890838, 2).
+2022-12-16 19:34:54.891 CET [33992] STATEMENT:  INSERT INTO "contacts" ("first_name", "last_name", "email", "phone", "notes", "user_id", "created_at", "updated_at", "kind") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"
+2022-12-16 20:11:48.964 CET [18183] LOG:  received smart shutdown request
+2022-12-16 20:11:48.972 CET [18183] LOG:  background worker "logical replication launcher" (PID 18190) exited with exit code 1
+2022-12-16 20:11:48.973 CET [18185] LOG:  shutting down
+2022-12-16 20:11:49.013 CET [18183] LOG:  database system is shut down

@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="my-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-12 col-lg-10 lh-lg">
+        <h1 class="d-flex justify-content-between">Contrato <%= @contract.kind %> <%= @contract.property.reference %></h1>
+        <div class="card shadow p-3 mb-5">
+          <div class="card-body">
+            <h5 class="card-title">Tipo de contrato: <%= @contract.kind %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Propiedad ref.: <%= @contract.property.reference %></li>
+            <li class="list-group-item">Inquilino: <%= @contract.tenant.full_name %></li>
+            <li class="list-group-item">Desde: <%= l(@contract.start_date, format: :long) %> hasta: <%= l(@contract.end_date, format: :long) %></li>
+            <li class="list-group-item">Precio base: <%= humanized_money_with_symbol(@contract.price) %> <%= @contract.price_currency %></li>
+          </ul>
+          <div class="card-footer">
+            <h4 class="text-muted d-flex justify-content-between">
+              Precios variables
+              <small><%= link_to "Crear precio variable", new_contract_contract_price_path(@contract), class:"btn btn-secondary" %></small>
+            </h4>
+            <% @contract_prices.each do |contract_price| %>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Desde: <%= l(contract_price.start_date, format: :long) %> hasta: <%= l(contract_price.end_date, format: :long) %></li>
+                <li class="list-group-item">Precio: <%= humanized_money_with_symbol(contract_price.price) %> <%= contract_price.price_currency %></li>
+                <li class="list-group-item">
+                  <div class="d-flex justify-content-between mt-1">
+                    <%= link_to "Editar precio variable", edit_contract_contract_price_path(@contract, contract_price), class: "btn btn-outline-warning btn-sm" %>
+                    <%= link_to "Eliminar precio variable", contract_contract_price_path(@contract, contract_price), class: "btn btn-outline-danger btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+                  </div>
+                </li>
+              </ul>
+              <hr>
+            <% end %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Comisión: <%= @contract.comision %></li>
+            <li class="list-group-item">Garante: <% if @contract.guarantor %> <%= @contract.guarantor.full_name %> <% end %></li>
+            <li class="list-group-item">Tipo documento garante: <%= @contract.guarantor_identity_kind %></li>
+            <li class="list-group-item">Número de documento garante: <%= @contract.guarantor_identity_number %></li>
+            <li class="list-group-item"><p>Documento adjunto del garante</p>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.guarantor_documents %>
+              </div>
+            </li>
+            <li class="list-group-item">Dirección de garantía: <%= @contract.guarantee_address %></li>
+            <li class="list-group-item"><p>Documento adjunto de la garantía</p>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.guarantee_documents %>
+              </div>
+            </li>
+            <li class="list-group-item">Monto depósito / fianza: <%= humanized_money_with_symbol(@contract.security_deposit_amount) %> <%= @contract.security_deposit_amount_currency %></li>
+            <li class="list-group-item"><p>Recibo adjunto del depósito / fianza</p>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.security_deposit_receipts %>
+              </div>
+            </li>
+            <li class="list-group-item"><p>Recibo adjunto devolución del depósito / fianza</p>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.security_deposit_return_receipts %>
+              </div>
+            </li>
+            <li class="list-group-item"><p>Contrato adjunto</p>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <%= render partial: "document", collection: @contract.contract_documents %>
+              </div>
+            </li>
+            <li class="list-group-item">Notas: <%= @contract.notes %></li>
+          </ul>
+          <div class="card-footer">
+            <div class="mt-5 d-flex justify-content-between">
+              <%= link_to "Editar contrato", edit_contract_path(@contract), class: "btn btn-outline-warning" %>
+              <%= link_to "Eliminar contrato", contract_path(@contract), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="my-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-12 col-lg-10 lh-lg">
+        <h1 class="d-flex justify-content-between">Propiedad <%= @property.reference %> <%= link_to "Ver todas las propiedades", properties_path, class:"btn btn-light border-dark my-auto" %></h1>
+        <div class="card shadow p-3 mb-5">
+          <div class="text-center">
+            <div class="row row-cols-1 row-cols-md-2 g-2 mx-3">
+              <% @property.photos.each do |photo| %>
+                <div class="col">
+                  <% if photo.variable? %>
+                    <%= link_to cl_image_tag(photo.key, class:"rounded img-fluid"), rails_blob_path(photo, disposition: :attachment), target: :_blank %>
+                  <% elsif photo.image? %>
+                    <%= cl_image_tag photo.key, width: 500 %>
+                    <p><%= link_to photo.filename, rails_blob_path(photo, disposition: :attachment), target: :_blank %></p>
+                  <% else %>
+                    <iframe src="<%= photo.url %>" height="300" width="500"></iframe>
+                    <p><%= link_to photo.filename, rails_blob_path(photo, disposition: :attachment), target: :_blank %></p>
+                  <% end %>
+                  <div class="d-flex justify-content-start mx-4 my-1">
+                    <%= link_to property_file_path(@property, photo), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"} do %>
+                      <i class="fa-regular fa-trash-can"></i>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Propiedad ref.: <%= @property.reference %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between">
+              Propietario: <%= @property.owner.full_name %>
+              <%= link_to "Ver contacto", contact_path(@property.owner), class:"btn btn-primary" %>
+            </li>
+            <li class="list-group-item">Ref. catastral: <%= @property.cadastral_reference %></li>
+            <li class="list-group-item">Tipo: <%= @property.kind %></li>
+            <li class="list-group-item">Dirección: <%= @property.address %></li>
+            <li class="list-group-item">Piso / depto / lote: <%= @property.apartment %></li>
+            <li class="list-group-item">Localidad: <%= @property.city %></li>
+            <li class="list-group-item">Provincia: <%= @property.state %></li>
+            <li class="list-group-item">País: <%= @property.country %></li>
+            <li class="list-group-item">Código postal: <%= @property.postal_code %></li>
+            <li class="list-group-item">Superficie total: <%= @property.total_area %></li>
+            <li class="list-group-item">Superficie cubierta: <%= @property.covered_area %></li>
+            <li class="list-group-item">Habitaciones: <%= @property.rooms %></li>
+            <li class="list-group-item">Baños: <%= @property.bathrooms %></li>
+            <li class="list-group-item">Características: <%= @property.amenities %></li>
+            <li class="list-group-item">Precio: <%= humanized_money_with_symbol(@property.price) %> <%= @property.price_currency %> </li>
+            <li class="list-group-item">Notas: <%= @property.notes %></li>
+          </ul>
+          <div class="card-footer">
+            <h4 class="text-muted d-flex justify-content-between">
+              Contratos
+              <small><%= link_to "Crear contrato", new_contract_path, class:"btn btn-secondary" %></small>
+            </h4>
+            <% @contracts.each do |contract| %>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Tipo de contrato: <%= contract.kind %></li>
+                <li class="list-group-item">Inquilino: <%= contract.tenant.full_name %></li>
+                <li class="list-group-item  d-flex justify-content-between">Desde: <%= l(contract.start_date, format: :long) %> hasta: <%= l(contract.end_date, format: :long) %>  <%= link_to "Ver contrato", contract_path(contract), class:"btn btn-primary" %></li>
+              </ul>
+            <% end %>
+            <hr>
+            <div class="mt-5 d-flex justify-content-between">
+              <%= link_to "Editar propiedad", edit_property_path(@property), class: "btn btn-outline-warning" %>
+              <%= link_to "Eliminar propiedad", property_path(@property), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

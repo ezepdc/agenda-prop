@@ -1,0 +1,13 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8 lh-lg text-muted">
+    <%= simple_form_for(@contact) do |f| %>
+      <%= f.input :first_name, required: true %>
+      <%= f.input :last_name %>
+      <%= f.input :phone %>
+      <%= f.input :email %>
+      <%= f.input :kind, required: true, collection: Contact.translated_kinds, prompt: true, as: :radio_buttons %>
+      <%= f.input :notes %>
+      <%= f.button :submit, class: "btn btn-flat" %>
+    <% end %>
+  </div>
+</div>

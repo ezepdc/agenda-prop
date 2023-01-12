@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="my-3">
+    <h1 class="d-flex justify-content-between">Todas las propiedades <%= link_to "Crear propiedad", new_property_path, class:"btn btn-secondary my-auto" %></h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @properties.each do |property| %>
+        <div class="col">
+          <div class="card shadow p-3 h-100">
+              <% if property.photos.attached? %>
+                <%= cl_image_tag property.photos.first.key, height: 300, width: 400, crop: :fill, class:"card-img-top" %>
+              <% else %>
+                <div class="h-100 d-flex align-items-center justify-content-center">
+                <%= image_tag "no-pictures.png", height: 100%>
+                </div>
+              <% end %>
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-between">
+                Propiedad ref.: <%= property.reference %>
+                <%= link_to "Ver propiedad", property_path(property), class:"btn btn-primary" %>
+              </h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between">
+                Propietario: <%= property.owner.full_name %>
+                <%= link_to "Ver contacto", contact_path(property.owner), class:"btn btn-primary" %>
+              </li>
+              <li class="list-group-item">Tipo: <%= property.kind %></li>
+              <li class="list-group-item">Dirección: <%= property.address %></li>
+              <li class="list-group-item">Superficie total: <%= property.total_area %></li>
+              <li class="list-group-item">Superficie cubierta: <%= property.covered_area %></li>
+              <li class="list-group-item">Habitaciones: <%= property.rooms %></li>
+              <li class="list-group-item">Baños: <%= property.bathrooms %></li>
+              <li class="list-group-item">Características: <%= property.amenities %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+    <%== render partial: 'shared/pagy', locals: {pagy: @pagy} %>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

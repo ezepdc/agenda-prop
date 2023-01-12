@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="my-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-12 col-lg-10 lh-lg">
+        <h1 class="d-flex justify-content-between">Incidencia<%= link_to "Ver todas las incidencias", incidents_path({status: :pending}), class:"btn btn-light border-dark my-auto" %></h1>
+        <div class="card shadow p-3 mb-5w">
+          <div class="card-body">
+            <h5 class="card-title">Número: <%= @incident.id %> <%= @incident.property.reference %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Número: <%= @incident.id %></li>
+            <li class="list-group-item">Propiedad ref.: <%= @incident.property.reference %></li>
+            <li class="list-group-item">Creada: <%= l(@incident.created_at, format: :long) %></li>
+            <li class="list-group-item">
+             <% if @incident_last %>
+                Estado de ultima actualización: <%= @incident_last.translated_status %>
+              <% else %>
+                Sin actualizaciones
+              <% end %>
+            </li>
+            <li class="list-group-item">Contacto que solicitó la incidencia: <%= @incident.contact.full_name %></li>
+            <li class="list-group-item">Tipo de contacto: <%= @incident.contact.translated_kind %></li>
+            <li class="list-group-item">Creada por: <%= @incident.user.first_name %></li>
+            <li class="list-group-item">Tipo de incidencia: <%= @incident.kind %></li>
+            <li class="list-group-item">Descripción: <%= @incident.description %></li>
+            <li class="list-group-item"><p>Comprobantes</p>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <% @incident.documents.each do |document| %>
+                  <div class="col">
+                    <% if document.variable? %>
+                      <%= link_to cl_image_tag(document.key, width: 300, height: 200), rails_blob_path(document, disposition: :attachment), target: :_blank %>
+                    <% elsif document.image? %>
+                      <%= cl_image_tag document.key, width: 300 %>
+                    <% else %>
+                      <iframe src="<%= document.url %>" height="200" width="300"></iframe>
+                    <% end %>
+                    <p><%= link_to document.filename, rails_blob_path(document, disposition: :attachment), target: :_blank %></p>
+                  </div>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+          <div class="card-footer">
+            <h4 class="text-muted d-flex justify-content-between">Actualizaciones
+            <small><%= link_to "Actualizar incidencia", new_incident_incident_update_path(@incident), class:"btn btn-secondary" %></small></h4>
+            <% @incident_updates.each do |incident_update| %>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Fecha: <%= l(incident_update.created_at, format: :long) %></li>
+                <li class="list-group-item">Estado: <%= incident_update.translated_status %></li>
+                <li class="list-group-item">Actualizada por: <%= incident_update.user.first_name %></li>
+                <li class="list-group-item">Notas: <%= incident_update.notes %></li>
+                <li class="list-group-item"><p>Comprobantes</p>
+                  <div class="row row-cols-1 row-cols-md-2 g-2">
+                    <% incident_update.documents.each do |document| %>
+                      <div class="col">
+                        <% if document.variable? %>
+                          <%= link_to cl_image_tag(document.key, width: 300, height: 200), rails_blob_path(document, disposition: :attachment), target: :_blank %>
+                        <% elsif document.image? %>
+                          <%= cl_image_tag document.key, width: 300 %>
+                        <% else %>
+                          <iframe src="<%= document.url %>" height="200" width="300"></iframe>
+                        <% end %>
+                        <p><%= link_to document.filename, rails_blob_path(document, disposition: :attachment), target: :_blank %></p>
+                      </div>
+                    <% end %>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="d-flex justify-content-between mt-1">
+                    <%= link_to "Editar actualización de incidencia", edit_incident_incident_update_path(@incident, incident_update), class: "btn btn-outline-warning btn-sm" %>
+                    <%= link_to "Eliminar actualización de incidencia", incident_incident_update_path(@incident, incident_update), class: "btn btn-outline-danger btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+                  </div>
+                </li>
+              </ul>
+              <hr>
+            <% end %>
+          </div>
+          <div class="card-footer">
+            <div class="mt-5 d-flex justify-content-between">
+              <%= link_to "Editar incidencia", edit_incident_path(@incident), class: "btn btn-outline-warning" %>
+              <%= link_to "Eliminar incidencia", incident_path(@incident), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

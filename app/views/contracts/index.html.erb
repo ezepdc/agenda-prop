@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="my-3">
+    <h1 class="d-flex justify-content-between">Todos los contratos <%= link_to "Crear contrato", new_contract_path, class:"btn btn-secondary my-auto" %></h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @contracts.each do |contract| %>
+        <div class="col">
+          <div class="card border-secondary">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-between">
+                Tipo de contrato: <%= contract.kind %>
+                <%= link_to "Ver contrato", contract_path(contract), class:"btn btn-primary" %>
+              </h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Propiedad ref.: <%= contract.property.reference %></li>
+              <li class="list-group-item">Inquilino: <%= contract.tenant.full_name %></li>
+              <li class="list-group-item">Desde: <%= contract.start_date %> hasta: <%= contract.end_date %></li>
+              <li class="list-group-item">Precio base: <%= humanized_money_with_symbol(contract.price) %> <%= contract.price_currency %></li>
+              <li class="list-group-item">Comision: <%= contract.comision %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%== render partial: 'shared/pagy', locals: {pagy: @pagy} %>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="my-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-12 col-lg-10 lh-lg">
+        <h1 class="d-flex justify-content-between">Transacción<%= link_to "Ver todas las transacciones", bills_path, class:"btn btn-light border-dark my-auto" %></h1>
+        <div class="card shadow p-3 mb-5">
+          <div class="card-body">
+            <h5 class="card-title"><%= l(@bill.bill_date, format: :long) %> <%= @bill.property.reference %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Fecha: <%= l(@bill.bill_date, format: :long) %></li>
+            <li class="list-group-item">Propiedad ref.: <%= @bill.property.reference %></li>
+            <li class="list-group-item">Tipo: <%= @bill.translated_kind %></li>
+            <li class="list-group-item">Contacto: <%= @bill.contact.full_name %></li>
+            <li class="list-group-item">Tipo de contacto: <%= @bill.contact.kind %></li>
+            <li class="list-group-item">Concepto: <%= @bill.concept %></li>
+            <li class="list-group-item">Monto: <%= humanized_money_with_symbol(@bill.price) %> <%= @bill.price_currency %></li>
+            <li class="list-group-item">Método de pago: <%= @bill.payment_method %></li>
+            <li class="list-group-item">Creado por: <%= @bill.user.first_name %></li>
+            <li class="list-group-item d-flex justify-content-between">
+              Liquidación:
+              <% if @settlement %>
+                <%= l(@settlement.created_at, format: :long) %> Por: <%= @settlement.user.first_name %>
+                <%= link_to "Ver liquidación", settlement_path(@settlement), class:"btn btn-primary " %>
+              <% else %>
+                Pendiente
+              <% end %>
+            </li>
+            <li class="list-group-item"><p>Comprobantes adjuntos</p>
+              <div class="row row-cols-1 row-cols-md-2 g-2">
+                <% @bill.documents.each do |document| %>
+                  <div class="col">
+                    <% if document.variable? %>
+                      <%= link_to cl_image_tag(document.key, width: 300, height: 200), rails_blob_path(document, disposition: :attachment), target: :_blank %>
+                    <% elsif document.image? %>
+                      <%= cl_image_tag document.key, width: 300 %>
+                    <% else %>
+                      <iframe src="<%= document.url %>" height="200" width="300"></iframe>
+                    <% end %>
+                    <p><%= link_to document.filename, rails_blob_path(document, disposition: :attachment), target: :_blank %></p>
+                  </div>
+                <% end %>
+              </div>
+            </li>
+            <li class="list-group-item">Notas: <%= @bill.notes %></li>
+          </ul>
+          <div class="card-footer">
+            <div class="mt-5 d-flex justify-content-between">
+              <%= link_to "Editar transacción", edit_bill_path(@bill), class: "btn btn-outline-warning" %>
+              <%= link_to "Eliminar transacción", bill_path(@bill), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

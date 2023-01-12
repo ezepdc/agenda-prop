@@ -1,0 +1,47 @@
+<div class="container">
+    <ul class="nav nav-tabs nav-fill shadow fixed-top">
+      <li class="nav-item">
+        <%= link_to "Pendientes", incidents_path({status: :pending}), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("pending", params[:status])}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "En curso", incidents_path({status: :doing}), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("doing", params[:status])}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Rechazadas", incidents_path({status: :rejected}), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("rejected", params[:status])}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Finalizadas", incidents_path({status: :done}), class: "flex-sm-fill text-sm-center nav-link #{class_for_nav("done", params[:status])}" %>
+      </li>
+    </ul>
+  <div class="incident">
+    <h1 class="d-flex justify-content-end"><%= link_to "Crear incidencia", new_incident_path, class:"btn btn-secondary my-3" %></h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @incidents.each do |incident| %>
+
+          <div class="col">
+            <div class="card shadow p-3 mb-5">
+              <div class="card-body">
+                <h5 class="card-title d-flex justify-content-between">
+                  Número: <%= incident.id %>
+                  <%= link_to "Ver incidencia", incident_path(incident), class:"btn btn-primary" %>
+                </h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Ultimo estado: <%= incident.status %></li>
+                <li class="list-group-item">Creada: <%= l(incident.created_at, format: :long) %></li>
+                <li class="list-group-item">Propiedad ref.: <%= incident.property.reference %></li>
+                <li class="list-group-item">Contacto que solicitó la incidencia: <%= incident.contact.full_name %></li>
+                <li class="list-group-item">Tipo de contacto <%= incident.contact.translated_kind %></li>
+                <li class="list-group-item">Creada por: <%= incident.user.first_name %></li>
+                <li class="list-group-item">Tipo de incidente: <%= incident.kind %></li>
+              </ul>
+            </div>
+          </div>
+
+      <% end %>
+    </div>
+  </div>
+  <%== render partial: 'shared/pagy', locals: {pagy: @pagy} %>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

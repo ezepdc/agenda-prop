@@ -1,0 +1,10 @@
+<div class="col">
+  <% if document.variable? %>
+    <%= link_to cl_image_tag(document.key, width: 300, height: 200), rails_blob_path(document, disposition: :attachment), target: :_blank %>
+  <% elsif document.image? %>
+    <%= cl_image_tag document.key, width: 300 %>
+  <% else %>
+    <iframe src="<%= document.url %>" height="200" width="300"></iframe>
+  <% end %>
+  <p><%= link_to document.filename, rails_blob_path(document, disposition: :attachment), target: :_blank %></p>
+</div>

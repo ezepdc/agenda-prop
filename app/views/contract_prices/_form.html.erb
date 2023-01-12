@@ -1,0 +1,7 @@
+<%= simple_form_for([@contract, @contract_price]) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :price, required: true %>
+  <%= f.input :price_currency, required: true, as: :radio_buttons, collection: ['USD', 'ARS']%>
+  <%= f.button :submit, class: "btn btn-flat" %>
+<% end %>

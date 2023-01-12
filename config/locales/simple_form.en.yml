@@ -11,9 +11,91 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
+    labels:
+      defaults:
+        remember_me: 'Recordarme'
+        password: 'Contraseña'
+        password_confirmation: 'Repetir contraseña'
+        current_password: 'Contraseña actual'
+        first_name: 'Nombre'
+        last_name: 'Apellido'
+        phone: 'Teléfono'
+        role: 'Rol'
+        agency_name: 'Inmobiliaria'
+        notes: 'Notas'
+        reference: 'Propiedad ref.'
+        cadastral_reference: 'Ref. catastral'
+        address: 'Dirección'
+        apartment: 'Piso / depto'
+        city: 'Localidad'
+        state: 'Provincia'
+        country: 'País'
+        postal_code: 'Código postal'
+        total_area: 'Superficie total'
+        covered_area: 'Superficie cubierta'
+        rooms: 'Habitaciones'
+        bathrooms: 'Baños'
+        amenities: 'Características'
+        price: 'Precio'
+        price_currency: 'Moneda'
+        property: 'Propiedad'
+        start_date: 'Desde'
+        end_date: 'hasta'
+        base_price: 'Precio base'
+        base_price_currency: 'Moneda de precio base'
+        comision: 'Comisión'
+        guarantor_identity_kind: 'Tipo de documento del garante'
+        guarantor_identity_number: 'Número de documento del garante'
+        guarantee_address: 'Dirección de la propiedad en garantía'
+        security_deposit_amount: 'Monto de depósito en garantía'
+        security_deposit_amount_currency: 'Moneda de depósito en garantía'
+        contact: 'Contacto'
+        description: 'Descripción'
+        status: 'Estado de incidencia'
+        others_income_amount: 'Monto de otros ingresos'
+        others_income_amount_currency: 'Moneda de otros ingresos'
+        others_income_concept: 'Concepto de otros ingresos'
+        others_expense_amount: 'Monto de otros gastos'
+        others_expense_amount_currency: 'Moneda de otros gastos'
+        others_expense_concept: 'Concepto de otros gastos'
+        payment_method: 'Método de pago'
+        bill_date: 'Fecha'
+        amount: 'Monto'
+        amount_currency: 'Moneda'
+        concept: 'Concepto'
+        photos: 'Fotos'
+        documents: 'Comprobantes'
+        guarantor_documents: 'Documento del garante'
+        guarantee_documents: 'Documento de la garantía'
+        security_deposit_receipts: 'Recibo de depósito en garantía'
+        security_deposit_return_receipts: 'Recibo de devolución de depósito en garantía'
+        contract_documents: 'Documentos del contrato'
+        bill: 'Transacciones'
+
+      contact:
+        kind: 'Tipo de contacto'
+      property:
+        kind: 'Tipo de propiedad'
+        owner: 'Propietario'
+      contract:
+        kind: 'Tipo de contrato'
+        tenant: 'Inquilino'
+        guarantor: 'Garante'
+      incident:
+        kind: 'Tipo de incidencia'
+        contact: 'Contacto que solicita la incidencia'
+      settlement:
+        amount_currency: 'Moneda de liquidación'
+      bill:
+        kind: 'Tipo de transacción'
+
+    helpers:
+      submit:
+        user:
+          create: "Crear %{model}"
+          update: "Guardar cambios"
+
+
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

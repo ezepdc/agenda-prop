@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="my-3">
+    <h1>Últimas 3...</h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <div class="card shadow p-3 mb-5">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between">Propiedades <%= link_to "Ver todas", properties_path, class:"btn btn-outline-primary" %> <%= link_to "Crear propiedad", new_property_path, class:"btn btn-outline-secondary" %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Propiedad ref.</th>
+                  <th scope="col">Propietario</th>
+                  <th scope="col">Dirección</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @properties.each do |property| %>
+                  <tr>
+                    <td>
+                      <%= link_to property_path(property) do %>
+                        <%= property.reference %>
+                      <% end %>
+                    </td>
+                    <td><%= property.owner.full_name %></td>
+                    <td><%= property.address %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow p-3 mb-5">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between">Incidencias <%= link_to "Ver todas", incidents_path({status: :pending}), class:"btn btn-outline-primary" %> <%= link_to "Crear incidencia", new_incident_path, class:"btn btn-outline-secondary" %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Propiedad ref.</th>
+                  <th scope="col">Contacto</th>
+                  <th scope="col">Tipo de incidente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @incidents.each do |incident| %>
+                  <tr>
+                    <td>
+                      <%= link_to incident_path(incident) do %>
+                        <%= incident.property.reference %>
+                      <% end %>
+                    </td>
+                    <td><%= incident.contact.full_name %></td>
+                    <td><%= incident.kind %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow p-3 mb-5">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between">Contactos <%= link_to "Ver todos", contacts_path, class:"btn btn-outline-primary" %> <%= link_to "Crear contacto", new_contact_path, class:"btn btn-outline-secondary" %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre y apellido</th>
+                  <th scope="col">Teléfono</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @contacts.each do |contact| %>
+                  <tr>
+                    <td>
+                      <%= link_to contact_path(contact) do %>
+                        <%= contact.full_name %>
+                      <% end %>
+                    </td>
+                    <td><%= contact.phone %></td>
+                    <td><%= contact.email %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow p-3 mb-5">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between">Transacciones <%= link_to "Ver todas", bills_path, class:"btn btn-outline-primary" %> <%= link_to "Crear transacción", new_bill_path, class:"btn btn-outline-secondary" %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Propiedad ref.</th>
+                  <th scope="col">Contacto</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Concepto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @bills.each do |bill| %>
+                  <tr>
+                    <td>
+                      <%= link_to bill_path(bill) do %>
+                        <%= bill.property.reference %>
+                      <% end %>
+                    </td>
+                    <td><%= bill.contact.full_name %></td>
+                    <td><%= bill.translated_kind %></td>
+                    <td><%= bill.concept %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow p-3 mb-5">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between">Liquidaciones <%= link_to "Ver todas", settlements_path, class:"btn btn-outline-primary" %> <%= link_to "Crear liquidación", new_settlement_path, class:"btn btn-outline-secondary" %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Propiedad ref.</th>
+                  <th scope="col">Propietario</th>
+                  <th scope="col">Monto de liquidación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @settlements.each do |settlement| %>
+                  <tr>
+                    <td>
+                      <%= link_to settlement_path(settlement) do %>
+                        <%= settlement.property.reference %>
+                      <% end %>
+                    </td>
+                    <td><%= settlement.property.owner.full_name %></td>
+                    <td><%= humanized_money_with_symbol(settlement.price) %> <%= settlement.price_currency %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

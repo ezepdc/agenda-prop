@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="my-3">
+    <h1 class="d-flex justify-content-between">Todos los contactos <%= link_to "Crear contacto", new_contact_path, class:"btn btn-secondary my-auto" %></h1>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @contacts.each do |contact| %>
+        <div class="col">
+          <div class="card shadow p-3 mb-5">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-between">
+                <%= contact.full_name %>
+                <%= link_to "Ver contacto", contact_path(contact), class:"btn btn-primary" %>
+              </h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Teléfono: <%= contact.phone %></li>
+              <li class="list-group-item">Email: <%= contact.email %></li>
+              <li class="list-group-item">Tipo de contacto: <%= contact.translated_kind %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%== render partial: 'shared/pagy', locals: {pagy: @pagy} %>
+  <hr>
+  <%= link_to "Volver", :back, class: "btn btn-dark" %>
+</div>

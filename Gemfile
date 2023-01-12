@@ -1,6 +1,17 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem "dotenv-rails", groups: [:development, :test]
+gem "cloudinary"
+gem 'faker'
+gem 'open-uri', '~> 0.2.0'
+gem 'pagy', '~> 5.10'
+gem 'money-rails', '~>1.12'
+gem 'translate_enum', require: 'translate_enum/active_record'
+gem 'letter_opener', group: :development
+gem 'postmark-rails'
+
+
 ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

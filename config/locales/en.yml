@@ -31,3 +31,44 @@
 
 en:
   hello: "Hello world"
+
+  # enums:
+  #   incident_update:
+  #     status:
+  #       pending: Pendiente
+  #       moderator: "Moderator"
+  #       member: "Member"
+
+  attributes:
+    status_list:
+      pending: Pendiente
+      doing: En curso
+      rejected: Rechazada
+      done: Finalizada
+    kind_list:
+      payout: Pago
+      collection: Cobro
+      guarantor: Garante
+      tenant: Inquilino
+      owner: Propietario
+      supplier: Proveedor
+
+  time:
+    formats:
+      long: "%A, %e %B %Y"
+
+  date:
+    order:
+      - day
+      - month
+      - year
+    formats:
+      long: "%e %B %Y"
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Augosto, Septiembre, Octubre, Noviembre, Diciembre]
+
+  number:
+    currency:
+      format:
+        separator: ","
+        delimiter: "."

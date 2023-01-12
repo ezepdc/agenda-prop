@@ -1,0 +1,27 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8 lh-lg text-muted">
+    <%= simple_form_for(@property) do |f| %>
+      <%= f.input :reference, required: true %>
+      <%= f.association :owner, class_name: "Contact",  collection: Contact.owner, label_method: :full_name, prompt: true , required: true %>
+      <p class="d-flex justify-content-end"><%= link_to "Crear propietario", new_contact_path, target: :_blank %></p>
+      <%= f.input :cadastral_reference %>
+      <%= f.input :kind %>
+      <%= f.input :address %>
+      <%= f.input :apartment %>
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%= f.input :country %>
+      <%= f.input :postal_code %>
+      <%= f.input :total_area %>
+      <%= f.input :covered_area %>
+      <%= f.input :rooms %>
+      <%= f.input :bathrooms %>
+      <%= f.input :amenities %>
+      <%= f.input :price %>
+      <%= f.input :price_currency, as: :radio_buttons, collection: ['USD', 'ARS']%>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.input :notes %>
+      <%= f.button :submit, class: "btn btn-flat" %>
+    <% end %>
+  </div>
+</div>
